@@ -1,1 +1,108 @@
 @import url(./fonts.scss);
+@import '_variables.scss';
+
+* {
+  color: $text;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $bgc;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+p {
+  margin: 0;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.subtitle {
+  font-family: "SFPro", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.subtitle-secondary {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.big-text {
+  font-family: "SFPro", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.text {
+  font-family: "SFPro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.mini-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.link {
+  transition: 0.3s color;
+
+  &:hover {
+    color: $textHover;
+    transition: 0.3s color;
+  }
+}

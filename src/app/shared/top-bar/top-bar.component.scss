@@ -1,0 +1,33 @@
+@import '../../../variables';
+
+.top-bar {
+  color: $white;
+  padding: 10px;
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.location-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.meta-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
