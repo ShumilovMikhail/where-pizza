@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "SFPro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SFPro"),
+    url("./assets/fonts/SFProDisplay-Regular.woff2") format("woff2"),
+    url("./assets/fonts/SFProDisplay-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SFPro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("SFPro"),
+    url("./assets/fonts/SFProDisplay-Semibold.woff2") format("woff2"),
+    url("./assets/fonts/SFProDisplay-Semibold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SFPro";
+  font-style: normal;
+  font-weight: 700;
+  src: local("SFPro"),
+    url("./assets/fonts/SFProDisplay-Regular.woff2") format("woff2"),
+    url("./assets/fonts/SFProDisplay-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Inter"),
+    url("./assets/fonts/Inter-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Inter-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Inter"),
+    url("./assets/fonts/Inter-SemiBold.woff2") format("woff2"),
+    url("./assets/fonts/Inter-SemiBold.woff") format("woff");
+}
