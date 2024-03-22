@@ -10,7 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { reducers } from './store/reducers';
 import { RegisterEffect } from './store/effects/register.effect';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterFormComponent } from './components/register/components/register-form/register-form/register-form.component';
+import { RegisterFormComponent } from './components/register/components/register-form/register-form.component';
 import { ProfileFillingComponent } from './components/profile-filling/profile-filling.component';
 
 @NgModule({

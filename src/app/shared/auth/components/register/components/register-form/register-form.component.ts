@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BackendError } from '../../../../../../types/backedError.interface';
-import { RegisterErrorsTypes } from '../../../../../types/registerErrorsTypes';
+import { BackendError } from '../../../../../types/backedError.interface';
+import { RegisterErrorsTypes } from '../../../../types/registerErrorsTypes';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { confirmPasswordValidator } from '../../../../../../utils/confirmPassword.validator';
-import { RegisterForm } from '../../../types/registerForm.interface';
+import { confirmPasswordValidator } from '../../../../../utils/confirmPassword.validator';
+import { RegisterForm } from '../../types/registerForm.interface';
 
 @Component({
   selector: 'app-register-form',
