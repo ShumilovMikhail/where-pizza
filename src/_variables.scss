@@ -9,6 +9,7 @@ $white: #FFFF;
 $error: $red;
 $success: $green;
 $disabled: $gray;
+$lineGray: #F0F0F0;
 
 @mixin button-primary($ph, $pv, $mh, $mv) {
   background-color: $primary;
@@ -28,5 +29,33 @@ $disabled: $gray;
     background-color: transparent;
     color: $primary;
     transition: 0.3s background-color, color;
+  }
+
+  &:disabled {
+    background-color: $gray;
+    border: $gray;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+%input {
+  padding: 13px 16px;
+  font-family: "SFPro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  border: 1px solid $lineGray;
+  border-radius: 6px;
+}
+
+%errorMessage {
+  margin-left: 10px;
+
+  p {
+    color: $red;
+    margin-bottom: 4px;
   }
 }

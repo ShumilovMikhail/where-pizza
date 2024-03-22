@@ -1,0 +1,13 @@
+@import '../../../../../../../../variables';
+
+form {
+  margin-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.button-submit {
+  @include button-primary(13px, 0, auto, auto);
+  width: 320px;
+}

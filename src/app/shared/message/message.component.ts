@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './message.component.scss'
 })
 export class MessageComponent {
-  @Input('text') text: string
-}
+  @Input('text') text: string;
+};

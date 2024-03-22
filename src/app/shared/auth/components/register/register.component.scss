@@ -1,0 +1,19 @@
+@import '../../../../../variables';
+
+.register {
+  text-align: center;
+}
+
+.link-redirect {
+  display: block;
+  margin-top: 14px;
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.info {
+  margin-top: 3px;
+  color: $gray;
+}

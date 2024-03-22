@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <fieldset class="fieldset form-input">
+    <label class="mini-text">Ваш email</label>
+    <input type="text" placeholder="email" class="input" formControlName="email" [ngClass]="{
+      input_error: (form.get('email').valid ||error?.message === 'EMAIL_EXISTS') && form.get('email').untouched
+    }">
+    <div class="help-block" *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
+      <p class="mini-text">* Введите корректный email</p>
+    </div>
+  </fieldset>
+  <fieldset class="fieldset" formGroupName="password">
+    <fieldset class="fieldset form-input">
+      <label class="mini-text">Пароль</label>
+      <input type="text" placeholder="Пароль" class="input" formControlName="pass" [ngClass]="{
+        input_error: !form.get('password').get('pass').valid && form.get('password').get('pass').touched
+      }">
+      <div class="help-block"
+        *ngIf="!form.get('password').get('pass').valid && form.get('password').get('pass').touched">
+        <p class="mini-text">* Минимальное количество символов 8</p>
+      </div>
+    </fieldset>
+    <fieldset class="fieldset form-input">
+      <label class="mini-text">Подтвердите пароль</label>
+      <input type="text" placeholder="Пароль" class="input" formControlName="confirm_password" [ngClass]="{
+        input_error: !form.get('password').valid && form.get('password').get('confirm_password').touched
+      }">
+      <div class="help-block"
+        *ngIf="!form.get('password').valid && form.get('password').get('confirm_password').touched">
+        <p class="mini-text">* Пароли не совпадают</p>
+      </div>
+    </fieldset>
+  </fieldset>
+
+  <div class="error-messages" *ngIf="error">
+    <p *ngIf="error.message === 'EMAIL_EXISTS' && form.get('email').untouched" class="mini-text"> * Такой email уже
+      существует</p>
+    <p *ngIf="error.message === 'TOO_MANY_ATTEMPTS_TRY_LATER' && form.get('email').untouched" class="mini-text">Вы
+      сорвешили слишком много попыток, попытайтесь попозже</p>
+  </div>
+
+  <button class="btn button-submit" [disabled]="!form.valid || isLoading">Регистрация</button>
+</form>

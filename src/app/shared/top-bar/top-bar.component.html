@@ -1,3 +1,7 @@
+<app-modal *ngIf="modalOpen" (closeModal)="onModalClose()">
+  <app-auth [authType]="authType"></app-auth>
+</app-modal>
+
 <div class="top-bar">
   <div class="top-bar_container container">
     <div class="location-container">
@@ -6,10 +10,10 @@
     </div>
     <div class="meta-container">
       <p class="mini-text">Время работы с 11:00 до 23:00</p>
-      <a class="mini-text login link">
+      <button class="btn mini-text login" (click)="onModalOpen()" type="button">
         <img src="../../../assets/images/login-icon.svg" alt="login-icon">
         Войти в аккаунт
-      </a>
+      </button>
     </div>
   </div>
 </div>

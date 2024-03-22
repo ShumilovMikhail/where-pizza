@@ -1,0 +1,15 @@
+<div class="register">
+  <h2>Регистрация</h2>
+  <p class="text">Сможете быстро оформлять заказы,
+    <br> использовать бонусы
+  </p>
+  <app-register-form [error]="error$ | async" [isLoading]="isLoading$ | async"
+    (onSubmit)="onSubmit($event)"></app-register-form>
+
+  <div class="link-redirect">
+    <a class="mini-text link" (click)="onRedirect()">У вас есть уже аккаунт?</a>
+  </div>
+  <p class="info mini-text">
+    Продолжая, вы соглашаетесь со сбором и обработкой персональных данных и пользовательским соглашением
+  </p>
+</div>
