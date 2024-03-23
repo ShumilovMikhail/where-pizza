@@ -1,4 +1,5 @@
 import { createAction, props } from "@ngrx/store";
+
 import { ActionTypes } from "../actionTypes";
 import { AuthRequest } from "../../types/authRequest.interface";
 import { AuthResponse } from "../../types/authResponse.interface";

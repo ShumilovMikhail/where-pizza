@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { BackendError } from '../../../../../types/backedError.interface';
 import { RegisterErrorsTypes } from '../../../../types/registerErrorsTypes';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { confirmPasswordValidator } from '../../../../../utils/confirmPassword.validator';
 import { RegisterForm } from '../../types/registerForm.interface';
 
@@ -14,7 +14,7 @@ import { RegisterForm } from '../../types/registerForm.interface';
 export class RegisterFormComponent implements OnInit {
   @Input('isLoading') isLoading: boolean;
   @Input('error') error: BackendError<RegisterErrorsTypes>;
-  @Output('onSubmit') submitEvent = new EventEmitter<RegisterForm>()
+  @Output('onSubmit') submitEvent = new EventEmitter<RegisterForm>();
 
   form: FormGroup;
 
@@ -27,8 +27,8 @@ export class RegisterFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       this.form.markAsUntouched();
-      this.submitEvent.emit(this.form.value)
-    }
+      this.submitEvent.emit(this.form.value);
+    };
   };
 
 

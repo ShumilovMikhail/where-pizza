@@ -11,6 +11,7 @@ export class AuthComponent {
   @Input('authType') authType: AuthTypes;
 
   onAuthTypeChange(authType: AuthTypes): void {
-    this.authType = authType
+    this.authType = authType;
   };
+
 };

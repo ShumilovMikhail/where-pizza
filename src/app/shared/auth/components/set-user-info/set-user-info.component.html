@@ -1,0 +1,36 @@
+<div class="userInfo">
+  <h2>Заполните профиль</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <fieldset class="fieldset form-input">
+      <label class="mini-text">Ваш имя</label>
+      <input type="text" placeholder="Имя" class="input" formControlName="username" [ngClass]="{
+        input_error: !form.get('username').valid && form.get('username').touched
+      }">
+      <div class="help-block" *ngIf="!form.get('username').valid && form.get('username').touched">
+        <p class="mini-text">* Минимум 2 символа</p>
+      </div>
+    </fieldset>
+    <fieldset class="fieldset form-input">
+      <label class="mini-text">Телефон</label>
+      <input type="text" placeholder="+7" class="input" prefix="+7" [dropSpecialCharacters]="false"
+        [mask]="'(000)000-00-00'" formControlName="phone" [ngClass]="{
+          input_error: !form.get('phone').valid && form.get('phone').touched
+        }">
+      <div class="help-block" *ngIf="!form.get('phone').valid && form.get('phone').touched">
+        <p class="mini-text">* Минимум 11 символов</p>
+      </div>
+    </fieldset>
+    <fieldset class="fieldset form-input">
+      <label class="mini-text">Дата рождения</label>
+      <input type="text" placeholder="Дата рождения" [dropSpecialCharacters]="false" class="input" [mask]="'00-00-0000'"
+        formControlName="date" [ngClass]="{
+          input_error: !form.get('date').valid && form.get('date').touched
+        }">
+      <div class="help-block" *ngIf="!form.get('date').valid && form.get('date').touched">
+        <p class="mini-text">* Введите коректную дату</p>
+      </div>
+    </fieldset>
+
+    <button class="btn button-submit" [disabled]="!form.valid">Сохранить</button>
+  </form>
+</div>

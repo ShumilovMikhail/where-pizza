@@ -1,0 +1,31 @@
+@import '../../../../../variables';
+
+.register {
+  text-align: center;
+}
+
+form {
+  margin-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.button-submit {
+  @include button-primary(13px, 0, auto, auto);
+  width: 320px;
+}
+
+.link-redirect {
+  display: block;
+  margin-top: 14px;
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.info {
+  margin-top: 3px;
+  color: $gray;
+}
