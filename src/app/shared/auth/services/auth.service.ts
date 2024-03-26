@@ -57,6 +57,6 @@ export class AuthService {
 
   public login(user: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(this.loginUrl, user);
-  }
+  };
 
 };

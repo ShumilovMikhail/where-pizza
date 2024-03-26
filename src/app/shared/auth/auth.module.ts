@@ -16,6 +16,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { SetUserInfoComponent } from './components/set-user-info/set-user-info.component';
 import { GetUserInfoEffect } from './store/effects/get-user-info.effect';
 import { LoginEffect } from './store/effects/login.effect';
+import { GetCurrentUserEffect } from './store/effects/get-current-user.effect';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { LoginEffect } from './store/effects/login.effect';
     HttpClientModule,
     CommonModule,
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect, SetUserInfoEffect, GetUserInfoEffect, LoginEffect]),
+    EffectsModule.forFeature([RegisterEffect, SetUserInfoEffect, GetUserInfoEffect, LoginEffect, GetCurrentUserEffect]),
     ReactiveFormsModule,
     NgxMaskModule.forChild(),
   ],

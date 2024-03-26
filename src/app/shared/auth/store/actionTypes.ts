@@ -14,4 +14,8 @@ export enum ActionTypes {
   GET_USER_INFO = '[Auth] Get user info',
   GET_USER_INFO_SUCCESS = '[Auth] Get user info success',
   GET_USER_INFO_FAILURE = '[Auth] Get user info failure',
+
+  GET_CURRENT_USER = '[Auth] Get current user',
+  GET_CURRENT_USER_SUCCESS = '[Auth] Get current user success',
+  GET_CURRENT_USER_FAILURE = '[Auth] Get current user failure',
 };
