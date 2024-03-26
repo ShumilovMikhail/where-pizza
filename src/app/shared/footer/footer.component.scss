@@ -1,0 +1,61 @@
+@import '../../../variables';
+
+.footer-container {
+  background-color: $bgc;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.contacts {
+  gap: 22px;
+  display: flex;
+  flex-direction: column;
+
+  &__inner {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.communication-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.socials-list {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}

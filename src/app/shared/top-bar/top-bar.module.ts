@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TopBarComponent } from './top-bar.component';
 import { ModalModule } from '../modal/modal.module';
 import { AuthModule } from '../auth/auth.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AuthModule } from '../auth/auth.module';
   imports: [
     CommonModule,
     ModalModule,
-    AuthModule
+    AuthModule,
+    RouterModule
   ],
   exports: [TopBarComponent]
 })

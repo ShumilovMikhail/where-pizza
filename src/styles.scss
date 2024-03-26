@@ -140,6 +140,7 @@ h4 {
 
 .link {
   transition: 0.3s color;
+  text-decoration: none;
 
   &:hover {
     color: $textHover;

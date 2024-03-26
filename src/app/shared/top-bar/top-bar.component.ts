@@ -14,6 +14,7 @@ export class TopBarComponent implements OnInit {
   authType: AuthTypes = AuthTypes.LOGIN;
   modalOpen: boolean = true;
   isAuthenticateSubscribe: Subscription;
+  isAuthenticate: boolean = false;
 
   constructor(private store: Store) { };
 
@@ -22,7 +23,8 @@ export class TopBarComponent implements OnInit {
       filter(Boolean),
       take(1)
     ).subscribe((isAuthenticate) => {
-      this.modalOpen = false
+      this.isAuthenticate = true;
+      this.modalOpen = false;
     });
   };
 

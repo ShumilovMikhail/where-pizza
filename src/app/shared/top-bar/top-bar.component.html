@@ -10,10 +10,13 @@
     </div>
     <div class="meta-container">
       <p class="mini-text">Время работы с 11:00 до 23:00</p>
-      <button class="btn mini-text login" (click)="onModalOpen()" type="button">
+      <button class="btn mini-text login" (click)="onModalOpen()" type="button" *ngIf="!isAuthenticate">
         <img src="../../../assets/images/login-icon.svg" alt="login-icon">
         Войти в аккаунт
       </button>
+      <a [routerLink]="['/']" *ngIf="isAuthenticate">
+        <img src="../../../assets/images/login-icon.svg" alt="login-icon">
+      </a>
     </div>
   </div>
 </div>

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './shared/header/header.module';
 import { TopBarModule } from './shared/top-bar/top-bar.module';
 import { NgxMaskModule } from 'ngx-mask';
+import { FooterModule } from './shared/footer/footer.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +22,8 @@ import { NgxMaskModule } from 'ngx-mask';
     HeaderModule,
     TopBarModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
