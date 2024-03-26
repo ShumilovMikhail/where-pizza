@@ -1,0 +1,3 @@
+export enum LoginErrorsTypes {
+  INVALID_LOGIN_CREDENTIALS = 'INVALID_LOGIN_CREDENTIALS'
+};

@@ -31,6 +31,6 @@
       </div>
     </fieldset>
 
-    <button class="btn button-submit" [disabled]="!form.valid">Сохранить</button>
+    <button class="btn button-submit" [disabled]="!form.valid || (isSubmitting$ | async)">Сохранить</button>
   </form>
 </div>

@@ -3,15 +3,20 @@
   <p class="text">Сможете быстро оформлять заказы,
     <br> использовать бонусы
   </p>
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <fieldset class="fieldset form-input">
       <label class="mini-text">Ваш email</label>
-      <input type="text" placeholder="email" class="input">
+      <input type="text" placeholder="email" class="input" formControlName="email">
     </fieldset>
     <fieldset class="fieldset form-input">
       <label class="mini-text">Пароль</label>
-      <input type="text" placeholder="Пароль" class="input">
+      <input type="text" placeholder="Пароль" class="input" formControlName="password">
     </fieldset>
+
+    <div class="error-messages" *ngIf="error$ | async">
+      <p *ngIf="(error$ | async).message === 'INVALID_LOGIN_CREDENTIALS' && form.get('email').untouched && form.get('password').untouched "
+        class="mini-text"> * Неправильный email или пароль</p>
+    </div>
 
     <button class="btn button-submit">Войти</button>
   </form>

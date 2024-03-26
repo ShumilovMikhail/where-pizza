@@ -5,10 +5,11 @@ import { Observable, Subscription } from 'rxjs';
 import { AuthTypes } from '../../types/authTypes';
 import { registerAction } from '../../store/actions/register.action';
 import { AuthRequest } from '../../types/authRequest.interface';
-import { errorSelector, isAuthenticateSelector, isLoadingSelector } from '../../store/selectors';
+import { errorSelector, isSubmittingSelector, userDataSelector } from '../../store/selectors';
 import { BackendError } from '../../../types/backedError.interface';
 import { RegisterErrorsTypes } from '../../types/registerErrorsTypes';
 import { RegisterForm } from './types/registerForm.interface';
+import { UserData } from '../../../types/userData.interface';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +19,9 @@ import { RegisterForm } from './types/registerForm.interface';
 export class RegisterComponent implements OnInit, OnDestroy {
   @Output('authTypeChange') authTypeChangeEvent = new EventEmitter<AuthTypes>();
 
-  isLoading$: Observable<boolean>;
+  isSubmitting$: Observable<boolean>;
   error$: Observable<BackendError<RegisterErrorsTypes>>;
-  isAuthenticateSubscribe: Subscription
+  userDataSubscribe: Subscription
 
   constructor(private store: Store) { };
 
@@ -43,19 +44,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
   };
 
   private initializeListeners(): void {
-    this.isAuthenticateSubscribe = this.store.select(isAuthenticateSelector).subscribe((isAuthenticate) => {
-      if (isAuthenticate) {
+    this.userDataSubscribe = this.store.select(userDataSelector).subscribe((userData: UserData | null) => {
+      if (userData) {
         this.authTypeChangeEvent.emit(AuthTypes.SET_USER_INFO);
       };
     });
   };
 
   private initializeValues(): void {
-    this.isLoading$ = this.store.select(isLoadingSelector);
-    this.error$ = this.store.select(errorSelector);
+    this.isSubmitting$ = this.store.select(isSubmittingSelector);
+    this.error$ = this.store.select(errorSelector) as Observable<BackendError<RegisterErrorsTypes>>;
   };
 
   ngOnDestroy(): void {
-    this.isAuthenticateSubscribe.unsubscribe();
+    this.userDataSubscribe.unsubscribe();
   };
 };

@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, tap } from "rxjs";
 
@@ -29,10 +30,11 @@ export class SetUserInfoEffect {
     ofType(setUserInfoSuccessAction),
     tap(({ userInfo }) => {
       this.dataStorageService.setItem(DataStorageTypes.USER_INFO, userInfo);
+      this.router.navigateByUrl('/');
     })
   ), {
     dispatch: false
   });
 
-  constructor(private actions$: Actions, private authService: AuthService, private dataStorageService: DataStorageService) { };
+  constructor(private actions$: Actions, private authService: AuthService, private dataStorageService: DataStorageService, private router: Router) { };
 };

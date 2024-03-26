@@ -3,7 +3,7 @@
   <p class="text">Сможете быстро оформлять заказы,
     <br> использовать бонусы
   </p>
-  <app-register-form [error]="error$ | async" [isLoading]="isLoading$ | async"
+  <app-register-form [error]="error$ | async" [isSubmitting]="isSubmitting$ | async"
     (onSubmit)="onSubmit($event)"></app-register-form>
 
   <div class="link-redirect">

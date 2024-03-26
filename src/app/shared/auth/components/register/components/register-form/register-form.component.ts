@@ -12,7 +12,7 @@ import { RegisterForm } from '../../types/registerForm.interface';
   styleUrl: './register-form.component.scss'
 })
 export class RegisterFormComponent implements OnInit {
-  @Input('isLoading') isLoading: boolean;
+  @Input('isSubmitting') isSubmitting: boolean;
   @Input('error') error: BackendError<RegisterErrorsTypes>;
   @Output('onSubmit') submitEvent = new EventEmitter<RegisterForm>();
 
