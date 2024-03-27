@@ -1,0 +1,44 @@
+<div class="change-user-info__container">
+  <div class="top">
+    <h3>Личные данные</h3>
+    <button class="btn text link button-cancel" (click)="onCancel()" *ngIf="formOpen">
+      Отменить
+    </button>
+    <button class="btn text link change-button" (click)="onChange()" *ngIf="!formOpen">
+      <img src="/assets/images/change-icon.svg" alt="change-icon">
+      Изменить
+    </button>
+  </div>
+  <table class="change-user-info__table" *ngIf="!formOpen">
+    <tr class="change-user-info__column">
+      <td class="change-user-info__title mini-text">Имя</td>
+      <td class="change-user-info__cell text">{{userInfo.username}}</td>
+    </tr>
+    <tr class="change-user-info__column">
+      <td class="change-user-info__title mini-text">Номер телефона</td>
+      <td class="change-user-info__cell text">{{userInfo.phone}}</td>
+    </tr>
+    <tr class="change-user-info__column">
+      <td class="change-user-info__title mini-text">Дата рождения</td>
+      <td class="change-user-info__cell text">{{userInfo.date}}</td>
+    </tr>
+  </table>
+
+  <form [formGroup]="form" *ngIf="formOpen" (ngSubmit)="onSubmit()">
+    <div class="form__inner">
+      <fieldset class="form-input">
+        <label class="mini-text">Имя</label>
+        <input type="text" placeholder="Имя" formControlName="username">
+      </fieldset>
+      <fieldset class="form-input">
+        <label class="mini-text">Номер телефона</label>
+        <input type="text" placeholder="+7" formControlName="phone">
+      </fieldset>
+      <fieldset class="form-input">
+        <label class="mini-text">Дата рождения</label>
+        <input type="text" placeholder="Дата рождения" formControlName="date">
+      </fieldset>
+    </div>
+    <button class="btn form-submit" [disabled]="!form.valid"> Сохранить изменения</button>
+  </form>
+</div>

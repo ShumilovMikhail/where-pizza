@@ -1,0 +1,14 @@
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main {
+  margin-top: 24px;
+}
+
+.profile-container {
+  max-width: 850px;
+}

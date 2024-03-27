@@ -11,6 +11,8 @@ import { loginAction, loginFailureAction, loginSuccessAction } from "./actions/l
 import { getUserInfoAction, getUserInfoFailureAction, getUserInfoSuccessAction } from "./actions/get-user-info.action";
 import { UserInfoErrorsTypes } from "../types/userInfoErrorsTypes";
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/get-current-user.action";
+import { changeUserEmailSuccessAction } from "./actions/change-user-email.action";
+import { changeUserInfoSuccessAction } from "./actions/change-user-info.action";
 
 const initialState: AuthState = {
   isLoading: false,
@@ -138,6 +140,20 @@ const authReducer = createReducer(initialState,
     return ({
       ...state,
       isLoading: false,
+    });
+  }),
+
+  on(changeUserEmailSuccessAction, (state, payload: { userData: UserData }): AuthState => {
+    return ({
+      ...state,
+      userData: payload.userData
+    });
+  }),
+
+  on(changeUserInfoSuccessAction, (state, payload: { userInfo: UserInfo }): AuthState => {
+    return ({
+      ...state,
+      userInfo: payload.userInfo
     });
   }),
 );

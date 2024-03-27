@@ -59,4 +59,30 @@ export class AuthService {
     return this.http.post<AuthResponse>(this.loginUrl, user);
   };
 
+  public changeUserInfo(userInfo: UserInfo): Observable<UserInfo> {
+    const localId = (this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData).localId;
+    const fullUrl = `https://${environment.projectID}.firebaseio.com/userInfo/${localId}.json`;
+    return this.http.put<UserInfo>(fullUrl, userInfo);
+  };
+
+  public changeUserPassword(password: string): Observable<UserData> {
+    const idToken = (this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData).idToken;
+    const fullUrl = `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${environment.API}`;
+    return this.http.post<UserData>(fullUrl, {
+      idToken,
+      password,
+      returnSecureToken: true
+    });
+  };
+
+  public changeUserEmail(email: string): Observable<UserData> {
+    const idToken = (this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData).idToken;
+    const fullUrl = `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${environment.API}`;
+    return this.http.post<UserData>(fullUrl, {
+      idToken,
+      email,
+      returnSecureToken: true
+    });
+  };
+
 };
