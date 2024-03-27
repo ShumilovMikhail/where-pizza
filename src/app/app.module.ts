@@ -10,6 +10,7 @@ import { HeaderModule } from './shared/header/header.module';
 import { TopBarModule } from './shared/top-bar/top-bar.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { FooterModule } from './shared/footer/footer.module';
+import { ProfileModule } from './pages/profile/profile.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +24,8 @@ import { FooterModule } from './shared/footer/footer.module';
     TopBarModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     NgxMaskModule.forRoot(),
-    FooterModule
+    FooterModule,
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
