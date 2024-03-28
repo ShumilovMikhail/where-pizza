@@ -2,12 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { dateValidator } from '../../../../../../shared/utils/date.validator';
 import { UserInfo } from '../../../../../../shared/types/userInfo.interface';
 import { changeUserInfoAction } from '../../../../../../shared/auth/store/actions/change-user-info.action';
 import { userInfoSelector } from '../../../../../../shared/auth/store/selectors';
+import { isLoadingSelector } from '../../store/selectors';
 
 @Component({
   selector: 'app-change-user-info',
@@ -19,6 +20,7 @@ export class ChangeUserInfoComponent implements OnInit, OnDestroy {
   userInfo: UserInfo;
   form: FormGroup;
   userInfoSubscription: Subscription;
+  isLoading$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private store: Store) { };
 
@@ -33,6 +35,7 @@ export class ChangeUserInfoComponent implements OnInit, OnDestroy {
       };
     });
     this.initializeForm();
+    this.initializeValues();
   };
 
   onChange(): void {
@@ -43,7 +46,7 @@ export class ChangeUserInfoComponent implements OnInit, OnDestroy {
     this.formOpen = false;
   };
 
-  onSubmit() {
+  onSubmit(): void {
     this.store.dispatch(changeUserInfoAction({ userInfo: this.form.value }));
   };
 
@@ -53,6 +56,10 @@ export class ChangeUserInfoComponent implements OnInit, OnDestroy {
       phone: new FormControl(this.userInfo.phone, [Validators.required, Validators.minLength(11)]),
       date: new FormControl(this.userInfo.date, [Validators.required, Validators.minLength(8), dateValidator()]),
     })
+  };
+
+  private initializeValues(): void {
+    this.isLoading$ = this.store.select(isLoadingSelector);
   };
 
   ngOnDestroy(): void {

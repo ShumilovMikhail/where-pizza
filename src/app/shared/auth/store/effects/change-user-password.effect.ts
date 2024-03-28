@@ -11,9 +11,11 @@ export class ChangeUserPasswordEffect {
   changeUserPassword$ = createEffect(() => this.actions$.pipe(
     ofType(changeUserPasswordAction),
     switchMap(({ password }) => {
+
+      console.log(password)
       return this.authService.changeUserPassword(password).pipe(
-        map(() => {
-          return changeUserPasswordSuccessAction();
+        map((response) => {
+          return changeUserPasswordSuccessAction({ response });
         }),
         catchError(() => {
           return of(changeUserPasswordFailureAction());

@@ -18,7 +18,7 @@
         class="mini-text"> * Неправильный email или пароль</p>
     </div>
 
-    <button class="btn button-submit">Войти</button>
+    <button class="btn button-submit" [disabled]="!form.valid || (isSubmitting$ | async)">Войти</button>
   </form>
 
   <div class="link-redirect">

@@ -39,6 +39,6 @@
         <input type="text" placeholder="Дата рождения" formControlName="date">
       </fieldset>
     </div>
-    <button class="btn form-submit" [disabled]="!form.valid"> Сохранить изменения</button>
+    <button class="btn form-submit" [disabled]="!form.valid || (isLoading$ | async)"> Сохранить изменения</button>
   </form>
 </div>

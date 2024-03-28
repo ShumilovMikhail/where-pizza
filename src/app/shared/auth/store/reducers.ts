@@ -13,6 +13,8 @@ import { UserInfoErrorsTypes } from "../types/userInfoErrorsTypes";
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/get-current-user.action";
 import { changeUserEmailSuccessAction } from "./actions/change-user-email.action";
 import { changeUserInfoSuccessAction } from "./actions/change-user-info.action";
+import { changeUserPasswordSuccessAction } from "./actions/change-user-password.action";
+import { ChangeUserDataResponse } from "../types/changeUserDataResponse.interface";
 
 const initialState: AuthState = {
   isLoading: false,
@@ -117,7 +119,8 @@ const authReducer = createReducer(initialState,
     return ({
       ...state,
       isLoading: false,
-      error: payload.error
+      error: payload.error,
+      isSubmitting: false
     });
   }),
 
@@ -156,6 +159,23 @@ const authReducer = createReducer(initialState,
       userInfo: payload.userInfo
     });
   }),
+
+  on(changeUserPasswordSuccessAction, (state: AuthState, payload: { response: ChangeUserDataResponse }): AuthState => {
+    const response = payload.response
+    const userData: UserData = {
+      kind: response.kind,
+      idToken: response.idToken,
+      email: response.email,
+      refreshToken: response.refreshToken,
+      expiresIn: response.expiresIn,
+      localId: response.localId,
+      ...state.userData,
+    };
+    return ({
+      ...state,
+      userData: userData
+    });
+  })
 );
 
 export function reducers(state: AuthState, action: Action) {

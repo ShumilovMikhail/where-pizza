@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription, filter, take } from 'rxjs';
 
 import { AuthTypes } from '../auth/types/authTypes';
-import { Subscription, filter, take } from 'rxjs';
-import { Store } from '@ngrx/store';
 import { isAuthenticateSelector } from '../auth/store/selectors';
 
 @Component({
@@ -11,8 +11,8 @@ import { isAuthenticateSelector } from '../auth/store/selectors';
   styleUrl: './top-bar.component.scss'
 })
 export class TopBarComponent implements OnInit {
-  authType: AuthTypes = AuthTypes.LOGIN;
-  modalOpen: boolean = true;
+  authType: AuthTypes = AuthTypes.REGISTER;
+  modalOpen: boolean = false;
   isAuthenticateSubscribe: Subscription;
   isAuthenticate: boolean = false;
 
