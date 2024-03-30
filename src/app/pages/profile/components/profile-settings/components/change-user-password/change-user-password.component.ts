@@ -16,13 +16,13 @@ import { changeUserPasswordAction } from '../../../../../../shared/auth/store/ac
 export class ChangeUserPasswordComponent implements OnInit, OnDestroy {
   formOpen: boolean = false;
   form: FormGroup;
-  userInfoSubscription: Subscription;
+  userDataSubscription: Subscription;
   isLoading$: Observable<boolean>;
 
   constructor(private fb: FormBuilder, private store: Store) { };
 
   ngOnInit(): void {
-    this.userInfoSubscription = this.store.select(userDataSelector).subscribe(() => {
+    this.userDataSubscription = this.store.select(userDataSelector).subscribe(() => {
       if (this.formOpen) {
         this.formOpen = false;
       };
@@ -59,6 +59,6 @@ export class ChangeUserPasswordComponent implements OnInit, OnDestroy {
   };
 
   ngOnDestroy(): void {
-    this.userInfoSubscription.unsubscribe();
+    this.userDataSubscription.unsubscribe();
   };
 };

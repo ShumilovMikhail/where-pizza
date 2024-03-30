@@ -9,4 +9,5 @@ export const userDataSelector = createSelector(authFeature, (state: AuthState) =
 export const errorSelector = createSelector(authFeature, (state: AuthState) => state.error);
 export const isAuthenticateSelector = createSelector(authFeature, (state: AuthState) => state.isAuthenticate);
 export const userInfoSelector = createSelector(authFeature, (state: AuthState) => state.userInfo);
-export const isSubmittingSelector = createSelector(authFeature, (state: AuthState) => state.isSubmitting)
+export const isSubmittingSelector = createSelector(authFeature, (state: AuthState) => state.isSubmitting);
+export const isVerifiedEmail = createSelector(authFeature, (state: AuthState) => state.userData.emailVerified);

@@ -11,6 +11,9 @@ import { ProfileSettingsComponent } from './components/profile-settings/profile-
 import { ChangeUserInfoComponent } from './components/profile-settings/components/change-user-info/change-user-info.component';
 import { reducers } from './components/profile-settings/store/reducers';
 import { ChangeUserPasswordComponent } from './components/profile-settings/components/change-user-password/change-user-password.component';
+import { ProfileVerificationEmailComponent } from './components/profile-settings/components/profile-verification-email/profile-verification-email.component';
+import { ModalModule } from '../../shared/modal/modal.module';
+import { VerificationEmailModule } from '../../shared/verification-email/verification-email.module';
 
 
 @NgModule({
@@ -18,7 +21,8 @@ import { ChangeUserPasswordComponent } from './components/profile-settings/compo
     ProfileComponent,
     ProfileSettingsComponent,
     ChangeUserInfoComponent,
-    ChangeUserPasswordComponent
+    ChangeUserPasswordComponent,
+    ProfileVerificationEmailComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +31,8 @@ import { ChangeUserPasswordComponent } from './components/profile-settings/compo
     NgxMaskModule.forChild(),
     ReactiveFormsModule,
     StoreModule.forFeature('settings', reducers),
+    ModalModule,
+    VerificationEmailModule
   ]
 })
 export class ProfileModule { }

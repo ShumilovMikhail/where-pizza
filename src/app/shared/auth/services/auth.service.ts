@@ -12,6 +12,8 @@ import { UserInfo } from "../../types/userInfo.interface";
 import { BackendError } from "../../types/backedError.interface";
 import { UserInfoErrorsTypes } from "../types/userInfoErrorsTypes";
 import { ChangeUserDataResponse } from "../types/changeUserDataResponse.interface";
+import { GetUserDataResponse } from "../types/getUserDataResponse";
+import { UserDetails } from "../../types/userDetails.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -76,14 +78,26 @@ export class AuthService {
     });
   };
 
-  public changeUserEmail(email: string): Observable<UserData> {
+  public changeUserEmail(email: string): Observable<ChangeUserDataResponse> {
     const idToken = (this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData).idToken;
     const fullUrl = `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${environment.API}`;
-    return this.http.post<UserData>(fullUrl, {
+    return this.http.post<ChangeUserDataResponse>(fullUrl, {
       idToken,
       email,
       returnSecureToken: true
     });
+  };
+
+  public getUserData(): Observable<UserDetails> {
+    const idToken = (this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData).idToken;
+    const fullUrl = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${environment.API}`;
+    return this.http.post<GetUserDataResponse>(fullUrl, {
+      idToken
+    }).pipe(
+      map((response) => {
+        return ({ emailVerified: response.users[0].emailVerified })
+      })
+    );
   };
 
 };

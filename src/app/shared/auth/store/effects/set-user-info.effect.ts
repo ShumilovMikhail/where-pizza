@@ -11,6 +11,7 @@ import { UserInfo } from "../../../types/userInfo.interface";
 import { Store } from "@ngrx/store";
 import { userDataSelector } from "../selectors";
 import { UserData } from "../../../types/userData.interface";
+import { getUserDataAction } from "../actions/get-user-data.action";
 
 @Injectable()
 export class SetUserInfoEffect {
@@ -33,6 +34,7 @@ export class SetUserInfoEffect {
     ofType(setUserInfoSuccessAction),
     tap(({ userInfo }) => {
       this.dataStorageService.setItem(DataStorageTypes.USER_INFO, userInfo);
+      this.store.dispatch(getUserDataAction())
       this.store.select(userDataSelector).pipe(
         take(1),
         tap((userData: UserData) => {

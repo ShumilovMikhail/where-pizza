@@ -10,6 +10,7 @@ import { DataStorageService } from "../../../services/dataStorage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 import { loginAction, loginFailureAction, loginSuccessAction } from "../actions/login.action";
 import { getUserInfoAction } from "../actions/get-user-info.action";
+import { getUserDataAction } from "../actions/get-user-data.action";
 
 @Injectable()
 export class LoginEffect {
@@ -34,6 +35,7 @@ export class LoginEffect {
     tap(({ userData }) => {
       this.dataStorageService.setItem(DataStorageTypes.USER_DATA, userData);
       this.store.dispatch(getUserInfoAction());
+      this.store.dispatch(getUserDataAction());
     })
   ), {
     dispatch: false

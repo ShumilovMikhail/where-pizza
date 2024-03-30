@@ -23,11 +23,11 @@ export enum ActionTypes {
   CHANGE_USER_INFO_SUCCESS = '[Auth] Change user info success',
   CHANGE_USER_INFO_FAILURE = '[Auth] Change user info failure',
 
-  CHANGE_USER_EMAIL = '[Auth] Change user email',
-  CHANGE_USER_EMAIL_SUCCESS = '[Auth] Change user email success',
-  CHANGE_USER_EMAIL_FAILURE = '[Auth] Change user email failure',
-
   CHANGE_USER_PASSWORD = '[Auth] Change user password',
   CHANGE_USER_PASSWORD_SUCCESS = '[Auth] Change user password success',
   CHANGE_USER_PASSWORD_FAILURE = '[Auth] Change user password failure',
+
+  GET_USER_DATA = '[Auth] Get user data',
+  GET_USER_DATA_SUCCESS = '[Auth] Get user data success',
+  GET_USER_DATA_FAILURE = '[Auth] Get user data failure',
 };

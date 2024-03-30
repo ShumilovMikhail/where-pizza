@@ -13,7 +13,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { ProfileModule } from './pages/profile/profile.module';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

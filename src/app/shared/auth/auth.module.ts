@@ -17,9 +17,9 @@ import { SetUserInfoComponent } from './components/set-user-info/set-user-info.c
 import { GetUserInfoEffect } from './store/effects/get-user-info.effect';
 import { LoginEffect } from './store/effects/login.effect';
 import { GetCurrentUserEffect } from './store/effects/get-current-user.effect';
-import { ChangeUserEmailEffect } from './store/effects/change-user-email.effect';
 import { ChangeUserInfoEffect } from './store/effects/change-user-info.effect';
 import { ChangeUserPasswordEffect } from './store/effects/change-user-password.effect';
+import { GetUserDataEffect } from './store/effects/get-user-data.effect';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { ChangeUserPasswordEffect } from './store/effects/change-user-password.e
     HttpClientModule,
     CommonModule,
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect, SetUserInfoEffect, GetUserInfoEffect, LoginEffect, GetCurrentUserEffect, ChangeUserEmailEffect, ChangeUserInfoEffect, ChangeUserPasswordEffect]),
+    EffectsModule.forFeature([RegisterEffect, SetUserInfoEffect, GetUserInfoEffect, LoginEffect, GetCurrentUserEffect, ChangeUserInfoEffect, ChangeUserPasswordEffect, GetUserDataEffect]),
     ReactiveFormsModule,
     NgxMaskModule.forChild(),
   ],

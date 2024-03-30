@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core';;
 
 @Component({
   selector: 'app-profile-settings',
@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './profile-settings.component.scss'
 })
 export class ProfileSettingsComponent {
-
-}
+};

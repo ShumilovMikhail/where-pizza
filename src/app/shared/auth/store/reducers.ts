@@ -11,10 +11,10 @@ import { loginAction, loginFailureAction, loginSuccessAction } from "./actions/l
 import { getUserInfoAction, getUserInfoFailureAction, getUserInfoSuccessAction } from "./actions/get-user-info.action";
 import { UserInfoErrorsTypes } from "../types/userInfoErrorsTypes";
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/get-current-user.action";
-import { changeUserEmailSuccessAction } from "./actions/change-user-email.action";
 import { changeUserInfoSuccessAction } from "./actions/change-user-info.action";
 import { changeUserPasswordSuccessAction } from "./actions/change-user-password.action";
-import { ChangeUserDataResponse } from "../types/changeUserDataResponse.interface";
+import { getUserDataAction, getUserDataFailureAction, getUserDataSuccessAction } from "./actions/get-user-data.action";
+import { UserDetails } from "../../types/userDetails.interface";
 
 const initialState: AuthState = {
   isLoading: false,
@@ -146,13 +146,6 @@ const authReducer = createReducer(initialState,
     });
   }),
 
-  on(changeUserEmailSuccessAction, (state, payload: { userData: UserData }): AuthState => {
-    return ({
-      ...state,
-      userData: payload.userData
-    });
-  }),
-
   on(changeUserInfoSuccessAction, (state, payload: { userInfo: UserInfo }): AuthState => {
     return ({
       ...state,
@@ -160,22 +153,36 @@ const authReducer = createReducer(initialState,
     });
   }),
 
-  on(changeUserPasswordSuccessAction, (state: AuthState, payload: { response: ChangeUserDataResponse }): AuthState => {
-    const response = payload.response
-    const userData: UserData = {
-      kind: response.kind,
-      idToken: response.idToken,
-      email: response.email,
-      refreshToken: response.refreshToken,
-      expiresIn: response.expiresIn,
-      localId: response.localId,
-      ...state.userData,
-    };
+  on(changeUserPasswordSuccessAction, (state: AuthState, payload: { userData: UserData }): AuthState => {
     return ({
       ...state,
-      userData: userData
+      userData: payload.userData
     });
-  })
+  }),
+
+  on(getUserDataAction, (state): AuthState => {
+    return ({
+      ...state,
+      isLoading: true,
+    });
+  }),
+  on(getUserDataSuccessAction, (state, payload: { userDetails: UserDetails }): AuthState => {
+    return ({
+      ...state,
+      isLoading: false,
+      userData: {
+        ...state.userData,
+        emailVerified: payload.userDetails.emailVerified
+      }
+    });
+  }),
+  on(getUserDataFailureAction, (state): AuthState => {
+    return ({
+      ...state,
+      isLoading: false,
+    });
+  }),
+
 );
 
 export function reducers(state: AuthState, action: Action) {

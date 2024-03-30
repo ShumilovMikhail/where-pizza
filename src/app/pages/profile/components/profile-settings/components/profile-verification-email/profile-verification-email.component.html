@@ -1,0 +1,11 @@
+<div class="verification-email__container">
+  <div class="top">
+    <h3>Email</h3>
+    <button class="btn" (click)="onClick()" [disabled]="emailVerified">{{emailVerified ? 'Подтверждено' :
+      'Подтвердить'}}</button>
+  </div>
+</div>
+
+<app-modal *ngIf="modalOpen" (closeModal)="onCloseModal()">
+  <app-verification-email></app-verification-email>
+</app-modal>

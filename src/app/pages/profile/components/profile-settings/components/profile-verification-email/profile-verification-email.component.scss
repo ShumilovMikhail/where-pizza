@@ -1,0 +1,19 @@
+@import '../../../../../../../variables';
+
+.verification-email__container {
+  padding: 24px 32px;
+  border: 1px solid $lineGray;
+  border-radius: 12px;
+  background-color: $white;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  @include button-primary(13px, 35.5px, 0, 0)
+}
