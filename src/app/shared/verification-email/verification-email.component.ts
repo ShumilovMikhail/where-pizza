@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { sendVerificationEmailAction } from './store/actions/send-verification-email.action';
-import { getUserDataAction } from '../auth/store/actions/get-user-data.action';
+import { getUserDetailsAction } from '../auth/store/actions/get-user-details.action';
 
 @Component({
   selector: 'app-verification-email',
@@ -17,7 +17,7 @@ export class VerificationEmailComponent implements OnInit {
   };
 
   onClick(): void {
-    this.store.dispatch(getUserDataAction());
+    this.store.dispatch(getUserDetailsAction());
   };
 
 };

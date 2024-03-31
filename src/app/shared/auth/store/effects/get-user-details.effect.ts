@@ -3,31 +3,31 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, tap } from "rxjs";
 
 import { AuthService } from "../../services/auth.service";
-import { getUserDataAction, getUserDataFailureAction, getUserDataSuccessAction } from "../actions/get-user-data.action";
 import { DataStorageService } from "../../../services/dataStorage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 import { UserData } from "../../../types/userData.interface";
 import { UserDetails } from "../../../types/userDetails.interface";
+import { getUserDetailsAction, getUserDetailsFailureAction, getUserDetailsSuccessAction } from "../actions/get-user-details.action";
 
 @Injectable()
-export class GetUserDataEffect {
+export class GetUserDetailsEffect {
 
-  getUserData$ = createEffect(() => this.actions$.pipe(
-    ofType(getUserDataAction),
+  getUserDetails$ = createEffect(() => this.actions$.pipe(
+    ofType(getUserDetailsAction),
     switchMap(() => {
-      return this.authService.getUserData().pipe(
+      return this.authService.getUserDetails().pipe(
         map((userDetails: UserDetails) => {
-          return getUserDataSuccessAction({ userDetails })
+          return getUserDetailsSuccessAction({ userDetails })
         }),
         catchError(() => {
-          return of(getUserDataFailureAction())
+          return of(getUserDetailsFailureAction())
         })
       )
     })
   ));
 
-  getUserDataAfter$ = createEffect(() => this.actions$.pipe(
-    ofType(getUserDataSuccessAction),
+  getUserDetailsAfter$ = createEffect(() => this.actions$.pipe(
+    ofType(getUserDetailsSuccessAction),
     tap(({ userDetails }) => {
       const userData: UserData = this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData;
       this.dataStorageService.setItem(DataStorageTypes.USER_DATA, { ...userData, ...userDetails })

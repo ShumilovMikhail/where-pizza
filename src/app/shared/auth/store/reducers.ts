@@ -10,11 +10,11 @@ import { UserInfo } from "../../types/userInfo.interface";
 import { loginAction, loginFailureAction, loginSuccessAction } from "./actions/login.action";
 import { getUserInfoAction, getUserInfoFailureAction, getUserInfoSuccessAction } from "./actions/get-user-info.action";
 import { UserInfoErrorsTypes } from "../types/userInfoErrorsTypes";
-import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/get-current-user.action";
 import { changeUserInfoSuccessAction } from "./actions/change-user-info.action";
 import { changeUserPasswordSuccessAction } from "./actions/change-user-password.action";
-import { getUserDataAction, getUserDataFailureAction, getUserDataSuccessAction } from "./actions/get-user-data.action";
 import { UserDetails } from "../../types/userDetails.interface";
+import { getUserDetailsAction, getUserDetailsFailureAction, getUserDetailsSuccessAction } from "./actions/get-user-details.action";
+import { autoLoginFailureAction, autoLoginSuccessAction } from "./actions/auto-login.action";
 
 const initialState: AuthState = {
   isLoading: false,
@@ -124,13 +124,13 @@ const authReducer = createReducer(initialState,
     });
   }),
 
-  on(getCurrentUserAction, (state): AuthState => {
+  on(autoLoginFailureAction, (state): AuthState => {
     return ({
       ...state,
       isLoading: true,
     });
   }),
-  on(getCurrentUserSuccessAction, (state, payload: { userInfo: UserInfo, userData: UserData }): AuthState => {
+  on(autoLoginSuccessAction, (state, payload: { userInfo: UserInfo, userData: UserData }): AuthState => {
     return ({
       ...state,
       isLoading: false,
@@ -139,7 +139,7 @@ const authReducer = createReducer(initialState,
       isAuthenticate: true,
     });
   }),
-  on(getCurrentUserFailureAction, (state): AuthState => {
+  on(autoLoginFailureAction, (state): AuthState => {
     return ({
       ...state,
       isLoading: false,
@@ -160,13 +160,13 @@ const authReducer = createReducer(initialState,
     });
   }),
 
-  on(getUserDataAction, (state): AuthState => {
+  on(getUserDetailsAction, (state): AuthState => {
     return ({
       ...state,
       isLoading: true,
     });
   }),
-  on(getUserDataSuccessAction, (state, payload: { userDetails: UserDetails }): AuthState => {
+  on(getUserDetailsSuccessAction, (state, payload: { userDetails: UserDetails }): AuthState => {
     return ({
       ...state,
       isLoading: false,
@@ -176,7 +176,7 @@ const authReducer = createReducer(initialState,
       }
     });
   }),
-  on(getUserDataFailureAction, (state): AuthState => {
+  on(getUserDetailsFailureAction, (state): AuthState => {
     return ({
       ...state,
       isLoading: false,

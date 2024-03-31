@@ -15,9 +15,9 @@ export enum ActionTypes {
   GET_USER_INFO_SUCCESS = '[Auth] Get user info success',
   GET_USER_INFO_FAILURE = '[Auth] Get user info failure',
 
-  GET_CURRENT_USER = '[Auth] Get current user',
-  GET_CURRENT_USER_SUCCESS = '[Auth] Get current user success',
-  GET_CURRENT_USER_FAILURE = '[Auth] Get current user failure',
+  AUTO_LOGIN = '[Auth] Auto login',
+  AUTO_LOGIN_SUCCESS = '[Auth] Auto login success',
+  AUTO_LOGIN_FAILURE = '[Auth] Auto login failure',
 
   CHANGE_USER_INFO = '[Auth] Change user info',
   CHANGE_USER_INFO_SUCCESS = '[Auth] Change user info success',
@@ -27,7 +27,7 @@ export enum ActionTypes {
   CHANGE_USER_PASSWORD_SUCCESS = '[Auth] Change user password success',
   CHANGE_USER_PASSWORD_FAILURE = '[Auth] Change user password failure',
 
-  GET_USER_DATA = '[Auth] Get user data',
-  GET_USER_DATA_SUCCESS = '[Auth] Get user data success',
-  GET_USER_DATA_FAILURE = '[Auth] Get user data failure',
+  GET_USER_DETAILS = '[Auth] Get user details',
+  GET_USER_DETAILS_SUCCESS = '[Auth] Get user details success',
+  GET_USER_DETAILS_FAILURE = '[Auth] Get user details failure',
 };

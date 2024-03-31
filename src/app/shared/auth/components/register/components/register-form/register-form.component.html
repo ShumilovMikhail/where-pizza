@@ -2,7 +2,7 @@
   <fieldset class="fieldset form-input">
     <label class="mini-text">Ваш email</label>
     <input type="text" placeholder="email" class="input" formControlName="email" [ngClass]="{
-      input_error: (form.get('email').valid ||error?.message === 'EMAIL_EXISTS') && form.get('email').untouched
+      input_error: !(form.get('email').valid ||error?.message === 'EMAIL_EXISTS') && form.get('email').touched
     }">
     <div class="help-block" *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
       <p class="mini-text">* Введите корректный email</p>

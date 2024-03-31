@@ -88,7 +88,7 @@ export class AuthService {
     });
   };
 
-  public getUserData(): Observable<UserDetails> {
+  public getUserDetails(): Observable<UserDetails> {
     const idToken = (this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData).idToken;
     const fullUrl = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${environment.API}`;
     return this.http.post<GetUserDataResponse>(fullUrl, {
