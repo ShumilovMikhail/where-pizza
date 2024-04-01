@@ -30,4 +30,6 @@ export enum ActionTypes {
   GET_USER_DETAILS = '[Auth] Get user details',
   GET_USER_DETAILS_SUCCESS = '[Auth] Get user details success',
   GET_USER_DETAILS_FAILURE = '[Auth] Get user details failure',
+
+  LOGOUT = '[Auth] Logout'
 };

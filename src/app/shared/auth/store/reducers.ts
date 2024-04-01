@@ -15,6 +15,7 @@ import { changeUserPasswordSuccessAction } from "./actions/change-user-password.
 import { UserDetails } from "../../types/userDetails.interface";
 import { getUserDetailsAction, getUserDetailsFailureAction, getUserDetailsSuccessAction } from "./actions/get-user-details.action";
 import { autoLoginFailureAction, autoLoginSuccessAction } from "./actions/auto-login.action";
+import { logoutAction } from "./actions/sync.action";
 
 const initialState: AuthState = {
   isLoading: false,
@@ -182,6 +183,12 @@ const authReducer = createReducer(initialState,
       isLoading: false,
     });
   }),
+
+  on(logoutAction, (state): AuthState => {
+    return ({
+      ...initialState
+    });
+  })
 
 );
 

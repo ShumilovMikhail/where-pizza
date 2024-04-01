@@ -20,6 +20,7 @@ import { ChangeUserInfoEffect } from './store/effects/change-user-info.effect';
 import { ChangeUserPasswordEffect } from './store/effects/change-user-password.effect';
 import { GetUserDetailsEffect } from './store/effects/get-user-details.effect';
 import { AutoLoginEffect } from './store/effects/auto-login.effect';
+import { LogoutEffect } from './store/effects/logout.effect';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { AutoLoginEffect } from './store/effects/auto-login.effect';
     HttpClientModule,
     CommonModule,
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect, SetUserInfoEffect, GetUserInfoEffect, LoginEffect, AutoLoginEffect, ChangeUserInfoEffect, ChangeUserPasswordEffect, GetUserDetailsEffect]),
+    EffectsModule.forFeature([RegisterEffect, SetUserInfoEffect, GetUserInfoEffect, LoginEffect, AutoLoginEffect, ChangeUserInfoEffect, ChangeUserPasswordEffect, GetUserDetailsEffect, LogoutEffect]),
     ReactiveFormsModule,
     NgxMaskModule.forChild(),
   ],

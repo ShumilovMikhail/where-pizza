@@ -100,4 +100,9 @@ export class AuthService {
     );
   };
 
+  public logout(): void {
+    this.dataStorageService.removeItem(DataStorageTypes.USER_DATA);
+    this.dataStorageService.removeItem(DataStorageTypes.USER_INFO);
+  };
+
 };

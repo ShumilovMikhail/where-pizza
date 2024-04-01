@@ -13,4 +13,8 @@ export class DataStorageService {
   public getItem(key: DataStorageTypes): unknown {
     return JSON.parse(localStorage.getItem(key));
   };
+
+  public removeItem(key: DataStorageTypes) {
+    localStorage.removeItem(key);
+  };
 };
