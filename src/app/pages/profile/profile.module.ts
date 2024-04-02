@@ -22,7 +22,7 @@ import { VerificationEmailModule } from '../../shared/verification-email/verific
     ProfileSettingsComponent,
     ChangeUserInfoComponent,
     ChangeUserPasswordComponent,
-    ProfileVerificationEmailComponent
+    ProfileVerificationEmailComponent,
   ],
   imports: [
     CommonModule,

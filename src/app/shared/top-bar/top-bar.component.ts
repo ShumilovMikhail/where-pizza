@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription, filter, take } from 'rxjs';
 
@@ -10,9 +10,10 @@ import { isAuthenticateSelector } from '../auth/store/selectors';
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.scss'
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent implements OnInit, OnDestroy {
   authType: AuthTypes = AuthTypes.REGISTER;
   modalOpen: boolean = false;
+  popoverOpen: boolean = false;
   isAuthenticateSubscribe: Subscription;
   isAuthenticate: boolean = false;
 
@@ -20,11 +21,10 @@ export class TopBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuthenticateSubscribe = this.store.select(isAuthenticateSelector).pipe(
-      filter(Boolean),
-      take(1)
     ).subscribe((isAuthenticate) => {
-      this.isAuthenticate = true;
-      this.modalOpen = false;
+      this.isAuthenticate = isAuthenticate;
+      console.log(isAuthenticate, this.modalOpen)
+      this.modalOpen = this.modalOpen ? !isAuthenticate : false;
     });
   };
 
@@ -35,4 +35,16 @@ export class TopBarComponent implements OnInit {
   onModalClose(): void {
     this.modalOpen = false;
   };
+
+  onPopoverToggle(): void {
+    this.popoverOpen = !this.popoverOpen;
+  };
+
+  onPopoverClose(): void {
+    this.popoverOpen = false;
+  };
+
+  ngOnDestroy(): void {
+    this.isAuthenticateSubscribe.unsubscribe()
+  }
 };

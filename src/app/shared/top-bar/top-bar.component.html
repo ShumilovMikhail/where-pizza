@@ -14,9 +14,14 @@
         <img src="../../../assets/images/login-icon.svg" alt="login-icon">
         Войти в аккаунт
       </button>
-      <a [routerLink]="['/']" *ngIf="isAuthenticate">
-        <img src="../../../assets/images/login-icon.svg" alt="login-icon">
-      </a>
+      <div class="meta-inner" *ngIf="isAuthenticate" modalClose (modalClose)="onPopoverClose()">
+        <button class="btn" (click)="onPopoverToggle()">
+          <img src="../../../assets/images/login-icon.svg" alt="login-icon">
+        </button>
+        <div class="popover" *ngIf="popoverOpen">
+          <app-account-popover></app-account-popover>
+        </div>
+      </div>
     </div>
   </div>
 </div>

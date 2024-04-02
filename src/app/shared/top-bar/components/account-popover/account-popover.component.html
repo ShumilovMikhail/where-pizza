@@ -1,0 +1,19 @@
+<div class="popover-container">
+  <div class="popover-inner">
+    <div class="bonuses popover-block">
+      HERE BONUSES
+    </div>
+    <nav>
+      <ul class="nav popover-block">
+        <li class="nav-item text">
+          <a [routerLink]="['profile/history']" class="link">История заказов</a>
+        </li>
+        <li class="nav-item text">
+          <a [routerLink]="['profile/settings']" class="link">Настройки</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="btn logout popover-block text" (click)="onLogout()">Выход из аккаунта</button>
+  </div>
+</div>
