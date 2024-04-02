@@ -11,6 +11,7 @@ import { TopBarModule } from './shared/top-bar/top-bar.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { FooterModule } from './shared/footer/footer.module';
 import { ProfileModule } from './pages/profile/profile.module';
+import { FeedModule } from './pages/feed/feed.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,11 +22,12 @@ import { ProfileModule } from './pages/profile/profile.module';
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     HeaderModule,
+    FooterModule,
+    ProfileModule,
+    FeedModule,
     TopBarModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     NgxMaskModule.forRoot(),
-    FooterModule,
-    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
