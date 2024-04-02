@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsComponent } from './products.component';
+import { FeedComponent } from './feed.component';
 import { ProfileRoutingModule } from '../profile/profile-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    ProductsComponent
+    FeedComponent
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule
   ],
 })
-export class ProductsModule { }
+export class FeedModule { }
