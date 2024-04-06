@@ -1,0 +1,10 @@
+.products-category {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}

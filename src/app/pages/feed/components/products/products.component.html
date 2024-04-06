@@ -1,1 +1,5 @@
-<p>products works!</p>
+<ul class="products" *ngIf="categories$ | async">
+  <li class="category" *ngFor="let category of categories$ | async">
+    <app-products-category [category]="category"></app-products-category>
+  </li>
+</ul>

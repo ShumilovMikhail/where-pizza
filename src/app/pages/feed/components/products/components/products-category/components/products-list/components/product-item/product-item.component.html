@@ -1,0 +1,24 @@
+<div class="product">
+
+  <div class="new mini-text" *ngIf="product.isNew">NEW</div>
+
+  <div class="image-container">
+    <img [src]="product.image" [alt]="product.name">
+  </div>
+
+  <div class="inner">
+    <div class="info">
+      <span class="text bold">{{product.name}}</span>
+      <p class="ingredients text" *ngIf="product.ingredients">{{product.ingredients | ingredients}}</p>
+    </div>
+
+    <div class="meta">
+      <button class="btn" (click)="onModalOpen()">Выбрать</button>
+      <span class="text price bold">от {{product.price}}₽</span>
+    </div>
+  </div>
+</div>
+
+<app-modal *ngIf="modalOpen" (closeModal)="onModalClose()">
+  <app-product-modal [product]="product" [categorySettings]="categorySettings | async"></app-product-modal>
+</app-modal>

@@ -1,5 +1,6 @@
-import { ProductsList } from "./productsList.interface";
+import { ProductsCategory } from "./productsCategory.interface";
+
 
 export interface Products {
-  [key: string]: ProductsList
+  [key: string]: ProductsCategory
 }

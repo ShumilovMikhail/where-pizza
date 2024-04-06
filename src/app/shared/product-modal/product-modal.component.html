@@ -1,0 +1,72 @@
+<div class="product-modal">
+  <div class="new mini-text" *ngIf="product.isNew">NEW</div>
+  <div class="image-container">
+    <img [src]="product.image" [alt]="product.name">
+  </div>
+  <div class="content">
+    <div class="header">
+      <h4>
+        <img src="/assets/images/new-icon.svg" alt="new-icon" *ngIf="product.isNew">
+        {{product.name}}
+      </h4>
+
+      <div class="info" infoHover>
+        <img src="/assets/images/Info-icon.svg" alt="info-icon">
+
+        <div class="ingredients text">
+          {{product.ingredients | ingredients}}
+        </div>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="settings">
+        <fieldset *ngIf="product.removableIngredients" class="fieldset removable-ingredients">
+          <label *ngFor="let removableIngredient of form.controls.removeIngredients.controls; let i = index"
+            formArrayName="removeIngredients">
+            <input type="checkbox" class="checkbox" [formControlName]="i">
+            <div class="remove-checkbox text bold">
+              {{product.removableIngredients[i].name}}
+            </div>
+          </label>
+        </fieldset>
+
+        <fieldset class="fieldset" *ngIf="product.toppings">
+          <p class="subtitle-secondary">Добавить ингридиенты</p>
+          <div class="toppings">
+            <label *ngFor="let topping of form.controls.toppings.controls; let i = index" formArrayName="toppings">
+              <input type="checkbox" class="checkbox" [formControlName]="i">
+              <div class="topping-checkbox text bold">
+                {{product.toppings[i].name}}
+                <span class="price">
+                  {{product.toppings[i].price}}₽
+                </span>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset settings" *ngIf="categorySettings">
+          <div class="setting" *ngFor="let setting of categorySettings; let i = index" formArrayName="settings">
+            <label class="option" *ngFor="let option of setting.options;">
+              <input class="radio" type="radio" [name]="i" [formControlName]="i" [value]="option.option">
+              <div class="setting-radio text">
+                {{option.option}}
+              </div>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="inner">
+        <div>
+          <h4 class="price">Итого: {{totalPrice}}₽</h4>
+          <span class="weight mini-text">
+            {{product.weight}}г
+          </span>
+        </div>
+        <button class="btn submit" type="submit">Добавить</button>
+      </div>
+    </form>
+
+  </div>
+</div>

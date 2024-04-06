@@ -9,20 +9,32 @@ import { FeedRoutingModule } from './feed-routing.module';
 import { ProductsComponent } from './components/products/products.component';
 import { reducers } from './components/products/store/reducers';
 import { GetProductsEffect } from './components/products/store/effects/getProducts.effect';
+import { ProductsCategoryComponent } from './components/products/components/products-category/products-category.component';
+import { ProductItemComponent } from './components/products/components/products-category/components/products-list/components/product-item/product-item.component';
+import { ProductsListComponent } from './components/products/components/products-category/components/products-list/products-list.component';
+import { ModalModule } from '../../shared/modal/modal.module';
+import { ProductModalModule } from '../../shared/product-modal/product-modal.module';
+import { PipesModule } from '../../shared/pipes/pipes.module';
 
 
 
 @NgModule({
   declarations: [
     FeedComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductsCategoryComponent,
+    ProductsListComponent,
+    ProductItemComponent,
   ],
   imports: [
     CommonModule,
     FeedRoutingModule,
     HttpClientModule,
     StoreModule.forFeature('products', reducers),
-    EffectsModule.forFeature([GetProductsEffect])
+    EffectsModule.forFeature([GetProductsEffect]),
+    ModalModule,
+    ProductModalModule,
+    PipesModule
   ],
 })
 export class FeedModule { }
