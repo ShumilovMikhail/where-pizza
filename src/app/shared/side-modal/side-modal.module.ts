@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ModalComponent } from './modal.component';
+import { SideModalComponent } from './side-modal.component';
 import { BackdropModule } from '../backdrop/backdrop.module';
 
+
+
 @NgModule({
-  declarations: [
-    ModalComponent
-  ],
+  declarations: [SideModalComponent],
   imports: [
     CommonModule,
     BackdropModule
   ],
-
-  exports: [ModalComponent]
+  exports: [SideModalComponent]
 })
-export class ModalModule { };
+export class SideModalModule { }

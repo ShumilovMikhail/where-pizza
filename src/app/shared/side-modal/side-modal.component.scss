@@ -1,28 +1,28 @@
 @import '../../../variables';
 
-.modal {
+.side-modal-container {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  right: 0;
+  top: 0;
+  height: 100vh;
   background-color: $bgc;
   z-index: 1000;
-  border-radius: 24px;
+  padding: 50px 60px 32px 20px;
 }
 
 .cross {
   position: absolute;
   width: 32px;
   height: 32px;
-  top: 0;
-  right: -62px;
+  top: 40px;
+  right: 20px;
   cursor: pointer;
 
   &::after {
     content: '';
     width: 32px;
     height: 1px;
-    background-color: $white;
+    background-color: $gray;
     position: absolute;
     top: 50%;
     left: 0;
@@ -34,7 +34,7 @@
     content: '';
     width: 32px;
     height: 1px;
-    background-color: $white;
+    background-color: $gray;
     position: absolute;
     top: 50%;
     left: 0;
@@ -42,3 +42,5 @@
     transform: rotate(135deg);
   }
 }
+
+.content {}

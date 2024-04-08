@@ -15,6 +15,7 @@ import { ProductsListComponent } from './components/products/components/products
 import { ModalModule } from '../../shared/modal/modal.module';
 import { ProductModalModule } from '../../shared/product-modal/product-modal.module';
 import { PipesModule } from '../../shared/pipes/pipes.module';
+import { SideModalModule } from '../../shared/side-modal/side-modal.module';
 
 
 
@@ -34,7 +35,8 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
     EffectsModule.forFeature([GetProductsEffect]),
     ModalModule,
     ProductModalModule,
-    PipesModule
+    PipesModule,
+    SideModalModule
   ],
 })
 export class FeedModule { }
