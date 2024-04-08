@@ -1,3 +1,5 @@
+@import '../../../../../../../variables';
+
 .products-category {
   display: flex;
   flex-direction: column;
@@ -7,4 +9,18 @@
 .top {
   display: flex;
   justify-content: space-between;
+}
+
+.filters-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid $lineGray;
+  border-radius: 6px;
+  transition: 0.3s all;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
 }

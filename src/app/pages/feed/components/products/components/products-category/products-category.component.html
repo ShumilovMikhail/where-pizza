@@ -2,10 +2,13 @@
   <div class="top">
     <h1>{{categoryName$ | async}}</h1>
 
-    <div class="filters">HERE FILTERS</div>
+    <button class="btn filters-button text" (click)="onFiltersModalOpen()">
+      <img src="/assets/images/filter-icon.svg" alt="filter-icon">
+      Фильтры
+    </button>
   </div>
 
   <app-products-list></app-products-list>
 </div>
 
-<app-side-modal *ngIf="category === 'pizza'"></app-side-modal>
+<app-side-modal *ngIf="filtersModalOpen" (closeModal)="onFiltersModalClose()"></app-side-modal>
