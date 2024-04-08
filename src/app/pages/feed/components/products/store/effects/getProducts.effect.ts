@@ -13,7 +13,6 @@ export class GetProductsEffect {
     switchMap(() => {
       return this.productsService.getProducts().pipe(
         map((products: GetProductsResponse) => {
-          console.log(products)
           return getProductsSuccessAction({ products });
         }),
         catchError(() => {

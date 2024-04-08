@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Product } from '../../../../../../../../../../shared/types/product.interface';
 import { ProductsSettingsType } from '../../../../../../../../../../shared/types/productsSettings.type';
-import { ProductsCategoryStoreService } from '../../../../services/productsCategoryStore.service';
+import { CategoryStoreService } from '../../../../services/categoryStore.service';
 
 @Component({
   selector: 'app-product-item',
@@ -16,10 +16,10 @@ export class ProductItemComponent implements OnInit {
   modalOpen: boolean = false;
   categorySettings: Observable<ProductsSettingsType | null>;
 
-  constructor(private readonly productsCategoryStore: ProductsCategoryStoreService) { };
+  constructor(private readonly categoryStore: CategoryStoreService) { };
 
   ngOnInit(): void {
-    this.categorySettings = this.productsCategoryStore.settings$;
+    this.categorySettings = this.categoryStore.settings$;
   };
 
   onModalOpen(): void {

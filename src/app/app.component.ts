@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { autoLoginAction } from './shared/auth/store/actions/auto-login.action';
-import { logoutAction } from './shared/auth/store/actions/sync.action';
 
 @Component({
   selector: 'app-root',

@@ -16,6 +16,8 @@ import { ModalModule } from '../../shared/modal/modal.module';
 import { ProductModalModule } from '../../shared/product-modal/product-modal.module';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { SideModalModule } from '../../shared/side-modal/side-modal.module';
+import { GetFiltersEffect } from './components/products/store/effects/getFilters.effect';
+import { ProductsFiltersComponent } from './components/products/components/products-category/components/products-filters/products-filters.component';
 
 
 
@@ -26,13 +28,14 @@ import { SideModalModule } from '../../shared/side-modal/side-modal.module';
     ProductsCategoryComponent,
     ProductsListComponent,
     ProductItemComponent,
+    ProductsFiltersComponent,
   ],
   imports: [
     CommonModule,
     FeedRoutingModule,
     HttpClientModule,
     StoreModule.forFeature('products', reducers),
-    EffectsModule.forFeature([GetProductsEffect]),
+    EffectsModule.forFeature([GetProductsEffect, GetFiltersEffect]),
     ModalModule,
     ProductModalModule,
     PipesModule,

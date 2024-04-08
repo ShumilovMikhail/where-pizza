@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductsCategoryStoreService } from '../../services/productsCategoryStore.service';
+import { CategoryStoreService } from '../../services/categoryStore.service';
 import { Observable } from 'rxjs';
 import { ProductsListType } from '../../../../../../../../shared/types/productsList.type';
 
@@ -10,7 +10,7 @@ import { ProductsListType } from '../../../../../../../../shared/types/productsL
 })
 export class ProductsListComponent {
 
-  readonly productList$: Observable<ProductsListType> = this.productsCategoryStore.productsList$;
+  readonly productList$: Observable<ProductsListType> = this.categoryStore.productsList$;
 
-  constructor(private readonly productsCategoryStore: ProductsCategoryStoreService) { };
+  constructor(private readonly categoryStore: CategoryStoreService) { };
 };

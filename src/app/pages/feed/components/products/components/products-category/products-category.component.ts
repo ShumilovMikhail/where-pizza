@@ -1,23 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductsCategoryStoreService } from './services/productsCategoryStore.service';
+import { CategoryStoreService } from './services/categoryStore.service';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products-category',
   templateUrl: './products-category.component.html',
   styleUrl: './products-category.component.scss',
-  providers: [ProductsCategoryStoreService]
+  providers: [CategoryStoreService]
 })
 export class ProductsCategoryComponent implements OnInit {
 
   @Input('category') category: string;
-  readonly categoryName$: Observable<string> = this.productsCategoryStore.name$;
+  readonly categoryName$: Observable<string> = this.categoryStore.name$;
   filtersModalOpen: boolean = false;
 
-  constructor(private readonly productsCategoryStore: ProductsCategoryStoreService) { };
+  constructor(private readonly categoryStore: CategoryStoreService) { };
 
   ngOnInit(): void {
-    this.productsCategoryStore.getCategory(this.category);
+    this.categoryStore.getCategory(this.category);
   };
 
   onFiltersModalOpen(): void {
