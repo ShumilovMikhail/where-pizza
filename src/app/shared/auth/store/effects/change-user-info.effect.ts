@@ -16,7 +16,6 @@ export class ChangeUserInfoEffect {
     switchMap(({ userInfo }) => {
       return this.authService.changeUserInfo(userInfo).pipe(
         map((userInfo: UserInfo) => {
-          console.log(userInfo)
           return changeUserInfoSuccessAction({ userInfo });
         }),
         catchError(() => {

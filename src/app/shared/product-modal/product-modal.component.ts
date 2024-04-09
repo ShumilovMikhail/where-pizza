@@ -59,15 +59,15 @@ export class ProductModalComponent implements OnInit {
   };
 
   private addControls(): void {
-    this.product.removableIngredients?.map((removableIngredient) => {
+    this.product.removableIngredients?.forEach((removableIngredient) => {
       const control = new FormControl();
       (this.form.controls.removeIngredients as FormArray).push(control);
     });
-    this.product.toppings?.map((topping) => {
+    this.product.toppings?.forEach((topping) => {
       const control = new FormControl();
       (this.form.controls.toppings as FormArray).push(control);
     });
-    this.categorySettings?.map((setting, index) => {
+    this.categorySettings?.forEach((setting, index) => {
       const control = new FormControl(setting.options[0].option);
       (this.form.controls.settings as FormArray).push(control);
     })
@@ -76,7 +76,6 @@ export class ProductModalComponent implements OnInit {
 
   private initializeListeners() {
     this.form.valueChanges.subscribe(() => {
-      console.log(this.form.value)
       this.changePrice()
     });
   };

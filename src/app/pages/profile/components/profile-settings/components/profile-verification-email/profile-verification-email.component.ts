@@ -28,7 +28,6 @@ export class ProfileVerificationEmailComponent implements OnInit, OnDestroy {
 
   private initializeListeners(): void {
     this.verifiedEmailSubscribe = this.store.select(isVerifiedEmail).subscribe((emailVerified) => {
-      console.log(emailVerified)
       if (emailVerified) {
         this.modalOpen = false;
         this.emailVerified = emailVerified

@@ -1,0 +1,43 @@
+@import '../../../../../../../../../../../../../variables';
+
+.name {
+  color: $gray;
+}
+
+.checkbox {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.filter-checkbox {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: $text;
+  transition: 0.3s all;
+  cursor: pointer;
+}
+
+.checkbox:checked+.filter-checkbox {
+  color: $white;
+  background-color: $primary;
+
+  &:hover {
+    background-color: $primaryHover;
+    transition: 0.3s all;
+  }
+}
+
+.fieldset {
+  display: flex;
+  max-width: 395px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+form {
+  margin-top: 12px;
+
+}

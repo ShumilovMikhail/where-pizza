@@ -1,0 +1,13 @@
+<div>
+  <p class="name text">{{filtersGroup.name}}</p>
+  <form [formGroup]="form">
+    <fieldset class="fieldset">
+      <label formArrayName="filters" *ngFor="let filter of form.controls.filters['controls']; let i = index">
+        <input class="checkbox" type="checkbox" [formControlName]="i">
+        <div class="filter-checkbox text">
+          {{filtersGroup.filters[i].filter}}
+        </div>
+      </label>
+    </fieldset>
+  </form>
+</div>

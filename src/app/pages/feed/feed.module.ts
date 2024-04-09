@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -18,6 +19,8 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 import { SideModalModule } from '../../shared/side-modal/side-modal.module';
 import { GetFiltersEffect } from './components/products/store/effects/getFilters.effect';
 import { ProductsFiltersComponent } from './components/products/components/products-category/components/products-filters/products-filters.component';
+import { ProductsFiltersFormComponent } from './components/products/components/products-category/components/products-filters/components/products-filters-form/products-filters-form.component';
+import { FiltersGroupFormComponent } from './components/products/components/products-category/components/products-filters/components/products-filters-form/components/products-filters-group-form/filters-group-form.component';
 
 
 
@@ -29,6 +32,8 @@ import { ProductsFiltersComponent } from './components/products/components/produ
     ProductsListComponent,
     ProductItemComponent,
     ProductsFiltersComponent,
+    ProductsFiltersFormComponent,
+    FiltersGroupFormComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +44,8 @@ import { ProductsFiltersComponent } from './components/products/components/produ
     ModalModule,
     ProductModalModule,
     PipesModule,
-    SideModalModule
+    SideModalModule,
+    ReactiveFormsModule
   ],
 })
 export class FeedModule { }

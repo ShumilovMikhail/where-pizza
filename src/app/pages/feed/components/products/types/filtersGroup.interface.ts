@@ -1,6 +1,6 @@
-import { FilterType } from "./filter.type"
+import { Filter } from "./filter.interface"
 
 export interface FiltersGroup {
   name: string
-  filters: FilterType[]
+  filters: Filter[]
 };

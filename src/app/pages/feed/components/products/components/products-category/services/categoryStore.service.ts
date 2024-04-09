@@ -37,7 +37,7 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
         return this.store.select(productsSelector).pipe(
           withLatestFrom(this.store.select(filtersSelector)),
           tap(([products, filters]: [Products, Filters]) => {
-            this.setProducts({
+            this.setCategory({
               name: products[category].name,
               filters: filters[category],
               settings: products[category].settings,
@@ -49,7 +49,7 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
     );
   });
 
-  readonly setProducts = this.updater((state: CategoryState, category: Category) => ({
+  readonly setCategory = this.updater((state: CategoryState, category: Category) => ({
     ...state,
     name: category.name,
     products: category.products,

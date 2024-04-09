@@ -1,0 +1,5 @@
+<form class="filters-form" [formGroup]="form">
+  <app-filters-group-form formArrayName="filters"
+    *ngFor="let filtersGroup of form.controls.filters['controls']; let i = index" [filtersGroup]="filtersGroup.value"
+    (filterGroupUpdate)="onFormGroupUpdate($event,i)"></app-filters-group-form>
+</form>
