@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { filter, take } from "rxjs";
+import { Subscription, filter, take } from "rxjs";
 
 import { FiltersCategory } from "../../../../../../types/filtersCategory.type";
 import { CategoryStoreService } from "../../../../services/categoryStore.service";
@@ -11,13 +11,14 @@ import { FiltersGroup } from "../../../../../../types/filtersGroup.interface";
   templateUrl: './products-filters-form.component.html',
   styleUrl: './products-filters-form.component.scss'
 })
-export class ProductsFiltersFormComponent implements OnInit, OnChanges {
+export class ProductsFiltersFormComponent implements OnInit, OnChanges, OnDestroy {
 
-  @Input('isSubmit') isSubmit: boolean;
+  @Input('isSubmitting') isSubmitting: boolean;
   @Output('filtersSubmit') filtersSubmit = new EventEmitter<FiltersCategory>()
 
   filters: FiltersCategory;
   form: FormGroup;
+  filterSubscribe: Subscription;
 
   constructor(private readonly categoryStore: CategoryStoreService, private readonly fb: FormBuilder) { };
 
@@ -28,7 +29,7 @@ export class ProductsFiltersFormComponent implements OnInit, OnChanges {
   };
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.isSubmit) {
+    if (this.isSubmitting) {
       this.onSubmit()
     };
   };
@@ -55,10 +56,14 @@ export class ProductsFiltersFormComponent implements OnInit, OnChanges {
   };
 
   private initializeListeners(): void {
-    this.categoryStore.filters$.pipe(filter(Boolean), take(1)).subscribe((filters) => {
+    this.filterSubscribe = this.categoryStore.filters$.pipe(filter(Boolean)).subscribe((filters) => {
       this.filters = filters
     });
   };
+
+  ngOnDestroy(): void {
+    this.filterSubscribe.unsubscribe()
+  }
 
 
 }

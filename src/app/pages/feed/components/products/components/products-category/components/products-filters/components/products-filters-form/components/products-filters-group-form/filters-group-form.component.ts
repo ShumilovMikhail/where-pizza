@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { FiltersGroup } from "../../../../../../../../types/filtersGroup.interface";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Filter } from "../../../../../../../../types/filter.interface";
@@ -24,13 +24,13 @@ export class FiltersGroupFormComponent implements OnInit {
   };
 
   onFormUpdate(): void {
-    const filterGroup: FiltersGroup = {
+    this.filtersGroup = {
       name: this.form.value.name,
       filters: (this.form.value.filters as Array<boolean>).reduce((accumulator, isActivated, index) => {
-        return [...accumulator, { filter: this.filtersGroup.filters[index].filter, isActivated: !!isActivated }];
+        return [...accumulator, { filter: this.filtersGroup.filters[index].filter, isActivate: !!isActivated }];
       }, [])
     };
-    this.filterGroupUpdate.emit(filterGroup);
+    this.filterGroupUpdate.emit(this.filtersGroup);
   };
 
   private initializeForm(): void {
@@ -43,7 +43,7 @@ export class FiltersGroupFormComponent implements OnInit {
 
   private addControls(): void {
     this.filtersGroup.filters.forEach((filter: Filter) => {
-      const control = new FormControl();
+      const control = new FormControl(filter.isActivate);
       (this.form.controls.filters as FormArray).push(control);
     });
   };

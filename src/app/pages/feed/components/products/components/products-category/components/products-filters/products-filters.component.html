@@ -1,13 +1,13 @@
 <div class="filters-container">
   <div class="filters-content">
     <h2>Фильтры</h2>
-    <app-products-filters-form [isSubmit]="isSubmit"
+    <app-products-filters-form [isSubmitting]="isSubmitting"
       (filtersSubmit)="onFiltersSubmit($event)"></app-products-filters-form>
   </div>
   <div class="bottom">
     <div class="filters-buttons">
-      <button class="btn reset">Сбросить</button>
-      <button class="btn apply" (click)="onApply()" [disabled]="isSubmit">Применить</button>
+      <button class="btn reset" (click)="onResetFilters()">Сбросить</button>
+      <button class="btn apply" (click)="onApply()">Применить</button>
     </div>
   </div>
 </div>

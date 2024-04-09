@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CategoryStoreService } from '../../services/categoryStore.service';
 import { Observable } from 'rxjs';
 import { FiltersCategory } from '../../../../types/filtersCategory.type';
@@ -11,16 +11,20 @@ import { FiltersCategory } from '../../../../types/filtersCategory.type';
 export class ProductsFiltersComponent {
 
   readonly filters$: Observable<FiltersCategory> = this.categoryStore.filters$;
-  isSubmit: boolean = false;
+  isSubmitting: boolean = false;
 
   constructor(private readonly categoryStore: CategoryStoreService) { };
 
   onApply() {
-    this.isSubmit = true;
+    this.isSubmitting = true;
   };
 
   onFiltersSubmit(filtersCategory: FiltersCategory): void {
-    console.log(filtersCategory);
+    this.categoryStore.setFilters(filtersCategory);
+  };
+
+  onResetFilters(): void {
+    this.categoryStore.resetFilters();
   };
 
 };

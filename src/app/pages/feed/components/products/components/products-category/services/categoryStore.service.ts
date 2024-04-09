@@ -11,6 +11,8 @@ import { ProductsSettingsType } from "../../../../../../../shared/types/products
 import { Filters } from "../../../types/filters.interface";
 import { Category } from "../types/category.interface";
 import { FiltersCategory } from "../../../types/filtersCategory.type";
+import { FiltersService } from "./filters.service";
+import { Filter } from "../../../types/filter.interface";
 
 const initialState: CategoryState = {
   name: null,
@@ -27,13 +29,16 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
   readonly settings$: Observable<ProductsSettingsType> = this.select((state: CategoryState) => state.settings);
   readonly filters$: Observable<FiltersCategory> = this.select((state: CategoryState) => state.filters);
 
-  constructor(private store: Store) {
+  private categoryName: string;
+
+  constructor(private readonly store: Store, private readonly filtersService: FiltersService) {
     super(initialState);
   };
 
-  public readonly getCategory = this.effect((category$: Observable<string>) => {
+  public readonly getCategory = this.effect<string>((category$: Observable<string>) => {
     return category$.pipe(
       switchMap((category: string) => {
+        this.categoryName = category
         return this.store.select(productsSelector).pipe(
           withLatestFrom(this.store.select(filtersSelector)),
           tap(([products, filters]: [Products, Filters]) => {
@@ -49,6 +54,38 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
     );
   });
 
+  public readonly setFilters = this.effect<FiltersCategory>((filtersCategory$: Observable<FiltersCategory>) => {
+    return filtersCategory$.pipe(
+      withLatestFrom(this.productsList$),
+      switchMap(([filtersCategory, productsList]: [FiltersCategory, ProductsListType]) => {
+        this.updateFilters(filtersCategory)
+        const filters: Filter[] = filtersCategory.reduce((accumulator, filterGroup) => {
+          return [...accumulator, ...filterGroup.filters]
+        }, [])
+        return this.filtersService.getProductsWithFilters(productsList, filters).pipe(
+          tap((productsList: ProductsListType) => {
+            this.setProducts(productsList)
+          })
+        );
+      }),
+    );
+  });
+  public readonly resetFilters = this.effect<void>((source$) => {
+    return source$.pipe(
+      switchMap(() => {
+        return this.store.select(productsSelector).pipe(
+          withLatestFrom(this.store.select(filtersSelector)),
+          tap(([products, filters]: [Products, Filters]) => {
+            this.setProducts(products[this.categoryName].products);
+            this.setFilters(filters[this.categoryName])
+          })
+        );
+      }),
+    );
+  });
+
+
+
   readonly setCategory = this.updater((state: CategoryState, category: Category) => ({
     ...state,
     name: category.name,
@@ -56,5 +93,17 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
     settings: category.settings ? category.settings : null,
     filters: category.filters
   }));
+
+  readonly setProducts = this.updater((state: CategoryState, productsList: ProductsListType) => ({
+    ...state,
+    products: productsList,
+  }));
+
+
+  readonly updateFilters = this.updater((state: CategoryState, filtersCategory: FiltersCategory) => ({
+    ...state,
+    filters: filtersCategory,
+  }));
+
 
 };
