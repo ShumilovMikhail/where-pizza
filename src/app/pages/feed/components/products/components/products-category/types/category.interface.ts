@@ -1,11 +1,8 @@
 
-import { ProductsListType } from "../../../../../../../shared/types/productsList.type";
-import { ProductsSettingsType } from "../../../../../../../shared/types/productsSettings.type";
+import { ProductsCategory } from "../../../../../../../shared/types/productsCategory.interface";
 import { FiltersCategory } from "../../../types/filtersCategory.type";
 
 export interface Category {
-  name: string
-  products: ProductsListType
-  settings?: ProductsSettingsType | null
+  products: ProductsCategory
   filters: FiltersCategory
 }

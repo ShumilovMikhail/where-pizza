@@ -12,5 +12,5 @@
 </div>
 
 <app-side-modal *ngIf="filtersModalOpen" (closeModal)="onFiltersModalClose()">
-  <app-products-filters></app-products-filters>
+  <app-products-filters (isApply)="onFiltersModalClose()"></app-products-filters>
 </app-side-modal>

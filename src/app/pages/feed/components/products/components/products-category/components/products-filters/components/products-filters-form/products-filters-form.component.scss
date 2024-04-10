@@ -1,5 +1,39 @@
+@import '../../../../../../../../../../../variables';
+
+.filters-form__container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .filters-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex: 1 1 auto;
+  padding: 0 60px 32px 20px;
+}
+
+.apply {
+  @include button-primary(13px, 70.5px, 0px, 0px)
+}
+
+.reset {
+  @include button-secondary(13px, 70.5px, 0px, 0px)
+}
+
+
+.bottom {
+  width: 100%;
+  border-top: 1px solid $gray;
+  padding: 0 60px 32px 20px;
+}
+
+.filters-buttons {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  display: flex;
+  gap: 20px;
 }

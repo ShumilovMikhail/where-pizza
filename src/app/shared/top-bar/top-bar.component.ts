@@ -23,7 +23,6 @@ export class TopBarComponent implements OnInit, OnDestroy {
     this.isAuthenticateSubscribe = this.store.select(isAuthenticateSelector).pipe(
     ).subscribe((isAuthenticate) => {
       this.isAuthenticate = isAuthenticate;
-      console.log(isAuthenticate, this.modalOpen)
       this.modalOpen = this.modalOpen ? !isAuthenticate : false;
     });
   };

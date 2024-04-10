@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, switchMap, tap, withLatestFrom } from "rxjs";
+import { Observable, filter, switchMap, tap, withLatestFrom } from "rxjs";
 import { ComponentStore } from "@ngrx/component-store";
 import { Store } from "@ngrx/store";
 
@@ -15,19 +15,19 @@ import { FiltersService } from "./filters.service";
 import { Filter } from "../../../types/filter.interface";
 
 const initialState: CategoryState = {
-  name: null,
   products: null,
-  settings: null,
-  filters: null
+  filters: null,
+  filtersApply: false
 }
 
 @Injectable()
 export class CategoryStoreService extends ComponentStore<CategoryState> {
 
-  readonly name$: Observable<string> = this.select((state: CategoryState) => state.name);
-  readonly productsList$: Observable<ProductsListType> = this.select((state: CategoryState) => state.products);
-  readonly settings$: Observable<ProductsSettingsType> = this.select((state: CategoryState) => state.settings);
+  readonly name$: Observable<string> = this.select((state: CategoryState) => state.products ? state.products.name : null);
+  readonly productsList$: Observable<ProductsListType> = this.select((state: CategoryState) => state.products ? state.products.products : null);
+  readonly settings$: Observable<ProductsSettingsType> = this.select((state: CategoryState) => state.products ? state.products.settings : null);
   readonly filters$: Observable<FiltersCategory> = this.select((state: CategoryState) => state.filters);
+  readonly filtersApply$: Observable<boolean> = this.select((state: CategoryState) => state.filtersApply);
 
   private categoryName: string;
 
@@ -42,11 +42,9 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
         return this.store.select(productsSelector).pipe(
           withLatestFrom(this.store.select(filtersSelector)),
           tap(([products, filters]: [Products, Filters]) => {
-            this.setCategory({
-              name: products[category].name,
+            this.setCategoryUpdater({
               filters: filters[category],
-              settings: products[category].settings,
-              products: products[category].products
+              products: products[category]
             });
           })
         );
@@ -54,17 +52,17 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
     );
   });
 
-  public readonly setFilters = this.effect<FiltersCategory>((filtersCategory$: Observable<FiltersCategory>) => {
+  public readonly applyFilters = this.effect<FiltersCategory>((filtersCategory$: Observable<FiltersCategory>) => {
     return filtersCategory$.pipe(
       withLatestFrom(this.productsList$),
       switchMap(([filtersCategory, productsList]: [FiltersCategory, ProductsListType]) => {
-        this.updateFilters(filtersCategory)
+        this.updateFiltersUpdater(filtersCategory);
         const filters: Filter[] = filtersCategory.reduce((accumulator, filterGroup) => {
           return [...accumulator, ...filterGroup.filters]
         }, [])
         return this.filtersService.getProductsWithFilters(productsList, filters).pipe(
           tap((productsList: ProductsListType) => {
-            this.setProducts(productsList)
+            this.setProductsListUpdater(productsList)
           })
         );
       }),
@@ -75,35 +73,43 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
       switchMap(() => {
         return this.store.select(productsSelector).pipe(
           withLatestFrom(this.store.select(filtersSelector)),
+          filter(([products, filters]: [Products, Filters]) => Boolean(products && filters)),
           tap(([products, filters]: [Products, Filters]) => {
-            this.setProducts(products[this.categoryName].products);
-            this.setFilters(filters[this.categoryName])
+            this.resetFiltersUpdater(filters[this.categoryName]);
+            this.setProductsListUpdater(products[this.categoryName].products);
           })
         );
       }),
     );
   });
 
-
-
-  readonly setCategory = this.updater((state: CategoryState, category: Category) => ({
+  readonly setCategoryUpdater = this.updater((state: CategoryState, category: Category) => ({
     ...state,
-    name: category.name,
     products: category.products,
-    settings: category.settings ? category.settings : null,
     filters: category.filters
   }));
 
-  readonly setProducts = this.updater((state: CategoryState, productsList: ProductsListType) => ({
+  readonly setProductsListUpdater = this.updater((state: CategoryState, productsList: ProductsListType) => ({
     ...state,
-    products: productsList,
+    products: {
+      ...state.products,
+      products: productsList
+    },
+    filtersApply: false
   }));
 
-
-  readonly updateFilters = this.updater((state: CategoryState, filtersCategory: FiltersCategory) => ({
+  readonly updateFiltersUpdater = this.updater((state: CategoryState, filtersCategory: FiltersCategory) => ({
     ...state,
     filters: filtersCategory,
+    filtersApply: true
   }));
+
+
+  readonly resetFiltersUpdater = this.updater((state: CategoryState, filtersCategory: FiltersCategory) => ({
+    ...state,
+    filters: filtersCategory
+  }));
+
 
 
 };

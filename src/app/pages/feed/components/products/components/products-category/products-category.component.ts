@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CategoryStoreService } from './services/categoryStore.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products-category',
@@ -8,16 +8,18 @@ import { Observable } from 'rxjs';
   styleUrl: './products-category.component.scss',
   providers: [CategoryStoreService]
 })
-export class ProductsCategoryComponent implements OnInit {
+export class ProductsCategoryComponent implements OnInit, OnDestroy {
 
   @Input('category') category: string;
   readonly categoryName$: Observable<string> = this.categoryStore.name$;
   filtersModalOpen: boolean = false;
+  filtersApplySubscribe: Subscription;
 
   constructor(private readonly categoryStore: CategoryStoreService) { };
 
   ngOnInit(): void {
     this.categoryStore.getCategory(this.category);
+    this.initializeListeners()
   };
 
   onFiltersModalOpen(): void {
@@ -26,6 +28,16 @@ export class ProductsCategoryComponent implements OnInit {
 
   onFiltersModalClose(): void {
     this.filtersModalOpen = false;
+  };
+
+  private initializeListeners(): void {
+    this.filtersApplySubscribe = this.categoryStore.filtersApply$.subscribe((filtersApply) => {
+      this.onFiltersModalClose();
+    });
+  };
+
+  ngOnDestroy(): void {
+    this.filtersApplySubscribe.unsubscribe();
   };
 
 };

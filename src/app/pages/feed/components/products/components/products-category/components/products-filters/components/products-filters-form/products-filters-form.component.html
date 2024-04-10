@@ -1,5 +1,13 @@
-<form class="filters-form" [formGroup]="form">
-  <app-filters-group-form formArrayName="filters"
-    *ngFor="let filtersGroup of form.controls.filters['controls']; let i = index" [filtersGroup]="filtersGroup.value"
-    (filterGroupUpdate)="onFormGroupUpdate($event,i)"></app-filters-group-form>
-</form>
+<div class="filters-form__container">
+  <form class="filters-form" [formGroup]="form">
+    <app-filters-group-form formArrayName="filters"
+      *ngFor="let filtersGroup of form.controls.filters['controls']; let i = index" [filtersGroup]="filtersGroup.value"
+      (filterGroupUpdate)="onFormGroupUpdate($event,i)"></app-filters-group-form>
+  </form>
+  <div class="bottom">
+    <div class="filters-buttons">
+      <button class="btn reset" (click)="onResetFilters()">Сбросить</button>
+      <button class="btn apply" (click)="onApply()">Применить</button>
+    </div>
+  </div>
+</div>

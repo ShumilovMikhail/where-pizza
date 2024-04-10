@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { Subscription, filter, take } from "rxjs";
+import { Subscription, filter } from "rxjs";
 
-import { FiltersCategory } from "../../../../../../types/filtersCategory.type";
 import { CategoryStoreService } from "../../../../services/categoryStore.service";
 import { FiltersGroup } from "../../../../../../types/filtersGroup.interface";
 
@@ -11,59 +10,39 @@ import { FiltersGroup } from "../../../../../../types/filtersGroup.interface";
   templateUrl: './products-filters-form.component.html',
   styleUrl: './products-filters-form.component.scss'
 })
-export class ProductsFiltersFormComponent implements OnInit, OnChanges, OnDestroy {
+export class ProductsFiltersFormComponent implements OnInit, OnDestroy {
 
-  @Input('isSubmitting') isSubmitting: boolean;
-  @Output('filtersSubmit') filtersSubmit = new EventEmitter<FiltersCategory>()
-
-  filters: FiltersCategory;
   form: FormGroup;
-  filterSubscribe: Subscription;
+  filtersSubscribe: Subscription;
 
   constructor(private readonly categoryStore: CategoryStoreService, private readonly fb: FormBuilder) { };
 
   ngOnInit(): void {
-    this.initializeListeners();
-    this.initializeForm();
-    this.addControls();
-  };
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.isSubmitting) {
-      this.onSubmit()
-    };
-  };
-
-  onSubmit(): void {
-    this.filtersSubmit.emit(this.form.value.filters);
+    this.filtersSubscribe = this.categoryStore.filters$.pipe(filter(Boolean)).subscribe((filters) => {
+      this.form = this.fb.group({
+        filters: new FormArray([])
+      })
+      filters.forEach((filter) => {
+        const control = new FormControl(filter);
+        (this.form.controls.filters as FormArray).push(control);
+      });
+    })
   };
 
   onFormGroupUpdate(filterGroup: FiltersGroup, index: number) {
     (this.form.get('filters') as FormArray).at(index).patchValue(filterGroup);
   };
 
-  private initializeForm(): void {
-    this.form = this.fb.group({
-      filters: new FormArray([])
-    })
+  onApply() {
+    this.categoryStore.applyFilters(this.form.value.filters);
   };
 
-  private addControls() {
-    this.filters.forEach((filter) => {
-      const control = new FormControl(filter);
-      (this.form.controls.filters as FormArray).push(control);
-    });
-  };
-
-  private initializeListeners(): void {
-    this.filterSubscribe = this.categoryStore.filters$.pipe(filter(Boolean)).subscribe((filters) => {
-      this.filters = filters
-    });
+  onResetFilters(): void {
+    this.categoryStore.resetFilters();
   };
 
   ngOnDestroy(): void {
-    this.filterSubscribe.unsubscribe()
+    this.filtersSubscribe.unsubscribe()
   }
-
 
 }

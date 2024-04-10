@@ -9,22 +9,4 @@ import { FiltersCategory } from '../../../../types/filtersCategory.type';
   styleUrl: './products-filters.component.scss'
 })
 export class ProductsFiltersComponent {
-
-  readonly filters$: Observable<FiltersCategory> = this.categoryStore.filters$;
-  isSubmitting: boolean = false;
-
-  constructor(private readonly categoryStore: CategoryStoreService) { };
-
-  onApply() {
-    this.isSubmitting = true;
-  };
-
-  onFiltersSubmit(filtersCategory: FiltersCategory): void {
-    this.categoryStore.setFilters(filtersCategory);
-  };
-
-  onResetFilters(): void {
-    this.categoryStore.resetFilters();
-  };
-
 };

@@ -12,6 +12,7 @@ import { filter } from "rxjs";
 export class FiltersGroupFormComponent implements OnInit {
   @Input('filtersGroup') filtersGroup: FiltersGroup;
   @Output('filterGroupUpdate') filterGroupUpdate = new EventEmitter<FiltersGroup>();
+
   form: FormGroup
 
   constructor(private readonly fb: FormBuilder) { };
