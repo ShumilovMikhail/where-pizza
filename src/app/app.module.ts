@@ -12,6 +12,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { FooterModule } from './shared/footer/footer.module';
 import { ProfileModule } from './pages/profile/profile.module';
 import { FeedModule } from './pages/feed/feed.module';
+import { CartModule } from './shared/cart/cart.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +27,10 @@ import { FeedModule } from './pages/feed/feed.module';
     ProfileModule,
     FeedModule,
     TopBarModule,
+    CartModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     NgxMaskModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

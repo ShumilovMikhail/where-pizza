@@ -8,7 +8,6 @@ import { autoLoginAction } from './shared/auth/store/actions/auto-login.action';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-
   constructor(private store: Store) { };
 
   ngOnInit(): void {
