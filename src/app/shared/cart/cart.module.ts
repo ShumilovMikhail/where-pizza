@@ -12,6 +12,8 @@ import { PipesModule } from '../pipes/pipes.module';
 import { CartEffect } from './store/effects/cart.effect';
 import { LoadProductsFromStorageEffect } from './store/effects/loadProductsFromStorage.effect';
 import { ProductCounterModule } from '../product-counter/product-counter.module';
+import { IncProductEffect } from './store/effects/incProduct.effect';
+import { DecProductEffect } from './store/effects/decProduct.effect';
 
 
 
@@ -24,7 +26,7 @@ import { ProductCounterModule } from '../product-counter/product-counter.module'
   imports: [
     CommonModule,
     StoreModule.forFeature('cart', reducers),
-    EffectsModule.forFeature([AddProductEffect, CartEffect, LoadProductsFromStorageEffect]),
+    EffectsModule.forFeature([AddProductEffect, CartEffect, LoadProductsFromStorageEffect, IncProductEffect, DecProductEffect]),
     PipesModule,
     ProductCounterModule
   ],

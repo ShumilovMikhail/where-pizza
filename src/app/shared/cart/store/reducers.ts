@@ -4,6 +4,8 @@ import { CartState } from "../types/cartState.interface";
 import { addProductSuccessAction } from "./actions/addProduct.action";
 import { CartProduct } from "../types/cartProduct.interface";
 import { loadProductsFromStorageAction, loadProductsFromStorageFailureAction, loadProductsFromStorageSuccessAction } from "./actions/loadProductsFromStorage.action";
+import { incProductSuccessAction } from "./actions/incProduct.action";
+import { decProductSuccessAction } from "./actions/decProduct.action";
 
 const initialState: CartState = {
   isLoading: false,
@@ -23,6 +25,7 @@ const cartReducer = createReducer(initialState,
       }
     )
   }),
+
   on(loadProductsFromStorageAction, (state) => {
     return ({
       ...state,
@@ -47,6 +50,27 @@ const cartReducer = createReducer(initialState,
       isLoading: false,
       error: 'error load products from storage'
     })
+  }),
+
+  on(incProductSuccessAction, (state, payload: { cartProducts: CartProduct[] }): CartState => {
+    const totalPrice: number = payload.cartProducts.reduce((totalPrice, cartProduct) => totalPrice + cartProduct.totalPrice, 0)
+    return (
+      {
+        ...state,
+        products: payload.cartProducts,
+        totalPrice
+      }
+    )
+  }),
+  on(decProductSuccessAction, (state, payload: { cartProducts: CartProduct[] }): CartState => {
+    const totalPrice: number = payload.cartProducts.reduce((totalPrice, cartProduct) => totalPrice + cartProduct.totalPrice, 0)
+    return (
+      {
+        ...state,
+        products: payload.cartProducts,
+        totalPrice
+      }
+    )
   })
 )
 

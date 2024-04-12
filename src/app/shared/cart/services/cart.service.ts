@@ -19,4 +19,23 @@ export class CartService {
     };
     return index !== -1 ? [...cartProducts.slice(0, index), cartProduct, ...cartProducts.slice(index + 1)] : [...products, cartProduct]
   };
+
+  public incProduct(cartProduct: CartProduct, cartProducts: CartProduct[]): CartProduct[] {
+    return cartProducts.map((cp) => cp.id === cartProduct.id ? {
+      ...cp,
+      count: cp.count++,
+      totalPrice: cp.totalPrice + cp.product.totalPrice
+    } : cp);
+  };
+
+  public decProduct(cartProduct: CartProduct, cartProducts: CartProduct[]): CartProduct[] {
+    if (cartProduct.count - 1 > 0) {
+      return cartProducts.map((cp) => cp.id === cartProduct.id ? {
+        ...cp,
+        count: cp.count--,
+        totalPrice: cp.totalPrice - cp.product.totalPrice
+      } : cp);
+    };
+    return cartProducts.filter((cp) => cp.id !== cartProduct.id);
+  };
 };
