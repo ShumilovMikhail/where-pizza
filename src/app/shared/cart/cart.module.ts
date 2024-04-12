@@ -9,6 +9,7 @@ import { CartProductsListComponent } from './components/cart-products-list/cart-
 import { CartProductsItemComponent } from './components/cart-products-list/components/cart-products-item/cart-products-item.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { CartEffect } from './store/effects/cart.effect';
+import { LoadProductsFromStorageEffect } from './store/effects/loadProductsFromStorage.effect';
 
 
 
@@ -21,7 +22,7 @@ import { CartEffect } from './store/effects/cart.effect';
   imports: [
     CommonModule,
     StoreModule.forFeature('cart', reducers),
-    EffectsModule.forFeature([AddProductEffect, CartEffect]),
+    EffectsModule.forFeature([AddProductEffect, CartEffect, LoadProductsFromStorageEffect]),
     PipesModule
   ],
   exports: [
