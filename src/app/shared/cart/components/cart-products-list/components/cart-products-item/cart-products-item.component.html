@@ -1,0 +1,18 @@
+<div class="cart-product">
+  <div class="image">
+    <img [src]="customProduct.product.image" [alt]="customProduct.product.name">
+  </div>
+
+  <div class="content">
+    <div class="content-inner">
+      <p class="subtitle-secondary">{{customProduct.product.name}}</p>
+      <p class="mini-text" *ngIf="customProduct.removeIngredients.length !== 0">Убрать:{{customProduct.removeIngredients
+        |
+        ingredients}}</p>
+    </div>
+    <div class="content-bottom">
+      <p>COUNTER</p>
+      <p class="subtitle-secondary total-price">{{cartProduct.totalPrice}} ₽</p>
+    </div>
+  </div>
+</div>

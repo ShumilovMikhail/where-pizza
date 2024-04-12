@@ -1,0 +1,32 @@
+@import '../../../variables';
+
+.cart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 420px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 auto;
+  padding: 32px 20px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-top: 1px solid $lineGray;
+}
+
+h4 {
+  color: $primary;
+}
+
+.order-button {
+  @include button-primary(13px, 24px, 0, 0)
+}

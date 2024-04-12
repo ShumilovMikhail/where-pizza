@@ -16,7 +16,6 @@ export class AddProductEffect {
       return this.store.select(cartProductsSelector).pipe(
         take(1),
         map((cartProducts: CartProduct[]) => {
-          console.log('dsadsadsaas')
           const newCartProducts = this.cartService.addProduct(customProduct, cartProducts);
           return addProductSuccessAction({ cartProducts: newCartProducts });
         }),

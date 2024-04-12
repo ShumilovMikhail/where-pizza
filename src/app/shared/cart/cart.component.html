@@ -1,1 +1,10 @@
-<p>cart works!</p>
+<div class="cart">
+  <div class="content">
+    <h2>Ваш заказ</h2>
+    <app-cart-products-list></app-cart-products-list>
+  </div>
+  <div class="bottom">
+    <h4>Итого: {{totalPrice$ | async}} ₽</h4>
+    <button class="btn order-button">Оформить заказ</button>
+  </div>
+</div>

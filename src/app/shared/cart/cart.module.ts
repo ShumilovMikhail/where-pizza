@@ -5,17 +5,24 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AddProductEffect } from './store/effects/addProduct.effect';
+import { CartProductsListComponent } from './components/cart-products-list/cart-products-list.component';
+import { CartProductsItemComponent } from './components/cart-products-list/components/cart-products-item/cart-products-item.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { CartEffect } from './store/effects/cart.effect';
 
 
 
 @NgModule({
   declarations: [
-    CartComponent
+    CartComponent,
+    CartProductsListComponent,
+    CartProductsItemComponent
   ],
   imports: [
     CommonModule,
     StoreModule.forFeature('cart', reducers),
-    EffectsModule.forFeature([AddProductEffect])
+    EffectsModule.forFeature([AddProductEffect, CartEffect]),
+    PipesModule
   ],
   exports: [
     CartComponent

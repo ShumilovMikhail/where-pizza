@@ -3,7 +3,7 @@
     <a class="logo-link">
       <img src="../../../assets/images/logo.svg" alt="Logo" class="logo">
     </a>
-    <button class="cart btn">
+    <button class="cart btn" (click)="onCartOpen()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="cart-icon">
         <g clip-path="url(#clip0_24802_11530)">
           <path
@@ -22,7 +22,11 @@
           </clipPath>
         </defs>
       </svg>
-      {{totalPrice$ | async}} р
+      {{totalPrice$ | async}} ₽
     </button>
   </div>
 </header>
+
+<app-side-modal *ngIf="cartOpen" (closeModal)="onCartClose()">
+  <app-cart></app-cart>
+</app-side-modal>

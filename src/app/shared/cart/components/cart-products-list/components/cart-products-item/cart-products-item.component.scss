@@ -1,0 +1,42 @@
+@import '../../../../../../../variables';
+
+.cart-product {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  width: 380px;
+  padding: 16px;
+  background-color: $lineGray;
+  border-radius: 12px;
+}
+
+.image img {
+  width: 94px;
+  height: 94px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 94px;
+}
+
+.content-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.total-price {
+  color: $primary;
+}
