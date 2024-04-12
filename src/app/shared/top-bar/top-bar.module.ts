@@ -7,18 +7,19 @@ import { AuthModule } from '../auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { AccountPopoverComponent } from './components/account-popover/account-popover.component';
 import { ModalCloseDirective } from '../directives/modalClose.directive';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [
     TopBarComponent,
     AccountPopoverComponent,
-    ModalCloseDirective
   ],
   imports: [
     CommonModule,
     ModalModule,
     AuthModule,
-    RouterModule
+    RouterModule,
+    DirectivesModule
   ],
   exports: [TopBarComponent]
 })

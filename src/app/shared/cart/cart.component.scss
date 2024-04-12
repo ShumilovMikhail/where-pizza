@@ -13,6 +13,18 @@
   gap: 20px;
   flex: 1 1 auto;
   padding: 32px 20px;
+  min-height: 0;
+}
+
+.products-list {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.products-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .bottom {

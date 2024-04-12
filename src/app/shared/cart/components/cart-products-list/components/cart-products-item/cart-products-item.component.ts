@@ -14,5 +14,6 @@ export class CartProductsItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.customProduct = this.cartProduct.product;
+    console.log(this.customProduct)
   };
 };

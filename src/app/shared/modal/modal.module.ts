@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { ModalComponent } from './modal.component';
 import { BackdropModule } from '../backdrop/backdrop.module';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     CommonModule,
-    BackdropModule
+    BackdropModule,
+    DirectivesModule
   ],
 
   exports: [ModalComponent]

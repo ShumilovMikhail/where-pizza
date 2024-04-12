@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SideModalComponent } from './side-modal.component';
 import { BackdropModule } from '../backdrop/backdrop.module';
+import { RemoveScrollingDirective } from '../directives/removeScrolling.directive';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 
@@ -9,7 +11,8 @@ import { BackdropModule } from '../backdrop/backdrop.module';
   declarations: [SideModalComponent],
   imports: [
     CommonModule,
-    BackdropModule
+    BackdropModule,
+    DirectivesModule
   ],
   exports: [SideModalComponent]
 })
