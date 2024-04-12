@@ -11,7 +11,7 @@ export class CartService {
   public addProduct(product: CustomProduct, cartProducts: CartProduct[]): CartProduct[] {
     const products: CartProduct[] = [...cartProducts];
     const index: number = products.findIndex((customProduct) => this.utilsService.deepEqual(customProduct.product, product));
-    const newId = products.length <= 1 ? products.length : products[products.length].id - 1;
+    const newId = products.length <= 1 ? products.length : products[products.length - 1].id + 1;
     const cartProduct: CartProduct = {
       product,
       id: index !== -1 ? products[index].id : newId,

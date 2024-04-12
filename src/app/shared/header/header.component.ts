@@ -9,7 +9,7 @@ import { cartTotalPriceSelector } from "../cart/store/selectors";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  cartOpen: boolean = true;
+  cartOpen: boolean = false;
   totalPrice$: Observable<number>;
   constructor(private readonly store: Store) { };
 
