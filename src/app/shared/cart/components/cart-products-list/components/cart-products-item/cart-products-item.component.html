@@ -15,7 +15,8 @@
         | settings}}</p>
     </div>
     <div class="content-bottom">
-      <app-product-counter [count]="cartProduct.count" [maxCount]="10" [minCount]="0"></app-product-counter>
+      <app-product-counter [count]="cartProduct.count" [maxCount]="10" [minCount]="0"
+        (countChange)="onChangeCount($event)"></app-product-counter>
       <p class="subtitle-secondary total-price">{{cartProduct.totalPrice}} ₽</p>
     </div>
   </div>

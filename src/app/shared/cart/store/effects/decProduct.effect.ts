@@ -16,7 +16,7 @@ export class DecProductEffect {
       return this.store.select(cartProductsSelector).pipe(
         take(1),
         map((cartProducts: CartProduct[]) => {
-          const newCartProducts = this.cartService.incProduct(cartProduct, cartProducts);
+          const newCartProducts = this.cartService.decProduct(cartProduct, cartProducts);
           return decProductSuccessAction({ cartProducts: newCartProducts });
         }),
         catchError(() => {

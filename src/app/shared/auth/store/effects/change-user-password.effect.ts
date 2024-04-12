@@ -15,7 +15,6 @@ export class ChangeUserPasswordEffect {
     ofType(changeUserPasswordAction),
     switchMap(({ password }) => {
 
-      console.log(password)
       return this.authService.changeUserPassword(password).pipe(
         map((response) => {
           const previousUserData: UserData = this.dataStorageService.getItem(DataStorageTypes.USER_DATA) as UserData
