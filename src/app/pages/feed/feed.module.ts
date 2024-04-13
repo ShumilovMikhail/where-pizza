@@ -22,6 +22,8 @@ import { ProductsFiltersComponent } from './components/products/components/produ
 import { ProductsFiltersFormComponent } from './components/products/components/products-category/components/products-filters/components/products-filters-form/products-filters-form.component';
 import { FiltersGroupFormComponent } from './components/products/components/products-category/components/products-filters/components/products-filters-form/components/products-filters-group-form/filters-group-form.component';
 import { PromotionsModule } from '../../shared/promotions/promotions.module';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { NavigationCategoryComponent } from './components/navigation/components/navigation-category/navigation-category.component';
 
 
 
@@ -34,7 +36,9 @@ import { PromotionsModule } from '../../shared/promotions/promotions.module';
     ProductItemComponent,
     ProductsFiltersComponent,
     ProductsFiltersFormComponent,
-    FiltersGroupFormComponent
+    FiltersGroupFormComponent,
+    NavigationComponent,
+    NavigationCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,7 @@ import { PromotionsModule } from '../../shared/promotions/promotions.module';
     PipesModule,
     SideModalModule,
     ReactiveFormsModule,
-    PromotionsModule
+    PromotionsModule,
   ],
 })
 export class FeedModule { }

@@ -1,0 +1,28 @@
+@import '../../../../../../../variables';
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 135px;
+  height: 104px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+
+  p {
+    transition: 0.3s color;
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    p {
+      color: $primary;
+    }
+  }
+}

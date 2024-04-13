@@ -15,7 +15,7 @@ export class PromotionsStoreService extends ComponentStore<PromotionsState> {
   promotions$: Observable<PromotionsType> = this.select(state => state.promotions)
 
   constructor(private readonly promotionsService: PromotionsService) {
-    super({ promotions: null });
+    super(initialState);
   };
 
   readonly getPromotions = this.effect<void>((source$) => {

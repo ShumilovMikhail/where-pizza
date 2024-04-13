@@ -1,5 +1,5 @@
 <ul class="products" *ngIf="categories$ | async">
-  <li class="category" *ngFor="let category of categories$ | async">
+  <li class="category" *ngFor="let category of categories$ | async" [id]="category">
     <app-products-category [category]="category"></app-products-category>
   </li>
 </ul>

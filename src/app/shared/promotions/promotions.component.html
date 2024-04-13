@@ -4,7 +4,7 @@
 
 
 <swiper-container class="promotions-list slider" slides-per-view="4">
-  <swiper-slide *ngFor="let promotion of (promotions$ | async)" [promotion]="promotion" class="slide">
+  <swiper-slide *ngFor="let promotion of (promotions$ | async)" [promotion]="promotion" class="slide" lazy="true">
     <app-promotions-item [promotion]="promotion"></app-promotions-item>
   </swiper-slide>
 </swiper-container>
