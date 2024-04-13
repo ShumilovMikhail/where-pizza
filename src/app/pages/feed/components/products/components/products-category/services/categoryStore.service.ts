@@ -30,6 +30,7 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
   readonly filtersApply$: Observable<boolean> = this.select((state: CategoryState) => state.filtersApply);
 
   private categoryName: string;
+  private defaultProductsList: ProductsListType
 
   constructor(private readonly store: Store, private readonly filtersService: FiltersService) {
     super(initialState);
@@ -41,7 +42,9 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
         this.categoryName = category
         return this.store.select(productsSelector).pipe(
           withLatestFrom(this.store.select(filtersSelector)),
+          filter(([products, filters]: [Products, Filters]) => Boolean(products && filters)),
           tap(([products, filters]: [Products, Filters]) => {
+            this.defaultProductsList = products[category].products;
             this.setCategoryUpdater({
               filters: filters[category],
               products: products[category]
@@ -54,13 +57,12 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
 
   public readonly applyFilters = this.effect<FiltersCategory>((filtersCategory$: Observable<FiltersCategory>) => {
     return filtersCategory$.pipe(
-      withLatestFrom(this.productsList$),
-      switchMap(([filtersCategory, productsList]: [FiltersCategory, ProductsListType]) => {
+      switchMap((filtersCategory: FiltersCategory) => {
         this.updateFiltersUpdater(filtersCategory);
         const filters: Filter[] = filtersCategory.reduce((accumulator, filterGroup) => {
           return [...accumulator, ...filterGroup.filters]
         }, [])
-        return this.filtersService.getProductsWithFilters(productsList, filters).pipe(
+        return this.filtersService.getProductsWithFilters(this.defaultProductsList, filters).pipe(
           tap((productsList: ProductsListType) => {
             this.setProductsListUpdater(productsList)
           })
@@ -71,12 +73,11 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
   public readonly resetFilters = this.effect<void>((source$) => {
     return source$.pipe(
       switchMap(() => {
-        return this.store.select(productsSelector).pipe(
-          withLatestFrom(this.store.select(filtersSelector)),
-          filter(([products, filters]: [Products, Filters]) => Boolean(products && filters)),
-          tap(([products, filters]: [Products, Filters]) => {
+        return this.store.select(filtersSelector).pipe(
+          filter(Boolean),
+          tap((filters: Filters) => {
             this.resetFiltersUpdater(filters[this.categoryName]);
-            this.setProductsListUpdater(products[this.categoryName].products);
+            this.setProductsListUpdater(this.defaultProductsList);
           })
         );
       }),

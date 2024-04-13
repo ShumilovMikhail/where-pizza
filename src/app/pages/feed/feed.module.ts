@@ -21,6 +21,7 @@ import { GetFiltersEffect } from './components/products/store/effects/getFilters
 import { ProductsFiltersComponent } from './components/products/components/products-category/components/products-filters/products-filters.component';
 import { ProductsFiltersFormComponent } from './components/products/components/products-category/components/products-filters/components/products-filters-form/products-filters-form.component';
 import { FiltersGroupFormComponent } from './components/products/components/products-category/components/products-filters/components/products-filters-form/components/products-filters-group-form/filters-group-form.component';
+import { PromotionsModule } from '../../shared/promotions/promotions.module';
 
 
 
@@ -45,7 +46,8 @@ import { FiltersGroupFormComponent } from './components/products/components/prod
     ProductModalModule,
     PipesModule,
     SideModalModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PromotionsModule
   ],
 })
 export class FeedModule { }

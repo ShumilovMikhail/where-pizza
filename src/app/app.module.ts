@@ -28,7 +28,6 @@ import { FeedModule } from './pages/feed/feed.module';
     TopBarModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     NgxMaskModule.forRoot(),
-
   ],
   providers: [],
   bootstrap: [AppComponent]
