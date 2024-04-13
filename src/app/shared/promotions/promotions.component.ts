@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
 import { PromotionsStoreService } from './services/promotionsStore.service';
 import { Observable } from 'rxjs';
 import { PromotionsType } from './types/promotions.type';
@@ -6,7 +6,7 @@ import { PromotionsType } from './types/promotions.type';
 @Component({
   selector: 'app-promotions',
   templateUrl: './promotions.component.html',
-  styleUrl: './promotions.component.scss'
+  styleUrl: './promotions.component.scss',
 })
 export class PromotionsComponent implements OnInit {
 
