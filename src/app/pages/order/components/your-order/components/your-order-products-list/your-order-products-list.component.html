@@ -1,0 +1,4 @@
+<div class="products-list">
+  <app-products-item *ngFor="let cartProduct of (cartProducts$ | async)"
+    [cartProduct]="cartProduct"></app-products-item>
+</div>

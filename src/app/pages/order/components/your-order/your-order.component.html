@@ -1,7 +1,9 @@
 <div class="your-order">
   <div class="content">
     <h1>Ваш заказ</h1>
-    <div class="products-list">HERE PRODUCTS LIST</div>
+    <div class="products-list">
+      <app-your-order-products-list></app-your-order-products-list>
+    </div>
     <div class="bottom">
       <h4 class="price">Итого: {{totalPrice$ | async}} ₽</h4>
     </div>
