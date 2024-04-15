@@ -24,6 +24,7 @@ import { FiltersGroupFormComponent } from './components/products/components/prod
 import { PromotionsModule } from '../../shared/promotions/promotions.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NavigationCategoryComponent } from './components/navigation/components/navigation-category/navigation-category.component';
+import { AboutModule } from '../../shared/about/about.module';
 
 
 
@@ -38,7 +39,7 @@ import { NavigationCategoryComponent } from './components/navigation/components/
     ProductsFiltersFormComponent,
     FiltersGroupFormComponent,
     NavigationComponent,
-    NavigationCategoryComponent
+    NavigationCategoryComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +53,7 @@ import { NavigationCategoryComponent } from './components/navigation/components/
     SideModalModule,
     ReactiveFormsModule,
     PromotionsModule,
+    AboutModule
   ],
 })
 export class FeedModule { }
