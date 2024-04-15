@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { YourOrderState } from "../types/yourOrderState.interface";
-import { Observable, switchMap, tap, withLatestFrom } from "rxjs";
 import { Store } from "@ngrx/store";
+import { Observable, switchMap, tap, withLatestFrom } from "rxjs";
+
+import { YourOrderState } from "../types/yourOrderState.interface";
 import { cartProductsSelector, cartTotalPriceSelector } from "../../../../../shared/cart/store/selectors";
 import { CartProduct } from "../../../../../shared/types/cartProduct.interface";
 

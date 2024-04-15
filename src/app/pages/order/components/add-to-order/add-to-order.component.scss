@@ -1,0 +1,22 @@
+.add-to-order-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.add-to-order {
+  width: 990px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  h3 {
+    margin-left: 70px;
+  }
+}
