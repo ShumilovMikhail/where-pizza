@@ -1,17 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { CartProduct } from '../../../../../types/cartProduct.interface';
-import { CustomProduct } from '../../../../../types/customProduct.interface';
 import { Store } from '@ngrx/store';
-import { incProductAction } from '../../../../store/actions/incProduct.action';
-import { decProductAction } from '../../../../store/actions/decProduct.action';
+
+import { CartProduct } from '../types/cartProduct.interface';
+import { CustomProduct } from '../types/customProduct.interface';
+import { incProductAction } from '../cart/store/actions/incProduct.action';
+import { decProductAction } from '../cart/store/actions/decProduct.action';
 
 @Component({
-  selector: 'app-cart-products-item',
-  templateUrl: './cart-products-item.component.html',
-  styleUrl: './cart-products-item.component.scss'
+  selector: 'app-products-item',
+  templateUrl: './products-item.component.html',
+  styleUrl: './products-item.component.scss'
 })
-export class CartProductsItemComponent implements OnInit {
+export class ProductsItemComponent implements OnInit {
   @Input('cartProduct') cartProduct: CartProduct;
   customProduct: CustomProduct;
 

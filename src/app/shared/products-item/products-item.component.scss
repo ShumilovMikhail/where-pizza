@@ -1,11 +1,11 @@
-@import '../../../../../../../variables';
+@import '../../../variables';
 
 .cart-product {
   position: relative;
   display: flex;
   gap: 16px;
   align-items: start;
-  width: 380px;
+  width: auto;
   padding: 16px;
   background-color: $lineGray;
   border-radius: 12px;
