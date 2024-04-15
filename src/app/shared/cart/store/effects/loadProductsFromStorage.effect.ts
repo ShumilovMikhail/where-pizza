@@ -5,7 +5,7 @@ import { of, switchMap, } from "rxjs";
 import { DataStorageService } from "../../../services/dataStorage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 import { loadProductsFromStorageAction, loadProductsFromStorageFailureAction, loadProductsFromStorageSuccessAction } from "../actions/loadProductsFromStorage.action";
-import { CartProduct } from "../../types/cartProduct.interface";
+import { CartProduct } from "../../../types/cartProduct.interface";
 
 @Injectable()
 export class LoadProductsFromStorageEffect {

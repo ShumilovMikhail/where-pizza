@@ -2,7 +2,7 @@ import { Action, createReducer, on } from "@ngrx/store";
 
 import { CartState } from "../types/cartState.interface";
 import { addProductSuccessAction } from "./actions/addProduct.action";
-import { CartProduct } from "../types/cartProduct.interface";
+import { CartProduct } from "../../types/cartProduct.interface";
 import { loadProductsFromStorageAction, loadProductsFromStorageFailureAction, loadProductsFromStorageSuccessAction } from "./actions/loadProductsFromStorage.action";
 import { incProductSuccessAction } from "./actions/incProduct.action";
 import { decProductSuccessAction } from "./actions/decProduct.action";

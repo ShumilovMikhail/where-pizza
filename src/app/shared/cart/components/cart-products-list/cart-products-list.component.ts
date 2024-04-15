@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { CartProduct } from '../../types/cartProduct.interface';
+import { CartProduct } from '../../../types/cartProduct.interface';
 import { cartProductsSelector } from '../../store/selectors';
 
 @Component({

@@ -1,4 +1,4 @@
-import { CartProduct } from "./cartProduct.interface";
+import { CartProduct } from "../../types/cartProduct.interface";
 
 export interface CartState {
   isLoading: boolean

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CustomProduct } from "../../types/customProduct.interface";
-import { CartProduct } from "../types/cartProduct.interface";
+import { CartProduct } from "../../types/cartProduct.interface";
 import { UtilsService } from "../../utils/utils.service";
 import { count } from "rxjs";
 

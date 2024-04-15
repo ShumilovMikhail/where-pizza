@@ -1,0 +1,28 @@
+@import '../../../../../variables';
+
+.your-order {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 850px;
+
+}
+
+.products-list {
+  margin-top: 24px;
+}
+
+.bottom {
+  margin-top: 16px;
+  display: flex;
+  justify-content: end;
+  background-color: $white;
+  padding: 26px 24px;
+  border-radius: 8px;
+}
+
+.price {
+  color: $primary;
+}

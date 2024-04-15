@@ -5,7 +5,7 @@ import { catchError, map, of, switchMap, take } from "rxjs";
 
 import { CartService } from "../../services/cart.service";
 import { cartProductsSelector } from "../selectors";
-import { CartProduct } from "../../types/cartProduct.interface";
+import { CartProduct } from "../../../types/cartProduct.interface";
 import { incProductAction, incProductFailureAction, incProductSuccessAction } from "../actions/incProduct.action";
 
 @Injectable()

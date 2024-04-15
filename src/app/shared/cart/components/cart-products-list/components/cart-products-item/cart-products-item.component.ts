@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { CartProduct } from '../../../../types/cartProduct.interface';
+import { CartProduct } from '../../../../../types/cartProduct.interface';
 import { CustomProduct } from '../../../../../types/customProduct.interface';
 import { Store } from '@ngrx/store';
 import { incProductAction } from '../../../../store/actions/incProduct.action';
