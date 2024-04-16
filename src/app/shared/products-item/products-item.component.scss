@@ -7,8 +7,9 @@
   align-items: start;
   width: auto;
   padding: 16px;
-  background-color: $lineGray;
+  background-color: $bgc;
   border-radius: 12px;
+  border: 1px solid $lineGray;
 }
 
 .image img {

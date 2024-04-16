@@ -1,0 +1,26 @@
+@import '../../../../../variables';
+
+.slide {
+  background-color: $bgc;
+  border: 1px solid $lineGray;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 190px;
+}
+
+.image img {
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.add-to-cart {
+  width: 100%;
+  @include button-primary(10px, 0, 0, 0);
+  margin-top: 16px;
+}

@@ -1,7 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { CategoryStoreService } from '../../services/categoryStore.service';
-import { Observable } from 'rxjs';
-import { FiltersCategory } from '../../../../types/filtersCategory.type';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-products-filters',

@@ -19,6 +19,7 @@ export class ProductsFiltersFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.filtersSubscribe = this.categoryStore.filters$.pipe(filter(Boolean)).subscribe((filters) => {
+      console.log(filters)
       this.form = this.fb.group({
         filters: new FormArray([])
       })

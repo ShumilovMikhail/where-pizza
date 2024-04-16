@@ -1,12 +1,12 @@
 <div class="add-to-order-container">
   <div class="add-to-order">
-    <div class="category">
+    <div class="category" *ngIf="snacks$ | async">
       <h3>Добавить к заказу?</h3>
       <app-products-carousel [productsCategory]="snacks$ | async"></app-products-carousel>
     </div>
-    <div class="category">
+    <div class="category" *ngIf="sauces$ | async">
       <h3>Соусы</h3>
-      HERE SAUCES PRODUCTS
+      <app-products-carousel [productsCategory]="sauces$ | async"></app-products-carousel>
     </div>
   </div>
 </div>

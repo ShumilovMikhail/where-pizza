@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, filter, switchMap, tap, withLatestFrom } from "rxjs";
+import { Observable, combineLatestWith, filter, switchMap, tap } from "rxjs";
 import { ComponentStore } from "@ngrx/component-store";
 import { Store } from "@ngrx/store";
 
@@ -41,8 +41,11 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
       switchMap((category: string) => {
         this.categoryName = category
         return this.store.select(productsSelector).pipe(
-          withLatestFrom(this.store.select(filtersSelector)),
-          filter(([products, filters]: [Products, Filters]) => Boolean(products && filters)),
+          combineLatestWith(this.store.select(filtersSelector)),
+          filter(([products, filters]: [Products, Filters]) => {
+            console.log(filters)
+            return Boolean(products && filters)
+          }),
           tap(([products, filters]: [Products, Filters]) => {
             this.defaultProductsList = products[category].products;
             this.setCategoryUpdater({

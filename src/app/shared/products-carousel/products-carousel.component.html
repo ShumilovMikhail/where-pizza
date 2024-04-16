@@ -1,0 +1,5 @@
+<swiper-container class="promotions-list slider" slides-per-view="4" space-between="30">
+  <swiper-slide *ngFor="let product of productsCategory.products" class="slide" lazy="true">
+    <app-products-slide [product]="product" [settings]="productsCategory.settings"></app-products-slide>
+  </swiper-slide>
+</swiper-container>

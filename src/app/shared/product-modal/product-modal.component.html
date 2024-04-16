@@ -13,7 +13,7 @@
       <div class="info" infoHover>
         <img src="/assets/images/Info-icon.svg" alt="info-icon">
 
-        <div class="ingredients text">
+        <div class="ingredients text" *ngIf="product.ingredients">
           {{product.ingredients | ingredients}}
         </div>
       </div>

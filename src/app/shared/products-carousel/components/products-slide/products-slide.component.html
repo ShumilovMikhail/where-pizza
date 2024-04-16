@@ -1,0 +1,11 @@
+<div class="slide">
+
+  <div class="image">
+    <img [src]="product.image" [alt]="product.name">
+  </div>
+  <div class="content">
+    <p class="text bold">{{product.name}}</p>
+    <p class="mini-text">Порция {{product.weight}}г</p>
+    <button class="btn add-to-cart" (click)="onAddToCart()">{{product.price}}₽</button>
+  </div>
+</div>
