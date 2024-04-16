@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { environment } from "../../../../environments/environment.development";
-import { DataStorageService } from "../../services/dataStorage.service";
+import { DataStorageService } from "../../services/data-storage.service";
 import { DataStorageTypes } from "../../types/dataStorageTypes";
 import { UserData } from "../../types/userData.interface";
 import { SendVerificationEmailResponse } from "../types/sendVerificationEmailResponse.interface";

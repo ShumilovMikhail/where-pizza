@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { ProductsCategory } from '../types/productsCategory.interface';
+import { productsCarouselCategory } from './types/productsCarouselCategory.interface';
 
 @Component({
   selector: 'app-products-carousel',
@@ -9,6 +10,6 @@ import { ProductsCategory } from '../types/productsCategory.interface';
 })
 export class ProductsCarouselComponent {
 
-  @Input('productsCategory') productsCategory: ProductsCategory;
+  @Input('productsCategory') productsCategory: productsCarouselCategory;
 
 }

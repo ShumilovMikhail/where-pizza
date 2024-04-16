@@ -1,12 +1,12 @@
 @import '../../../variables';
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $bgc;
-  z-index: 999;
+  z-index: 1000;
   border-radius: 24px;
 }
 

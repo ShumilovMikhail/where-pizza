@@ -6,7 +6,7 @@ import { catchError, map, of, switchMap, tap } from "rxjs";
 
 import { AuthService } from "../../services/auth.service";
 import { AuthResponse } from "../../types/authResponse.interface";
-import { DataStorageService } from "../../../services/dataStorage.service";
+import { DataStorageService } from "../../../services/data-storage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 import { loginAction, loginFailureAction, loginSuccessAction } from "../actions/login.action";
 import { getUserInfoAction } from "../actions/get-user-info.action";

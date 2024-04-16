@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { CategoryStoreService } from './services/categoryStore.service';
+import { CategoryStoreService } from './services/category-store.service';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({

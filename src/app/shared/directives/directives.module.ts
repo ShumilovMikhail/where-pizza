@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
-import { ModalCloseDirective } from "./modalClose.directive";
-import { RemoveScrollingDirective } from "./removeScrolling.directive";
-import { ShowFullDirective } from "./showFull.directive";
+import { ModalCloseDirective } from "./modal-close.directive";
+import { RemoveScrollingDirective } from "./remove-scrolling.directive";
+import { ShowFullDirective } from "./show-full.directive";
 
 @NgModule({
   declarations: [ModalCloseDirective, RemoveScrollingDirective, ShowFullDirective],

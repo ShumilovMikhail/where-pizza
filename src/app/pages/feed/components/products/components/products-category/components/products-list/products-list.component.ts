@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CategoryStoreService } from '../../services/categoryStore.service';
+import { CategoryStoreService } from '../../services/category-store.service';
 import { Observable } from 'rxjs';
 import { ProductsListType } from '../../../../../../../../shared/types/productsList.type';
 

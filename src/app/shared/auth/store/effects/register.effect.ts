@@ -6,7 +6,7 @@ import { catchError, map, of, switchMap, tap } from "rxjs";
 import { AuthService } from "../../services/auth.service";
 import { registerAction, registerFailureAction, registerSuccessAction } from "../actions/register.action";
 import { AuthResponse } from "../../types/authResponse.interface";
-import { DataStorageService } from "../../../services/dataStorage.service";
+import { DataStorageService } from "../../../services/data-storage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 
 @Injectable()

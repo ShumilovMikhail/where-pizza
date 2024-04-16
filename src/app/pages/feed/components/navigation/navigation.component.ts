@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationStoreService } from './services/navigationStore.service';
+import { NavigationStoreService } from './services/navigation-store.service';
 import { Observable, filter, take, tap } from 'rxjs';
 import { NavigationCategories } from './types/navigationCategories.interface';
 

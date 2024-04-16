@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Product } from '../../../../../../../../../../shared/types/product.interface';
 import { ProductsSettingsType } from '../../../../../../../../../../shared/types/productsSettings.type';
-import { CategoryStoreService } from '../../../../services/categoryStore.service';
+import { CategoryStoreService } from '../../../../services/category-store.service';
 
 @Component({
   selector: 'app-product-item',

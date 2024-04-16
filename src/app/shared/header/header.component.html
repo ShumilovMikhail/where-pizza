@@ -28,5 +28,5 @@
 </header>
 
 <app-side-modal *ngIf="cartOpen" (closeModal)="onCartClose()">
-  <app-cart></app-cart>
+  <app-cart (modalClose)="onCartClose()"></app-cart>
 </app-side-modal>

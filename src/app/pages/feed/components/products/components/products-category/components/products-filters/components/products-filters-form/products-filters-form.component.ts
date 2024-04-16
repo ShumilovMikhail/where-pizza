@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Subscription, filter } from "rxjs";
 
-import { CategoryStoreService } from "../../../../services/categoryStore.service";
+import { CategoryStoreService } from "../../../../services/category-store.service";
 import { FiltersGroup } from "../../../../../../types/filtersGroup.interface";
 
 @Component({

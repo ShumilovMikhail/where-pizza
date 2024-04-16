@@ -1,7 +1,7 @@
 <app-backdrop></app-backdrop>
 
 <div class="modal" removeScrolling>
-  <div class="content">
+  <div class="content" modalClose (modalClose)="onClose()">
     <div class="cross" (click)="onClose()"></div>
     <ng-content></ng-content>
   </div>

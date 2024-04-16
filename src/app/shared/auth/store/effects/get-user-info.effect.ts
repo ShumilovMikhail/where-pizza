@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, tap } from "rxjs";
 
 import { AuthService } from "../../services/auth.service";
-import { DataStorageService } from "../../../services/dataStorage.service";
+import { DataStorageService } from "../../../services/data-storage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 import { UserInfo } from "../../../types/userInfo.interface";
 import { getUserInfoAction, getUserInfoFailureAction, getUserInfoSuccessAction } from "../actions/get-user-info.action";

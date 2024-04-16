@@ -5,7 +5,7 @@ import { Observable, map } from "rxjs";
 import { environment } from "../../../../environments/environment.development";
 import { AuthRequest } from "../types/authRequest.interface";
 import { AuthResponse } from "../types/authResponse.interface";
-import { DataStorageService } from "../../services/dataStorage.service";
+import { DataStorageService } from "../../services/data-storage.service";
 import { DataStorageTypes } from "../../types/dataStorageTypes";
 import { UserData } from "../../types/userData.interface";
 import { UserInfo } from "../../types/userInfo.interface";

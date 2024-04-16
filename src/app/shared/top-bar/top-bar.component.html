@@ -1,5 +1,5 @@
 <app-modal *ngIf="modalOpen" (closeModal)="onModalClose()">
-  <app-auth [authType]="authType"></app-auth>
+  <app-auth [authType]="authType" modalClose></app-auth>
 </app-modal>
 
 <div class="top-bar">
@@ -14,11 +14,11 @@
         <img src="../../../assets/images/login-icon.svg" alt="login-icon">
         Войти в аккаунт
       </button>
-      <div class="meta-inner" *ngIf="isAuthenticate" modalClose (modalClose)="onPopoverClose()">
+      <div class="meta-inner" *ngIf="isAuthenticate">
         <button class="btn" (click)="onPopoverToggle()">
           <img src="../../../assets/images/login-icon.svg" alt="login-icon">
         </button>
-        <div class="popover" *ngIf="popoverOpen">
+        <div class="popover" *ngIf="popoverOpen" modalClose (modalClose)="onPopoverClose()">
           <app-account-popover></app-account-popover>
         </div>
       </div>

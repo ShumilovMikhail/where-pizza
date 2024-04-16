@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, take, tap } from "rxjs";
 
 import { AuthService } from "../../services/auth.service";
-import { DataStorageService } from "../../../services/dataStorage.service";
+import { DataStorageService } from "../../../services/data-storage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 import { setUserInfoAction, setUserInfoFailureAction, setUserInfoSuccessAction } from "../actions/set-user-info.action";
 import { UserInfo } from "../../../types/userInfo.interface";

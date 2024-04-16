@@ -1,7 +1,7 @@
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
 import { inject } from "@angular/core";
 
-import { DataStorageService } from "../../../../../../../shared/services/dataStorage.service";
+import { DataStorageService } from "../../../../../../../shared/services/data-storage.service";
 import { DataStorageTypes } from "../../../../../../../shared/types/dataStorageTypes";
 import { UserInfo } from "../../../../../../../shared/types/userInfo.interface";
 
