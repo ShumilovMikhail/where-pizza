@@ -32,7 +32,8 @@ import { VerificationEmailModule } from '../../shared/verification-email/verific
     ReactiveFormsModule,
     StoreModule.forFeature('settings', reducers),
     ModalModule,
-    VerificationEmailModule
+    VerificationEmailModule,
+    NgxMaskModule.forChild(),
   ]
 })
 export class ProfileModule { }

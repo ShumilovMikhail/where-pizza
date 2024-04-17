@@ -32,11 +32,13 @@
       </fieldset>
       <fieldset class="form-input">
         <label class="mini-text">Номер телефона</label>
-        <input type="text" placeholder="+7" formControlName="phone">
+        <input type="text" placeholder="+7" formControlName="phone" prefix="+7" [dropSpecialCharacters]="false"
+          [mask]="'(000)000-00-00'">
       </fieldset>
       <fieldset class="form-input">
         <label class="mini-text">Дата рождения</label>
-        <input type="text" placeholder="Дата рождения" formControlName="date">
+        <input type="text" placeholder="Дата рождения" formControlName="date" [dropSpecialCharacters]="false"
+          [mask]="'00-00-0000'">
       </fieldset>
     </div>
     <button class="btn form-submit" [disabled]="!form.valid || (isLoading$ | async)"> Сохранить изменения</button>

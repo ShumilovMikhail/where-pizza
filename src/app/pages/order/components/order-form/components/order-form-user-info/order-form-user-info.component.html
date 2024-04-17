@@ -1,0 +1,26 @@
+<h3>О вас</h3>
+<form [formGroup]="form">
+  <fieldset class="form-input fieldset">
+    <label class="mini-text">Имя*</label>
+    <input type="text" placeholder="Имя" formControlName="username">
+    <div class="help-block" *ngIf="!form.get('username').valid && form.get('username').touched">
+      <p class="mini-text">* Минимум 2 символа</p>
+    </div>
+  </fieldset>
+  <fieldset class="form-input fieldset">
+    <label class="mini-text">Номер телефона*</label>
+    <input type="text" placeholder="+7" prefix="+7" [dropSpecialCharacters]="false" [mask]="'(000)000-00-00'"
+      formControlName="phone">
+    <div class="help-block" *ngIf="!form.get('phone').valid && form.get('phone').touched">
+      <p class="mini-text">* Минимум 11 символов</p>
+    </div>
+  </fieldset>
+  <fieldset class="form-input fieldset">
+    <label class="mini-text">Дата рождения</label>
+    <input type="text" placeholder="Дата рождения" [dropSpecialCharacters]="false" [mask]="'00-00-0000'"
+      formControlName="date">
+    <div class="help-block" *ngIf="!form.get('date').valid && form.get('date').touched">
+      <p class="mini-text">* Введите коректную дату</p>
+    </div>
+  </fieldset>
+</form>

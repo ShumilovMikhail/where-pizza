@@ -1,0 +1,11 @@
+<div class="order-form__container">
+  <div class="order-form">
+    <div class="form">
+      <app-order-form-user-info></app-order-form-user-info>
+    </div>
+    <div class="bottom">
+      <h4 class="price">Итого: {{totalPrice$ | async}}₽</h4>
+      <button class="btn order-button">Оформить заказ</button>
+    </div>
+  </div>
+</div>

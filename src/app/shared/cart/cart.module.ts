@@ -14,6 +14,7 @@ import { ProductCounterModule } from '../product-counter/product-counter.module'
 import { IncProductEffect } from './store/effects/incProduct.effect';
 import { DecProductEffect } from './store/effects/decProduct.effect';
 import { ProductsItemModule } from '../products-item/products-item.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -28,7 +29,8 @@ import { ProductsItemModule } from '../products-item/products-item.module';
     EffectsModule.forFeature([AddProductEffect, CartEffect, LoadProductsFromStorageEffect, IncProductEffect, DecProductEffect]),
     PipesModule,
     ProductCounterModule,
-    ProductsItemModule
+    ProductsItemModule,
+    RouterModule
   ],
   exports: [
     CartComponent

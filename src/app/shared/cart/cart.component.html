@@ -7,6 +7,6 @@
   </div>
   <div class="bottom">
     <h4>Итого: {{totalPrice$ | async}} ₽</h4>
-    <button class="btn order-button">Оформить заказ</button>
+    <a [routerLink]="['/order']" class="btn link order-button">Оформить заказ</a>
   </div>
 </div>
