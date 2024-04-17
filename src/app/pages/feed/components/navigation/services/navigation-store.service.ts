@@ -24,7 +24,6 @@ export class NavigationStoreService extends ComponentStore<NavigationState> {
         return this.navigationService.getCategories().pipe(
           tap((categories: NavigationCategories) => {
             this.setCategories(categories);
-            console.log(categories)
           })
         );
       })

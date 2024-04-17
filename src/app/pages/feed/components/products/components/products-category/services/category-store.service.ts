@@ -43,7 +43,6 @@ export class CategoryStoreService extends ComponentStore<CategoryState> {
         return this.store.select(productsSelector).pipe(
           combineLatestWith(this.store.select(filtersSelector)),
           filter(([products, filters]: [Products, Filters]) => {
-            console.log(filters)
             return Boolean(products && filters)
           }),
           tap(([products, filters]: [Products, Filters]) => {

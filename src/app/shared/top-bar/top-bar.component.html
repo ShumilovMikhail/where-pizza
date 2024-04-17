@@ -19,7 +19,7 @@
           <img src="../../../assets/images/login-icon.svg" alt="login-icon">
         </button>
         <div class="popover" *ngIf="popoverOpen" modalClose (modalClose)="onPopoverClose()">
-          <app-account-popover></app-account-popover>
+          <app-account-popover (popoverClose)="onPopoverClose()"></app-account-popover>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import { loadProductsFromStorageAction } from './shared/cart/store/actions/loadP
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+
   constructor(private store: Store) { };
 
   ngOnInit(): void {

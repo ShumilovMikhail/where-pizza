@@ -27,7 +27,6 @@ export class FiltersService {
         return;
       };
       const filterName = filter.filter as FiltersTypes;
-      console.log(filter)
       productsWithFilters = filtersFunctions[filterName](productsWithFilters);
     });
     return of(productsWithFilters);

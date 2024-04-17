@@ -6,10 +6,10 @@
     <nav>
       <ul class="nav popover-block">
         <li class="nav-item text">
-          <a [routerLink]="['profile/history']" class="link">История заказов</a>
+          <a [routerLink]="['profile/history']" class="link" (click)="onClose()">История заказов</a>
         </li>
         <li class="nav-item text">
-          <a [routerLink]="['profile/settings']" class="link">Настройки</a>
+          <a [routerLink]="['profile/settings']" class="link" (click)="onClose()">Настройки</a>
         </li>
       </ul>
     </nav>

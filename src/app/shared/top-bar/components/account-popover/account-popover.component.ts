@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { logoutAction } from '../../../auth/store/actions/sync.action';
@@ -10,10 +10,16 @@ import { logoutAction } from '../../../auth/store/actions/sync.action';
 })
 export class AccountPopoverComponent {
 
+  @Output('popoverClose') popoverClose = new EventEmitter<void>()
+
   constructor(private store: Store) { };
 
-  onLogout() {
+  onLogout(): void {
     this.store.dispatch(logoutAction());
+    this.onClose()
   };
 
+  onClose(): void {
+    this.popoverClose.emit();
+  };
 };

@@ -7,6 +7,8 @@ import { CustomProduct } from '../types/customProduct.interface';
 import { CustomProductSetting } from '../types/customProductSetting.interface';
 import { Store } from '@ngrx/store';
 import { addProductAction } from '../cart/store/actions/addProduct.action';
+import { ProductFormAdapterService } from './services/product-form-adapter.service';
+import { ProductForm } from './types/productForm.interface';
 
 @Component({
   selector: 'app-product-modal',
@@ -20,22 +22,17 @@ export class ProductModalComponent implements OnInit {
   form: FormGroup;
   totalPrice: number;
 
-  constructor(private fb: FormBuilder, private readonly store: Store) { };
+  constructor(private fb: FormBuilder, private readonly store: Store, private productFormAdapterService: ProductFormAdapterService) { };
 
   ngOnInit(): void {
     this.initializeForm();
   };
 
   onSubmit(): void {
-    const customProduct: CustomProduct = {
-      product: this.product,
+    const productForm: ProductForm = {
       totalPrice: this.totalPrice,
-      toppings: (this.form.value.toppings as Array<boolean>).reduce((accumulator, isChecked, index) => {
-        return isChecked ? [...accumulator, this.product.toppings[index]] : accumulator;
-      }, []),
-      removeIngredients: (this.form.value.removeIngredients as Array<boolean>).reduce((accumulator, isChecked, index) => {
-        return isChecked ? [...accumulator, this.product.removableIngredients[index]] : accumulator;
-      }, []),
+      toppings: this.form.value.toppings,
+      removeIngredients: this.form.value.removeIngredients,
       settings: (this.form.value.settings as Array<string>).reduce((accumulator, value, index) => {
         const setting: CustomProductSetting = {
           name: this.categorySettings[index].name,
@@ -44,7 +41,7 @@ export class ProductModalComponent implements OnInit {
         return [...accumulator, setting]
       }, []),
     };
-    this.store.dispatch(addProductAction({ customProduct }))
+    this.store.dispatch(addProductAction({ customProduct: this.productFormAdapterService.toCustomProduct(this.product, productForm) }))
   };
 
   get settings(): FormArray {

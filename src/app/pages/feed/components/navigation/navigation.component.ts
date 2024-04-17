@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { filter, take } from 'rxjs';
+
 import { NavigationStoreService } from './services/navigation-store.service';
-import { Observable, filter, take, tap } from 'rxjs';
 import { NavigationCategories } from './types/navigationCategories.interface';
 
 @Component({
@@ -18,14 +19,10 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     this.navigationStore.getCategories();
     this.navigationStore.categories$.pipe(
-      filter((categories) => {
-        console.log(categories)
-        return Boolean(categories)
-      }),
-      take(1)
+      filter(Boolean)
     ).subscribe((categories) => {
       this.categories = categories
-      this.categoriesKeys = Object.keys(categories)
+      this.categoriesKeys = Object.keys(categories).sort((a, b) => categories[a].id - categories[b].id)
     })
   };
 
