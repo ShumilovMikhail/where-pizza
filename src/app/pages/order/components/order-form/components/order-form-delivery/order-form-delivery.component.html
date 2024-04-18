@@ -1,0 +1,76 @@
+<form [formGroup]="form">
+  <div class="top">
+    <h3>Доставка</h3>
+
+    <fieldset class="delivery-type-toggler fieldset">
+      <label class="option-button">
+        <input type="radio" formControlName="type" value="Доставка">
+        <div>
+          Доставка
+        </div>
+      </label>
+      <label class="option-button">
+        <input type="radio" formControlName="type" value="Самовывоз">
+        <div>
+          Самовывоз
+        </div>
+      </label>
+    </fieldset>
+
+  </div>
+  <fieldset class="fieldset address" formGroupName="address" *ngIf="form.get('type').value === 'Доставка'">
+    <fieldset class="fieldset address__inner">
+      <fieldset class="fieldset form-input address-input">
+        <label class="mini-text">Улица*</label>
+        <input type="text" placeholder="Улица" formControlName="street">
+      </fieldset>
+    </fieldset>
+    <fieldset class="form-input fieldset address__inner">
+      <fieldset class="form-input fieldset address-input">
+        <label class="mini-text">Дом*</label>
+        <input type="text" placeholder="Дом" formControlName="house" [patterns]="customPatterns" [mask]="'0RRR'">
+      </fieldset>
+      <fieldset class="form-input fieldset address-input">
+        <label class="mini-text">Подъезд*</label>
+        <input type="text" placeholder="Подъезд" formControlName="approach" [mask]="'00'">
+      </fieldset>
+      <fieldset class="form-input fieldset address-input">
+        <label class="mini-text">Этаж</label>
+        <input type="text" placeholder="Этаж" formControlName="floor" [mask]="'00'">
+      </fieldset>
+      <fieldset class="form-input fieldset">
+        <label class="mini-text">Квартира</label>
+        <input type="text" placeholder="Квартира" formControlName="flat" [mask]="'0000'">
+      </fieldset>
+    </fieldset>
+  </fieldset>
+
+  <div class="delivery-time-type" formGroupName="deliver">
+    <p class="mini-text delivery-time-type__title">Когда можно выполнить заказ?</p>
+    <fieldset class="fieldset delivery-time-type__inner">
+      <label class="radio-button">
+        <input type="radio" formControlName="type" value="Как можно скорее">
+        <div>
+          Как можно скорее
+        </div>
+      </label>
+      <label class="radio-button">
+        <input type="radio" formControlName="type" value="По времени">
+        <div>
+          По времени
+        </div>
+      </label>
+      <fieldset class="fieldset delivery-time" formGroupName="collection"
+        *ngIf="form.get('deliver').get('type').value === 'По времени'">
+        <fieldset class="form-input fieldset">
+          <input type=" text" placeholder="Дата" [dropSpecialCharacters]="false" [mask]="'00.00'" [suffix]="'.2024'"
+            formControlName="date">
+        </fieldset>
+        <fieldset class="form-input fieldset">
+          <input type=" text" placeholder="Время" [dropSpecialCharacters]="false" [mask]="'00:00'"
+            formControlName="time">
+        </fieldset>
+      </fieldset>
+    </fieldset>
+  </div>
+</form>

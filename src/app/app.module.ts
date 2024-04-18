@@ -13,6 +13,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { ProfileModule } from './pages/profile/profile.module';
 import { FeedModule } from './pages/feed/feed.module';
 import { OrderModule } from './pages/order/order.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,9 @@ import { OrderModule } from './pages/order/order.module';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     NgxMaskModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { };

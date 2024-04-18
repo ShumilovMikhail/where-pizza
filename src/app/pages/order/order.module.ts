@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { OrderComponent } from './order.component';
 import { OrderRoutingModule } from './order-routing.module';
@@ -11,8 +12,7 @@ import { ProductsCarouselModule } from '../../shared/products-carousel/products-
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { OrderFormUserInfoComponent } from './components/order-form/components/order-form-user-info/order-form-user-info.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { OrderFormDeliveryComponent } from './components/order-form/components/order-form-delivery/order-form-delivery.component';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     YourOrderProductsListComponent,
     AddToOrderComponent,
     OrderFormComponent,
-    OrderFormUserInfoComponent
+    OrderFormUserInfoComponent,
+    OrderFormDeliveryComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsItemModule,
     ProductsCarouselModule,
     NgxMaskModule.forChild(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class OrderModule { }

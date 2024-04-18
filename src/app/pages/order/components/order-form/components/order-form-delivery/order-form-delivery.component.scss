@@ -1,0 +1,70 @@
+@import '../../../../../../../variables';
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delivery-type-toggler {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  border-radius: 6px;
+  border: 1px solid $lineGray;
+  height: 48px;
+  width: 350px;
+}
+
+
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.address__inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.address-input {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.delivery-time-type {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.delivery-time-type__title {
+  color: $gray;
+}
+
+.delivery-time-type__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  label {
+    margin-top: 25px;
+    transform: translateY(-50%);
+  }
+}
+
+.delivery-time {
+  display: flex;
+  gap: 16px;
+}

@@ -177,39 +177,6 @@ form {
   height: 48px;
 }
 
-.option {
-  position: relative;
-}
-
-.setting-radio {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s all;
-
-  &:hover {
-    background-color: $whiteHover;
-    transition: 0.3s all;
-  }
-}
-
-.radio {
-  width: 0;
-  height: 0;
-  opacity: 0;
-  position: absolute;
-  z-index: -1;
-}
-
-.radio:checked+.setting-radio {
-  background-color: $primary;
-  color: $white;
-}
-
 .info {
   position: relative;
 

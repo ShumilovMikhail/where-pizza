@@ -80,9 +80,13 @@ $lineGray: #F0F0F0;
   line-height: 22px;
   border: 1px solid $lineGray;
   border-radius: 6px;
+  box-sizing: border-box;
 }
 
 %errorMessage {
+  position: absolute;
+  left: 0;
+  bottom: -25px;
   margin-left: 10px;
 
   p {

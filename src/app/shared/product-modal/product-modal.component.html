@@ -48,9 +48,9 @@
 
         <fieldset class="fieldset settings" *ngIf="categorySettings">
           <div class="setting" *ngFor="let setting of categorySettings; let i = index" formArrayName="settings">
-            <label class="option" *ngFor="let option of setting.options;">
-              <input class="radio" type="radio" [name]="i" [formControlName]="i" [value]="option.option">
-              <div class="setting-radio text">
+            <label class="option-button" *ngFor="let option of setting.options;">
+              <input type="radio" [formControlName]="i" [value]="option.option">
+              <div>
                 {{option.option}}
               </div>
             </label>
