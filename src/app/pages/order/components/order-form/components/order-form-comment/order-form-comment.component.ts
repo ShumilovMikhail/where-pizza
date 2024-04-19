@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,19 +6,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './order-form-comment.component.html',
   styleUrl: './order-form-comment.component.scss'
 })
-export class OrderFormCommentComponent implements OnInit {
+export class OrderFormCommentComponent {
 
-  form: FormGroup;
+  @Input('formGroup') form: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) { };
-
-  ngOnInit(): void {
-    this.initializeForm();
-  };
-
-  private initializeForm(): void {
-    this.form = this.fb.group({
-      comment: new FormControl('')
-    });
-  };
 };

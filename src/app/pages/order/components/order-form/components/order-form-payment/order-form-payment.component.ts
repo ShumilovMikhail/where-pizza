@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+
 import { OrderFormPaymentTypes } from '../../types/orderFormPaymentTypes';
 import { OrderFormPaymentChangeTypes } from '../../types/orderFormPaymentChangeTypes';
 
@@ -8,23 +10,32 @@ import { OrderFormPaymentChangeTypes } from '../../types/orderFormPaymentChangeT
   templateUrl: './order-form-payment.component.html',
   styleUrl: './order-form-payment.component.scss'
 })
-export class OrderFormPaymentComponent implements OnInit {
+export class OrderFormPaymentComponent implements OnInit, OnDestroy {
 
-  form: FormGroup;
+  @Input('formGroup') form: FormGroup;
+  valuesChangesSubscription: Subscription;
 
   constructor(private readonly fb: FormBuilder) { };
 
   ngOnInit(): void {
-    this.initializeForm()
+    this.initializeListeners();
+    this.editFormControls()
+  };
+
+  private initializeListeners(): void {
+    this.valuesChangesSubscription = this.form.valueChanges.subscribe(() => {
+      this.editFormControls()
+    });
+  };
+
+  private editFormControls(): void {
+    const amountControl = this.form.get('change').get('amount');
+    const changeControl = this.form.get('change');
+    this.form.get('type').value === OrderFormPaymentTypes.CASH ? changeControl.enable({ emitEvent: false }) : changeControl.disable({ emitEvent: false });
+    this.form.get('change').get('type').value === OrderFormPaymentChangeTypes.WITH_CHANGE ? amountControl.enable({ emitEvent: false }) : amountControl.disable({ emitEvent: false });
   }
 
-  private initializeForm(): void {
-    this.form = new FormGroup({
-      type: new FormControl(OrderFormPaymentTypes.CASH),
-      change: new FormGroup({
-        type: new FormControl(OrderFormPaymentChangeTypes.WITHOUT_CHANGE),
-        change: new FormControl('')
-      })
-    });
+  ngOnDestroy(): void {
+    this.valuesChangesSubscription.unsubscribe();
   };
 };

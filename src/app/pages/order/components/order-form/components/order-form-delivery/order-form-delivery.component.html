@@ -28,19 +28,19 @@
     <fieldset class="form-input fieldset address__inner">
       <fieldset class="form-input fieldset address-input">
         <label class="mini-text">Дом*</label>
-        <input type="text" placeholder="Дом" formControlName="house" [patterns]="customPatterns" [mask]="'0RRR'">
+        <input type="text" placeholder="Дом" formControlName="house" [patterns]="customPatterns" [mask]="'RRRR'">
       </fieldset>
       <fieldset class="form-input fieldset address-input">
         <label class="mini-text">Подъезд*</label>
-        <input type="text" placeholder="Подъезд" formControlName="approach" [mask]="'00'">
+        <input type="text" placeholder="Подъезд" formControlName="approach" [mask]="'99'">
       </fieldset>
       <fieldset class="form-input fieldset address-input">
         <label class="mini-text">Этаж</label>
-        <input type="text" placeholder="Этаж" formControlName="floor" [mask]="'00'">
+        <input type="text" placeholder="Этаж" formControlName="floor" [mask]="'99'">
       </fieldset>
       <fieldset class="form-input fieldset">
         <label class="mini-text">Квартира</label>
-        <input type="text" placeholder="Квартира" formControlName="flat" [mask]="'0000'">
+        <input type="text" placeholder="Квартира" formControlName="flat" [mask]="'9999'">
       </fieldset>
     </fieldset>
   </fieldset>

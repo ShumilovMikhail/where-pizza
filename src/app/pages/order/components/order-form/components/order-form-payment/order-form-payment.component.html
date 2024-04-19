@@ -16,7 +16,7 @@
       </label>
     </fieldset>
   </fieldset>
-  <fieldset class="fieldset form-inner" formGroupName="change">
+  <fieldset class="fieldset form-inner" formGroupName="change" *ngIf="this.form.get('type').value === 'Наличными'">
     <h3>Сдача</h3>
     <fieldset class="fieldset">
       <label class="radio-button">
@@ -32,7 +32,7 @@
         </div>
       </label>
       <div class="change-input__container" *ngIf="form.get('change').get('type').value === 'Сдача с'">
-        <input type="text" [mask]="'0000000000'" class="change-input" placeholder="0" formControlName="change">
+        <input type="text" [mask]="'99999'" class="change-input" placeholder="0" formControlName="amount">
       </div>
     </fieldset>
   </fieldset>

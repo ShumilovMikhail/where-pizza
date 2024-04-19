@@ -1,10 +1,10 @@
 <div class="order-form__container">
   <div class="order-form">
     <div class="form">
-      <app-order-form-user-info></app-order-form-user-info>
-      <app-order-form-delivery></app-order-form-delivery>
-      <app-order-form-payment></app-order-form-payment>
-      <app-order-form-comment></app-order-form-comment>
+      <app-order-form-user-info [formGroup]="form.get('userInfo')"></app-order-form-user-info>
+      <app-order-form-delivery [formGroup]="form.get('delivery')"></app-order-form-delivery>
+      <app-order-form-payment [formGroup]="form.get('payment')"></app-order-form-payment>
+      <app-order-form-comment [formGroup]="form"></app-order-form-comment>
     </div>
     <div class="bottom">
       <h4 class="price">Итого: {{totalPrice$ | async}}₽</h4>

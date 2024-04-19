@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import { NgxMaskPatterns } from "../types/ngxMaskPatterns.interface";
 
 @Injectable({ providedIn: 'root' })
 export class UtilsService {
-  public customPatterns: NgxMaskPatterns = { 'R': { pattern: new RegExp(/^[а-яёА-ЯЁ0-9]+$/) }, '0': { pattern: new RegExp(/^\d+$/) } };
+  public customPatterns = { 'R': { pattern: new RegExp(/[а-яА-Я0-9]+/), optional: true }, '0': { pattern: new RegExp(/^\d+$/) } };
   public deepEqual(obj1: unknown, obj2: unknown): boolean {
     if (obj1 === obj2) {
       return true;

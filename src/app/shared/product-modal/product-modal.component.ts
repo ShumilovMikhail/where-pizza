@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { Product } from '../types/product.interface';
 import { ProductsSettingsType } from '../types/productsSettings.type';
-import { CustomProduct } from '../types/customProduct.interface';
 import { CustomProductSetting } from '../types/customProductSetting.interface';
-import { Store } from '@ngrx/store';
 import { addProductAction } from '../cart/store/actions/addProduct.action';
 import { ProductFormAdapterService } from './services/product-form-adapter.service';
 import { ProductForm } from './types/productForm.interface';
@@ -15,12 +15,13 @@ import { ProductForm } from './types/productForm.interface';
   templateUrl: './product-modal.component.html',
   styleUrl: './product-modal.component.scss'
 })
-export class ProductModalComponent implements OnInit {
+export class ProductModalComponent implements OnInit, OnDestroy {
   @Input('product') product: Product;
   @Input('categorySettings') categorySettings: ProductsSettingsType | null;
 
   form: FormGroup;
   totalPrice: number;
+  valueChangesSubscription: Subscription;
 
   constructor(private fb: FormBuilder, private readonly store: Store, private productFormAdapterService: ProductFormAdapterService) { };
 
@@ -76,7 +77,7 @@ export class ProductModalComponent implements OnInit {
 
 
   private initializeListeners() {
-    this.form.valueChanges.subscribe(() => {
+    this.valueChangesSubscription = this.form.valueChanges.subscribe(() => {
       this.changePrice()
     });
   };
@@ -92,5 +93,9 @@ export class ProductModalComponent implements OnInit {
     }, 0)
 
     this.totalPrice = this.product.price + toppingsPrice + settingsPrice;
+  };
+
+  ngOnDestroy(): void {
+    this.valueChangesSubscription.unsubscribe();
   };
 };
