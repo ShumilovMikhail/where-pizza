@@ -1,0 +1,16 @@
+@import '../../../../../../../variables';
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+textarea {
+  width: 850px;
+  height: 200px;
+  resize: none;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 1px solid $lineGray;
+}

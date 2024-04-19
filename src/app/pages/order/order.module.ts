@@ -13,6 +13,8 @@ import { OrderFormComponent } from './components/order-form/order-form.component
 import { OrderFormUserInfoComponent } from './components/order-form/components/order-form-user-info/order-form-user-info.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { OrderFormDeliveryComponent } from './components/order-form/components/order-form-delivery/order-form-delivery.component';
+import { OrderFormPaymentComponent } from './components/order-form/components/order-form-payment/order-form-payment.component';
+import { OrderFormCommentComponent } from './components/order-form/components/order-form-comment/order-form-comment.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { OrderFormDeliveryComponent } from './components/order-form/components/o
     OrderFormComponent,
     OrderFormUserInfoComponent,
     OrderFormDeliveryComponent,
+    OrderFormPaymentComponent,
+    OrderFormCommentComponent,
   ],
   imports: [
     CommonModule,

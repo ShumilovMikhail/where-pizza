@@ -1,0 +1,39 @@
+<form [formGroup]="form">
+  <fieldset class="fieldset form-inner">
+    <h3>Оплата</h3>
+    <fieldset class="fieldset">
+      <label class="radio-button">
+        <input type="radio" value="Наличными" formControlName="type">
+        <div>
+          Наличными
+        </div>
+      </label>
+      <label class="radio-button">
+        <input type="radio" value="Картой" formControlName="type">
+        <div>
+          Картой
+        </div>
+      </label>
+    </fieldset>
+  </fieldset>
+  <fieldset class="fieldset form-inner" formGroupName="change">
+    <h3>Сдача</h3>
+    <fieldset class="fieldset">
+      <label class="radio-button">
+        <input type="radio" value="Без сдачи" formControlName="type">
+        <div>
+          Без сдачи
+        </div>
+      </label>
+      <label class="radio-button">
+        <input type="radio" value="Сдача с" formControlName="type">
+        <div>
+          Сдача с
+        </div>
+      </label>
+      <div class="change-input__container" *ngIf="form.get('change').get('type').value === 'Сдача с'">
+        <input type="text" [mask]="'0000000000'" class="change-input" placeholder="0" formControlName="change">
+      </div>
+    </fieldset>
+  </fieldset>
+</form>

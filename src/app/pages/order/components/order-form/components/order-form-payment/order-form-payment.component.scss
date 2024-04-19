@@ -1,0 +1,44 @@
+@import '../../../../../../../variables';
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  fieldset {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    height: 50px;
+  }
+
+  label {
+    margin-top: 25px;
+    transform: translateY(-50%);
+  }
+}
+
+.change-input__container {
+  position: relative;
+
+  &::after {
+    content: '₽';
+    display: block;
+    position: absolute;
+    color: $gray;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+  }
+}
+
+.change-input {
+  @extend %input;
+  width: 160px;
+}
