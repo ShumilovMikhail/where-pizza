@@ -9,6 +9,7 @@ import { OrderFormDeliverTypes } from './types/orderFormDeliverTypes';
 import { collectionTimeValidator } from './validators/collectionTime.validator';
 import { OrderFormPaymentTypes } from './types/orderFormPaymentTypes';
 import { OrderFormPaymentChangeTypes } from './types/orderFormPaymentChangeTypes';
+import { OrderFormService } from './services/orderFormStore.service';
 
 @Component({
   selector: 'app-order-form',
@@ -21,11 +22,15 @@ export class OrderFormComponent implements OnInit {
 
   totalPrice$: Observable<number>;
 
-  constructor(private readonly store: Store, private fb: FormBuilder) { }
+  constructor(private readonly store: Store, private fb: FormBuilder, private orderFormService: OrderFormService) { }
 
   ngOnInit(): void {
     this.totalPrice$ = this.store.select(cartTotalPriceSelector);
     this.initializeForm();
+  };
+
+  onSubmit(): void {
+    this.orderFormService.sendOrderForm(this.form.value);
   };
 
   private initializeForm(): void {

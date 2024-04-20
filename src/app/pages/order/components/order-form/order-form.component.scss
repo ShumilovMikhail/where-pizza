@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-top: 30px;
 }
 
 .order-form {
@@ -11,6 +12,17 @@
   flex-direction: column;
   width: 850px;
   gap: 20px;
+}
+
+.form {
+  div:not(:first-child) {
+    padding-top: 20px;
+    border-top: 1px solid $lineGray;
+  }
+
+  div:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .bottom {

@@ -1,14 +1,22 @@
 <div class="order-form__container">
   <div class="order-form">
     <div class="form">
-      <app-order-form-user-info [formGroup]="form.get('userInfo')"></app-order-form-user-info>
-      <app-order-form-delivery [formGroup]="form.get('delivery')"></app-order-form-delivery>
-      <app-order-form-payment [formGroup]="form.get('payment')"></app-order-form-payment>
-      <app-order-form-comment [formGroup]="form"></app-order-form-comment>
+      <div>
+        <app-order-form-user-info [formGroup]="form.get('userInfo')"></app-order-form-user-info>
+      </div>
+      <div>
+        <app-order-form-delivery [formGroup]="form.get('delivery')"></app-order-form-delivery>
+      </div>
+      <div>
+        <app-order-form-payment [formGroup]="form.get('payment')"></app-order-form-payment>
+      </div>
+      <div>
+        <app-order-form-comment [formGroup]="form"></app-order-form-comment>
+      </div>
     </div>
     <div class="bottom">
       <h4 class="price">Итого: {{totalPrice$ | async}}₽</h4>
-      <button class="btn order-button">Оформить заказ</button>
+      <button class="btn order-button" [disabled]="!form.valid" (click)="onSubmit()">Оформить заказ</button>
     </div>
   </div>
 </div>

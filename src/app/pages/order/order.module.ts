@@ -15,6 +15,11 @@ import { NgxMaskModule } from 'ngx-mask';
 import { OrderFormDeliveryComponent } from './components/order-form/components/order-form-delivery/order-form-delivery.component';
 import { OrderFormPaymentComponent } from './components/order-form/components/order-form-payment/order-form-payment.component';
 import { OrderFormCommentComponent } from './components/order-form/components/order-form-comment/order-form-comment.component';
+import { HttpClientJsonpModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { SendOrderEffect } from './store/effects/sendOrderEffect';
 
 
 @NgModule({
@@ -36,6 +41,9 @@ import { OrderFormCommentComponent } from './components/order-form/components/or
     ProductsCarouselModule,
     NgxMaskModule.forChild(),
     ReactiveFormsModule,
+    HttpClientJsonpModule,
+    StoreModule.forFeature('order', reducers),
+    EffectsModule.forFeature([SendOrderEffect])
   ]
 })
 export class OrderModule { }

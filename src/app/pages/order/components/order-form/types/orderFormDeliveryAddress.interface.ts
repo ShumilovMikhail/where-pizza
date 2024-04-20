@@ -1,7 +1,7 @@
 export interface OrderFormDeliveryAddress {
   street: string
-  approach: string
   house: string
-  floor: string
+  approach: string
   flat: string
+  floor: string
 }
