@@ -14,4 +14,6 @@ export enum ActionTypes {
   LOAD_PRODUCTS_FROM_STORAGE = '[cart] Load products from storage',
   LOAD_PRODUCTS_FROM_STORAGE_SUCCESS = '[cart] Load products from storage success',
   LOAD_PRODUCTS_FROM_STORAGE_FAILURE = '[cart] Load products from storage failure',
+
+  RESET_CART = '[cart] reset'
 };

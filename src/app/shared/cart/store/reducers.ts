@@ -6,6 +6,7 @@ import { CartProduct } from "../../types/cartProduct.interface";
 import { loadProductsFromStorageAction, loadProductsFromStorageFailureAction, loadProductsFromStorageSuccessAction } from "./actions/loadProductsFromStorage.action";
 import { incProductSuccessAction } from "./actions/incProduct.action";
 import { decProductSuccessAction } from "./actions/decProduct.action";
+import { resetCartAction } from "./actions/sync.action";
 
 const initialState: CartState = {
   isLoading: false,
@@ -71,6 +72,11 @@ const cartReducer = createReducer(initialState,
         totalPrice
       }
     )
+  }),
+  on(resetCartAction, (state): CartState => {
+    return ({
+      ...initialState
+    })
   })
 )
 
