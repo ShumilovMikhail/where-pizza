@@ -1,12 +1,15 @@
 import { Action, createReducer, on } from "@ngrx/store";
+import { routerNavigatedAction } from "@ngrx/router-store";
+
 import { OrderState } from "../types/orderState.interface";
 import { sendOrderAction, sendOrderFailureAction, sendOrderSuccessAction } from "./actions/sendOrder.action";
 import { Order } from "../types/order.interface";
-import { SendOrderResponse } from "../types/sendOrderReponse.interface";
+import { OrderNumber } from "../types/orderNumber.interface";
 
 const initialState: OrderState = {
   isLoading: false,
-  error: null
+  error: null,
+  isSuccess: false
 }
 
 
@@ -18,11 +21,12 @@ const orderReducer = createReducer(initialState,
       error: null,
     });
   }),
-  on(sendOrderSuccessAction, (state, payload: { response: SendOrderResponse }) => {
+  on(sendOrderSuccessAction, (state, payload: OrderNumber) => {
     return ({
       ...state,
       isLoading: false,
       error: null,
+      isSuccess: true
     });
   }),
   on(sendOrderFailureAction, (state) => {
@@ -32,6 +36,8 @@ const orderReducer = createReducer(initialState,
       error: 'send order error',
     });
   }),
+
+  on(routerNavigatedAction, (state) => initialState)
 );
 
 

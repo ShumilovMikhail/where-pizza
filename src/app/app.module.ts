@@ -14,6 +14,7 @@ import { ProfileModule } from './pages/profile/profile.module';
 import { FeedModule } from './pages/feed/feed.module';
 import { OrderModule } from './pages/order/order.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { OrderAcceptedModule } from './pages/order-accepted/order-accepted.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     TopBarModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     NgxMaskModule.forRoot(),
+    OrderAcceptedModule
   ],
   providers: [
     provideAnimationsAsync()
