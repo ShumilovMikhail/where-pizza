@@ -10,6 +10,7 @@ import { collectionTimeValidator } from './validators/collectionTime.validator';
 import { OrderFormPaymentTypes } from './types/orderFormPaymentTypes';
 import { OrderFormPaymentChangeTypes } from './types/orderFormPaymentChangeTypes';
 import { OrderFormService } from './services/orderFormStore.service';
+import { isLoadingSelector } from '../../store/selectors';
 
 @Component({
   selector: 'app-order-form',
@@ -21,11 +22,13 @@ export class OrderFormComponent implements OnInit {
   form: FormGroup;
 
   totalPrice$: Observable<number>;
+  isLoading$: Observable<boolean>;
 
   constructor(private readonly store: Store, private fb: FormBuilder, private orderFormService: OrderFormService) { }
 
   ngOnInit(): void {
     this.totalPrice$ = this.store.select(cartTotalPriceSelector);
+    this.isLoading$ = this.store.select(isLoadingSelector);
     this.initializeForm();
   };
 

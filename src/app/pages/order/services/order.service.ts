@@ -5,19 +5,18 @@ import { environment } from "../../../../environments/environment.development";
 import { Observable, map, switchMap, take } from "rxjs";
 import { GetCountResponse } from "../types/getCountResponse.interface";
 import { SendOrderResponse } from "../types/sendOrderResponse.interface";
-import { OrderNumber } from "../types/orderNumber.interface";
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
 
   constructor(private readonly http: HttpClient) { };
 
-  public sendOrder(order: Order): Observable<OrderNumber> {
+  public sendOrder(order: Order): Observable<SendOrderResponse> {
     return this.getCount().pipe(
       switchMap((count: number) => {
         const fullUrl = `https://${environment.projectID}.firebaseio.com/order/${count + 1}.json`;
         this.updateCount(count);
-        return this.http.put<SendOrderResponse>(fullUrl, order).pipe(map(() => ({ orderNumber: count + 1 })));
+        return this.http.put<Order>(fullUrl, order).pipe(map((order: Order) => ({ ...order, orderNumber: count + 1 })));
       })
     );
   };

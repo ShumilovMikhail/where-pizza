@@ -14,6 +14,7 @@ import { ChangeUserPasswordComponent } from './components/profile-settings/compo
 import { ProfileVerificationEmailComponent } from './components/profile-settings/components/profile-verification-email/profile-verification-email.component';
 import { ModalModule } from '../../shared/modal/modal.module';
 import { VerificationEmailModule } from '../../shared/verification-email/verification-email.module';
+import { ProfileHistoryComponent } from './components/profile-history/profile-history.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { VerificationEmailModule } from '../../shared/verification-email/verific
     ChangeUserInfoComponent,
     ChangeUserPasswordComponent,
     ProfileVerificationEmailComponent,
+    ProfileHistoryComponent,
   ],
   imports: [
     CommonModule,

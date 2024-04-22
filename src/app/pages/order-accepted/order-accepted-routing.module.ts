@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { OrderAcceptedComponent } from "./order-accepted.component";
 
 const routes: Routes = [
+  { path: 'order-accepted', redirectTo: '/', pathMatch: 'full' },
   { path: 'order-accepted/:id', component: OrderAcceptedComponent }
 ]
 

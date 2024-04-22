@@ -4,7 +4,7 @@ import { routerNavigatedAction } from "@ngrx/router-store";
 import { OrderState } from "../types/orderState.interface";
 import { sendOrderAction, sendOrderFailureAction, sendOrderSuccessAction } from "./actions/sendOrder.action";
 import { Order } from "../types/order.interface";
-import { OrderNumber } from "../types/orderNumber.interface";
+import { SendOrderResponse } from "../types/sendOrderResponse.interface";
 
 const initialState: OrderState = {
   isLoading: false,
@@ -21,7 +21,7 @@ const orderReducer = createReducer(initialState,
       error: null,
     });
   }),
-  on(sendOrderSuccessAction, (state, payload: OrderNumber) => {
+  on(sendOrderSuccessAction, (state, payload: SendOrderResponse) => {
     return ({
       ...state,
       isLoading: false,

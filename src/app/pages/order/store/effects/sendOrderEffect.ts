@@ -5,7 +5,7 @@ import { catchError, map, of, switchMap, tap } from "rxjs";
 
 import { sendOrderAction, sendOrderFailureAction, sendOrderSuccessAction } from "../actions/sendOrder.action";
 import { OrderService } from "../../services/order.service";
-import { OrderNumber } from "../../types/orderNumber.interface";
+import { SendOrderResponse } from "../../types/sendOrderResponse.interface";
 
 @Injectable()
 export class SendOrderEffect {
@@ -14,7 +14,7 @@ export class SendOrderEffect {
     ofType(sendOrderAction),
     switchMap(({ order }) => {
       return this.orderService.sendOrder(order).pipe(
-        map((orderNumber: OrderNumber) => {
+        map((orderNumber: SendOrderResponse) => {
           return sendOrderSuccessAction(orderNumber);
         }),
         catchError(() => {
@@ -26,7 +26,7 @@ export class SendOrderEffect {
 
   sendOrderAfter$ = createEffect(() => this.actions$.pipe(
     ofType(sendOrderSuccessAction),
-    tap((orderNumber: OrderNumber) => this.router.navigate([`/order-accepted/${orderNumber.orderNumber}`],))
+    tap((response: SendOrderResponse) => this.router.navigate([`/order-accepted/${response.orderNumber}`],))
   ), { dispatch: false });
 
   constructor(private readonly actions$: Actions, private readonly orderService: OrderService, private readonly router: Router) { };
