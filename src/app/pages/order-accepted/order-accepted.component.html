@@ -1,1 +1,8 @@
-<p>order-accepted works!</p>
+<div class="container order-accepted">
+  <img src="/assets/images/order-accepted.png" alt="order accepted" class="image">
+  <div class="content">
+    <h3>Заказ №{{orderNumber}} принят</h3>
+    <p class="text">Спасибо за заказ! <br> С вами скоро свяжутся для подтверждения заказа</p>
+    <a class="btn link" [routerLink]="['/']">Вернуться на главную</a>
+  </div>
+</div>

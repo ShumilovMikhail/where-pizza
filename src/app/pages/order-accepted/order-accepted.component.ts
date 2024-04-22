@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-accepted',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class OrderAcceptedComponent {
 
+  orderNumber: string = this.route.snapshot.params['id'];
+
+  constructor(private route: ActivatedRoute) { };
 }

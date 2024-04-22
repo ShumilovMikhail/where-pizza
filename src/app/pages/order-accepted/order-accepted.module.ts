@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderAcceptedComponent } from './order-accepted.component';
 import { OrderAcceptedRouting } from './order-accepted-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,6 +12,7 @@ import { OrderAcceptedRouting } from './order-accepted-routing.module';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     OrderAcceptedRouting
   ]
 })
