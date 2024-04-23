@@ -84,11 +84,6 @@ $lineGray: #F0F0F0;
 }
 
 %errorMessage {
-  position: absolute;
-  left: 0;
-  bottom: -25px;
-  margin-left: 10px;
-
   p {
     color: $red;
     margin-bottom: 4px;

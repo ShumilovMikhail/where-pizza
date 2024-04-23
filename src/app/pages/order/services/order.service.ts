@@ -16,7 +16,7 @@ export class OrderService {
       switchMap((count: number) => {
         const fullUrl = `https://${environment.projectID}.firebaseio.com/order/${count + 1}.json`;
         this.updateCount(count);
-        return this.http.put<Order>(fullUrl, order).pipe(map((order: Order) => ({ ...order, orderNumber: count + 1 })));
+        return this.http.put<SendOrderResponse>(fullUrl, { ...order, orderNumber: count + 1 });
       })
     );
   };

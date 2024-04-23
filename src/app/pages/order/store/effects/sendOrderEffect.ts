@@ -6,6 +6,8 @@ import { catchError, map, of, switchMap, tap } from "rxjs";
 import { sendOrderAction, sendOrderFailureAction, sendOrderSuccessAction } from "../actions/sendOrder.action";
 import { OrderService } from "../../services/order.service";
 import { SendOrderResponse } from "../../types/sendOrderResponse.interface";
+import { Store } from "@ngrx/store";
+import { addOrderToHistoryAction } from "../../../profile/components/profile-history/store/actions/addOrderToHistory.action";
 
 @Injectable()
 export class SendOrderEffect {
@@ -14,8 +16,8 @@ export class SendOrderEffect {
     ofType(sendOrderAction),
     switchMap(({ order }) => {
       return this.orderService.sendOrder(order).pipe(
-        map((orderNumber: SendOrderResponse) => {
-          return sendOrderSuccessAction(orderNumber);
+        map((order: SendOrderResponse) => {
+          return sendOrderSuccessAction({ order });
         }),
         catchError(() => {
           return of(sendOrderFailureAction());
@@ -26,8 +28,11 @@ export class SendOrderEffect {
 
   sendOrderAfter$ = createEffect(() => this.actions$.pipe(
     ofType(sendOrderSuccessAction),
-    tap((response: SendOrderResponse) => this.router.navigate([`/order-accepted/${response.orderNumber}`],))
+    tap(({ order }) => {
+      this.router.navigate([`/order-accepted/${order.orderNumber}`]);
+      this.store.dispatch(addOrderToHistoryAction({ order }))
+    })
   ), { dispatch: false });
 
-  constructor(private readonly actions$: Actions, private readonly orderService: OrderService, private readonly router: Router) { };
+  constructor(private readonly actions$: Actions, private readonly orderService: OrderService, private readonly router: Router, private readonly store: Store) { };
 };

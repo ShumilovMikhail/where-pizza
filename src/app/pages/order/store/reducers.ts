@@ -21,7 +21,7 @@ const orderReducer = createReducer(initialState,
       error: null,
     });
   }),
-  on(sendOrderSuccessAction, (state, payload: SendOrderResponse) => {
+  on(sendOrderSuccessAction, (state, payload: { order: SendOrderResponse }) => {
     return ({
       ...state,
       isLoading: false,
