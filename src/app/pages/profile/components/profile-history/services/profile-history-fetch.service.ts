@@ -18,13 +18,25 @@ export class ProfileHistoryFetchService {
     return this.store.select(userDataSelector).pipe(
       switchMap((userData: UserData | null) => {
         if (userData === null) {
-          throw new Error('not authenticate')
+          throw new Error('not authenticate');
         };
         return this.getCount(userData.localId).pipe(switchMap((count: number) => {
-          const fullUrl = `https://${environment.projectID}.firebaseio.com/history/${userData.localId}/orders/${count + 1}.json`;
+          const fullUrl = `https://${environment.projectID}.firebaseio.com/history/${userData.localId}/orders/${count}.json`;
           this.updateCount(count, userData.localId)
           return this.http.put<ProfileHistoryOrder>(fullUrl, order)
         }));
+      })
+    );
+  };
+
+  public getProfileHistoryOrders(): Observable<ProfileHistoryOrder[]> {
+    return this.store.select(userDataSelector).pipe(
+      switchMap((userData: UserData | null) => {
+        if (userData === null) {
+          throw new Error('not authenticate');
+        };
+        const fullUrl = `https://${environment.projectID}.firebaseio.com/history/${userData.localId}.json`;
+        return this.http.get<GetProfileHistoryResponse>(fullUrl).pipe(map((response) => response.orders || []));
       })
     );
   };

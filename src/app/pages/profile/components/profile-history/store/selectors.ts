@@ -6,3 +6,4 @@ const profileHistoryFeature = createFeatureSelector<ProfileHistoryState>('profil
 
 export const isLoadingSelector = createSelector(profileHistoryFeature, (state: ProfileHistoryState) => state.isLoading);
 export const errorSelector = createSelector(profileHistoryFeature, (state: ProfileHistoryState) => state.error);
+export const profileHistoryOrdersSelector = createSelector(profileHistoryFeature, (state: ProfileHistoryState) => state.orders);

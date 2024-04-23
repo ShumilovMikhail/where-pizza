@@ -19,6 +19,7 @@ import { ProfileHistoryComponent } from './components/profile-history/profile-hi
 import { reducers as reducersProfileHistory } from './components/profile-history/store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AddOrderToHistoryEffect } from './components/profile-history/store/effects/addOrderToHistory.effect';
+import { GetProfileHistoryOrdersEffect } from './components/profile-history/store/effects/getProfileHistoryOrders.effect';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { AddOrderToHistoryEffect } from './components/profile-history/store/effe
     VerificationEmailModule,
     NgxMaskModule.forChild(),
     HttpClientModule,
-    EffectsModule.forFeature([AddOrderToHistoryEffect])
+    EffectsModule.forFeature([AddOrderToHistoryEffect, GetProfileHistoryOrdersEffect])
   ]
 })
 export class ProfileModule { }

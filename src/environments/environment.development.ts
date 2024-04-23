@@ -1,4 +1,5 @@
 export const environment = {
   API: 'AIzaSyApCxCeXDOqHaSVPNMoKGNQxNrv02YHrlw',
-  projectID: 'where-pizza-d1393-default-rtdb'
-}
+  projectID: 'where-pizza-d1393-default-rtdb',
+  ProfileHistoryLimit: 4
+};
