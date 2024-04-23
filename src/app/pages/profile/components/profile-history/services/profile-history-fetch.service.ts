@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Store } from "@ngrx/store";
-import { Observable, map, of, switchMap, take } from "rxjs";
+import { Observable, map, switchMap, take } from "rxjs";
+
 import { ProfileHistoryOrder } from "../types/profileHistoryOrder.interface";
 import { userDataSelector } from "../../../../../shared/auth/store/selectors";
 import { UserData } from "../../../../../shared/types/userData.interface";
@@ -9,7 +10,7 @@ import { environment } from "../../../../../../environments/environment.developm
 import { GetProfileHistoryResponse } from "../types/getProfileHistoryReponse.interface";
 
 @Injectable({ providedIn: 'root' })
-export class ProfileHistoryService {
+export class ProfileHistoryFetchService {
 
   constructor(private readonly store: Store, private readonly http: HttpClient) { }
 
