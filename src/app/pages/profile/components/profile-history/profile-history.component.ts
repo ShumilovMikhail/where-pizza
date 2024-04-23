@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { environment } from '../../../../../environments/environment.development';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+
 import { profileHistoryOrdersSelector } from './store/selectors';
 import { ProfileHistoryOrder } from './types/profileHistoryOrder.interface';
 
@@ -12,8 +12,7 @@ import { ProfileHistoryOrder } from './types/profileHistoryOrder.interface';
 })
 export class ProfileHistoryComponent implements OnInit, OnDestroy {
 
-  limit: number = environment.ProfileHistoryLimit;
-  ordersQuantity: number = 0;
+  orders: ProfileHistoryOrder[];
 
   private profileHistoryOrdersSubscription: Subscription;
 
@@ -21,7 +20,7 @@ export class ProfileHistoryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.profileHistoryOrdersSubscription = this.store.select(profileHistoryOrdersSelector).subscribe((orders: ProfileHistoryOrder[]) => {
-      this.ordersQuantity = orders.length;
+      this.orders = orders;
     });
   };
 
