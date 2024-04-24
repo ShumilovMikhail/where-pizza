@@ -21,6 +21,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AddOrderToHistoryEffect } from './components/profile-history/store/effects/addOrderToHistory.effect';
 import { GetProfileHistoryOrdersEffect } from './components/profile-history/store/effects/getProfileHistoryOrders.effect';
 import { PaginationModule } from '../../shared/pagination/pagination.module';
+import { ProfileHistoryFeedComponent } from './components/profile-history/components/profile-history-feed/profile-history-feed.component';
+import { OrderComponent } from './components/profile-history/components/profile-history-feed/components/order/order.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { PaginationModule } from '../../shared/pagination/pagination.module';
     ChangeUserPasswordComponent,
     ProfileVerificationEmailComponent,
     ProfileHistoryComponent,
+    ProfileHistoryFeedComponent,
+    OrderComponent,
   ],
   imports: [
     CommonModule,

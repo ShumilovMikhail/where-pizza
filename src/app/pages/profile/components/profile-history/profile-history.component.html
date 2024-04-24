@@ -1,3 +1,7 @@
-<p>profile-history works!</p>
-<app-pagination [limit]="limit" [currentPage]="currentPage" [total]="orders.length"
-  *ngIf="orders.length > limit"></app-pagination>
+<div class="profile-history">
+
+  <div class="pagination">
+    <app-pagination [limit]="limit" [currentPage]="currentPage" [total]="orders.length"
+      *ngIf="orders.length > limit"></app-pagination>
+  </div>
+</div>
