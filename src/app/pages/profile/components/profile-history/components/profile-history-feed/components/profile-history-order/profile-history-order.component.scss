@@ -1,0 +1,139 @@
+@import '../../../../../../../../../variables';
+
+.order {
+  width: 100%;
+  background-color: $white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+
+  .inner:not(:last-child) {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $lineGray;
+  }
+
+  .inner:not(:first-child) {
+    margin-top: 22px;
+  }
+}
+
+.order-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .line {
+    width: 4px;
+    height: 44px;
+    background-color: $green;
+  }
+
+  table {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .cell-title {
+        color: $gray;
+      }
+
+      td {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  }
+
+  button {
+    .toggle {
+      width: 16px;
+      height: 16px;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 1px;
+        background-color: $primary;
+        top: 50%;
+        left: 50%;
+        transform: rotate(-45deg) translateX(-4px);
+
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 1px;
+        background-color: $primary;
+        top: 50%;
+        left: 50%;
+        transform: rotate(45deg) translateX(4px);
+      }
+    }
+  }
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 40px 240px 268px 100px auto;
+  gap: 16px;
+
+  .image {
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .count {
+    box-sizing: border-box;
+    height: 40px;
+    background-color: #FFEEE2;
+    color: $primary;
+  }
+
+  .price {
+    color: $primary;
+  }
+
+  p {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.order-date {
+  color: $gray;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+
+  button {
+    transition: 0.3s color;
+    color: $primary;
+
+    &:hover {
+      color: $primaryHover;
+    }
+  }
+}

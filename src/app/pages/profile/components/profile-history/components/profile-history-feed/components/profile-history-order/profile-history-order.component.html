@@ -1,1 +1,51 @@
-<p>profile-history-order works!</p>
+<div class="order">
+  <div class="order-info inner">
+    <div class="line"></div>
+    <table>
+      <tr>
+        <td class="mini-text cell-title">Заказ</td>
+        <td>
+          <p class="order-number text">№{{order.orderNumber}}</p>
+          <div class="order-date mini-text">{{order.date}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="mini-text cell-title">Сумма</td>
+        <td class="text">{{order.totalPrice}}₽</td>
+      </tr>
+      <tr>
+        <td class="mini-text cell-title">Оплачено</td>
+        <td class="text">{{order.payment.type}}</td>
+      </tr>
+      <tr *ngIf="order.payment.change.type === 'Сдача с'">
+        <td class="mini-text cell-title">Сдача</td>
+        <td class="text">{{order.payment.change.amount}}</td>
+      </tr>
+    </table>
+    <button class="btn">
+      <div class="toggle"></div>
+    </button>
+  </div>
+  <div class="inner">
+    <p class="order-address text">
+      {{order.delivery.type === 'Самовывоз' ? 'Самовывоз' : (order.delivery.address | address) }}
+    </p>
+  </div>
+
+  <div class="products inner">
+    <div class="product" *ngFor="let cartProduct of order.products">
+      <div class="image">
+        <img [src]="cartProduct.product.product.image" alt="">
+      </div>
+      <p class="subtitle-secondary">{{cartProduct.product.product.name}}</p>
+      <span class="settings mini-text">
+        <p *ngIf="cartProduct.product.settings">{{cartProduct.product.settings | settings}}</p>
+      </span>
+      <p class="count">{{cartProduct.count}} шт.</p>
+      <p class="price">{{cartProduct.totalPrice}}₽</p>
+    </div>
+  </div>
+  <div class="button-container inner">
+    <button class="btn text">Повторить заказ</button>
+  </div>
+</div>

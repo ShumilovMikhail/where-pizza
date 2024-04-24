@@ -4,16 +4,13 @@
     <div></div>
   </button>
   <ul class="pages">
-    <li class="page block text"
-      [routerLink]="['../',currentPage > pages[pages.length - 3] ? pages[pages.length - 3] : currentPage]" [ngClass]="{
+    <li class="page block text" [ngClass]="{
       activate: currentPage < pages[pages.length - 2]
     }">{{currentPage > pages[pages.length - 3] ? pages[pages.length - 3] : currentPage}}</li>
-    <li class="page block text"
-      [routerLink]="['../',currentPage >= pages[pages.length - 2] ? pages[pages.length - 2] : currentPage + 1]"
-      [ngClass]="{
+    <li class="page block text" [ngClass]="{
       activate:  currentPage === pages[pages.length - 2]
     }"> {{currentPage >= pages[pages.length - 2] ? pages[pages.length - 2] : currentPage + 1}}</li>
-    <li class="page block text" [routerLink]="['../',pages[pages.length - 1]]" [ngClass]="{
+    <li class="page block text" [ngClass]="{
       activate: currentPage === pages[pages.length - 1]
     }"> {{pages[pages.length - 1]}}</li>
   </ul>

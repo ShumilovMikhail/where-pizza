@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { NgxMaskModule } from 'ngx-mask';
 import { ProfileComponent } from './profile.component';
@@ -17,12 +18,12 @@ import { ModalModule } from '../../shared/modal/modal.module';
 import { VerificationEmailModule } from '../../shared/verification-email/verification-email.module';
 import { ProfileHistoryComponent } from './components/profile-history/profile-history.component';
 import { reducers as reducersProfileHistory } from './components/profile-history/store/reducers';
-import { EffectsModule } from '@ngrx/effects';
 import { AddOrderToHistoryEffect } from './components/profile-history/store/effects/addOrderToHistory.effect';
 import { GetProfileHistoryOrdersEffect } from './components/profile-history/store/effects/getProfileHistoryOrders.effect';
 import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { ProfileHistoryFeedComponent } from './components/profile-history/components/profile-history-feed/profile-history-feed.component';
 import { ProfileHistoryOrderComponent } from './components/profile-history/components/profile-history-feed/components/profile-history-order/profile-history-order.component';
+import { PipesModule } from '../../shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ProfileHistoryOrderComponent } from './components/profile-history/compo
     NgxMaskModule.forChild(),
     HttpClientModule,
     EffectsModule.forFeature([AddOrderToHistoryEffect, GetProfileHistoryOrdersEffect]),
-    PaginationModule
+    PaginationModule,
+    PipesModule
   ]
 })
 export class ProfileModule { }

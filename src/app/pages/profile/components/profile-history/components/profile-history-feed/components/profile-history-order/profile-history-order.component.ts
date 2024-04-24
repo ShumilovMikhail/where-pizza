@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProfileHistoryOrder } from '../../../../types/profileHistoryOrder.interface';
 
 @Component({
   selector: 'app-profile-history-order',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './profile-history-order.component.scss'
 })
 export class ProfileHistoryOrderComponent {
+
+  @Input('order') order: ProfileHistoryOrder;
 
 }

@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { ActionTypes } from "../actionTypes";
-import { Order } from "../../types/order.interface";
+import { Order } from "../../../../shared/types/order.interface";
 import { SendOrderResponse } from "../../types/sendOrderResponse.interface";
 
 export const sendOrderAction = createAction(ActionTypes.SEND_ORDER, props<{ order: Order }>());

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Order } from "../types/order.interface";
+import { Order } from "../../../shared/types/order.interface";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../../environments/environment.development";
 import { Observable, map, switchMap, take } from "rxjs";

@@ -3,7 +3,7 @@ import { filter, take } from "rxjs";
 
 import { OrderForm } from "../types/orderForm.interface";
 import { OrderFormAdapterService } from "./orderFormAdapter.service";
-import { Order } from "../../../types/order.interface";
+import { Order } from "../../../../../shared/types/order.interface";
 import { Store } from "@ngrx/store";
 import { sendOrderAction } from "../../../store/actions/sendOrder.action";
 import { isSuccessSelector } from "../../../store/selectors";

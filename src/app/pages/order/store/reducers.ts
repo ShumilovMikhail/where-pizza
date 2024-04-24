@@ -3,7 +3,7 @@ import { routerNavigatedAction } from "@ngrx/router-store";
 
 import { OrderState } from "../types/orderState.interface";
 import { sendOrderAction, sendOrderFailureAction, sendOrderSuccessAction } from "./actions/sendOrder.action";
-import { Order } from "../types/order.interface";
+import { Order } from "../../../shared/types/order.interface";
 import { SendOrderResponse } from "../types/sendOrderResponse.interface";
 
 const initialState: OrderState = {

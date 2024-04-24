@@ -1,5 +1,6 @@
 <div class="profile-history">
 
+  <app-profile-history-feed [orders]="orders" *ngIf="orders.length > 0"></app-profile-history-feed>
   <div class="pagination">
     <app-pagination [limit]="limit" [currentPage]="currentPage" [total]="orders.length"
       *ngIf="orders.length > limit"></app-pagination>

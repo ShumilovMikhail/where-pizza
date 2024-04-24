@@ -1,1 +1,5 @@
-<p>profile-history-feed works!</p>
+<ul>
+  <li *ngFor="let order of ordersOnPage">
+    <app-profile-history-order [order]="order"></app-profile-history-order>
+  </li>
+</ul>

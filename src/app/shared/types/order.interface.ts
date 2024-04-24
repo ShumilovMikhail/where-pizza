@@ -1,4 +1,4 @@
-import { CartProduct } from "../../../shared/types/cartProduct.interface";
+import { CartProduct } from "./cartProduct.interface";
 import { OrderDelivery } from "./orderDelivery.interface";
 import { OrderPayment } from "./orderPayment.interface";
 import { OrderUserInfo } from "./orderUserInfo.interface";
