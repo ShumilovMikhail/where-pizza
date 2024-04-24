@@ -22,7 +22,7 @@ import { AddOrderToHistoryEffect } from './components/profile-history/store/effe
 import { GetProfileHistoryOrdersEffect } from './components/profile-history/store/effects/getProfileHistoryOrders.effect';
 import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { ProfileHistoryFeedComponent } from './components/profile-history/components/profile-history-feed/profile-history-feed.component';
-import { OrderComponent } from './components/profile-history/components/profile-history-feed/components/order/order.component';
+import { ProfileHistoryOrderComponent } from './components/profile-history/components/profile-history-feed/components/profile-history-order/profile-history-order.component';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { OrderComponent } from './components/profile-history/components/profile-
     ProfileVerificationEmailComponent,
     ProfileHistoryComponent,
     ProfileHistoryFeedComponent,
-    OrderComponent,
+    ProfileHistoryOrderComponent,
   ],
   imports: [
     CommonModule,
