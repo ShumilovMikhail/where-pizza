@@ -31,4 +31,8 @@ export class UtilsService {
 
     return true;
   };
+
+  public range(start: number, end: number): number[] {
+    return [...Array(end).keys()].map((el) => el + start);
+  };
 }

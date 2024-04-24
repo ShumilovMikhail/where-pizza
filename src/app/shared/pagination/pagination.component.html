@@ -1,0 +1,24 @@
+<div class="pagination">
+  <button class="btn link block pagination-button previous" [disabled]="currentPage === 1"
+    [routerLink]="['../', currentPage -1]">
+    <div></div>
+  </button>
+  <ul class="pages">
+    <li class="page block text"
+      [routerLink]="['../',currentPage > pages[pages.length - 3] ? pages[pages.length - 3] : currentPage]" [ngClass]="{
+      activate: currentPage < pages[pages.length - 2]
+    }">{{currentPage > pages[pages.length - 3] ? pages[pages.length - 3] : currentPage}}</li>
+    <li class="page block text"
+      [routerLink]="['../',currentPage >= pages[pages.length - 2] ? pages[pages.length - 2] : currentPage + 1]"
+      [ngClass]="{
+      activate:  currentPage === pages[pages.length - 2]
+    }"> {{currentPage >= pages[pages.length - 2] ? pages[pages.length - 2] : currentPage + 1}}</li>
+    <li class="page block text" [routerLink]="['../',pages[pages.length - 1]]" [ngClass]="{
+      activate: currentPage === pages[pages.length - 1]
+    }"> {{pages[pages.length - 1]}}</li>
+  </ul>
+  <button class="btn link block pagination-button next" [disabled]="currentPage === pages[pages.length - 1] "
+    [routerLink]="['../', currentPage + 1]">
+    <div></div>
+  </button>
+</div>
