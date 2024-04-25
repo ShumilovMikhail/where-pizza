@@ -16,7 +16,8 @@
     </div>
     <div class="bottom">
       <h4 class="price">Итого: {{totalPrice$ | async}}₽</h4>
-      <button class="btn order-button" [disabled]="!form.valid || (isLoading$ | async)" (click)="onSubmit()">Оформить
+      <button class="btn order-button" [disabled]="!form.valid || (isLoading$ | async) || (totalPrice$ | async) === 0"
+        (click)="onSubmit()">Оформить
         заказ</button>
     </div>
   </div>
