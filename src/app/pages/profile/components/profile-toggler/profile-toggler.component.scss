@@ -1,0 +1,30 @@
+@import '../../../../../variables';
+
+ul {
+  padding: 0;
+  display: flex;
+  border: 1px solid $lineGray;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+li {
+  display: flex;
+  background-color: $white;
+  height: 48px;
+
+  a {
+    padding: 13px 23px;
+    transition: 0.3s all;
+
+    &:hover {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+
+  .active {
+    color: $white;
+    background-color: $primary;
+  }
+}

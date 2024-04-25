@@ -10,6 +10,7 @@ const routes: Routes = [
   {
     path: 'profile', component: ProfileComponent, children: [
       { path: 'settings', component: ProfileSettingsComponent, resolve: { userInfo: userInfoResolver } },
+      { path: 'history', redirectTo: 'history/1' },
       { path: 'history/:page', component: ProfileHistoryComponent }
     ]
   },

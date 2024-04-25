@@ -25,6 +25,7 @@ import { ProfileHistoryFeedComponent } from './components/profile-history/compon
 import { ProfileHistoryOrderComponent } from './components/profile-history/components/profile-history-feed/components/profile-history-order/profile-history-order.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { HiddenProductsOrderDirective } from './components/profile-history/components/profile-history-feed/components/profile-history-order/directives/hidden-products-order.directive';
+import { ProfileTogglerComponent } from './components/profile-toggler/profile-toggler.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { HiddenProductsOrderDirective } from './components/profile-history/compo
     ProfileHistoryComponent,
     ProfileHistoryFeedComponent,
     ProfileHistoryOrderComponent,
-    HiddenProductsOrderDirective
+    HiddenProductsOrderDirective,
+    ProfileTogglerComponent
   ],
   imports: [
     CommonModule,
