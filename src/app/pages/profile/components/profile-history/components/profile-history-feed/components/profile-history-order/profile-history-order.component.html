@@ -1,4 +1,4 @@
-<div class="order">
+<div class="order" hidden-products buttonToggleClass="toggle" [productsHidden]="true">
   <div class="order-info inner">
     <div class="line"></div>
     <table>
@@ -46,6 +46,6 @@
     </div>
   </div>
   <div class="button-container inner">
-    <button class="btn text">Повторить заказ</button>
+    <button class="btn text" (click)="onRepeat()">Повторить заказ</button>
   </div>
 </div>

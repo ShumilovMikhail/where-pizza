@@ -24,6 +24,7 @@ import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { ProfileHistoryFeedComponent } from './components/profile-history/components/profile-history-feed/profile-history-feed.component';
 import { ProfileHistoryOrderComponent } from './components/profile-history/components/profile-history-feed/components/profile-history-order/profile-history-order.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
+import { HiddenProductsOrderDirective } from './components/profile-history/components/profile-history-feed/components/profile-history-order/directives/hidden-products-order.directive';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
     ProfileHistoryComponent,
     ProfileHistoryFeedComponent,
     ProfileHistoryOrderComponent,
+    HiddenProductsOrderDirective
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
     HttpClientModule,
     EffectsModule.forFeature([AddOrderToHistoryEffect, GetProfileHistoryOrdersEffect]),
     PaginationModule,
-    PipesModule
+    PipesModule,
   ]
 })
 export class ProfileModule { }

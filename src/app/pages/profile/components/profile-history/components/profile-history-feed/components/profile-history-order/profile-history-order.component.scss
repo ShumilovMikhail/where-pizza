@@ -17,6 +17,16 @@
   }
 }
 
+.visibility-products {
+  .order-info button .toggle {
+    transform: rotate(180deg);
+  }
+
+  .products {
+    display: flex;
+  }
+}
+
 .order-info {
   display: flex;
   align-items: center;
@@ -56,6 +66,8 @@
       width: 16px;
       height: 16px;
       position: relative;
+      transition: 0.3s all ease;
+
 
       &::after {
         content: '';
@@ -64,8 +76,8 @@
         height: 1px;
         background-color: $primary;
         top: 50%;
-        left: 50%;
-        transform: rotate(-45deg) translateX(-4px);
+        left: 1px;
+        transform: rotate(-45deg);
 
       }
 
@@ -76,17 +88,20 @@
         height: 1px;
         background-color: $primary;
         top: 50%;
-        left: 50%;
-        transform: rotate(45deg) translateX(4px);
+
+        right: 1px;
+        transform: rotate(45deg);
       }
     }
   }
 }
 
 .products {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 12px;
+  transform: translateY(0px);
+  transition: 0.3s all;
 }
 
 .product {
@@ -106,6 +121,7 @@
     height: 40px;
     background-color: #FFEEE2;
     color: $primary;
+    border-radius: 6px;
   }
 
   .price {

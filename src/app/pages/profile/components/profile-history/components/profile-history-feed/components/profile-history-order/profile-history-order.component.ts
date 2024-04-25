@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProfileHistoryOrder } from '../../../../types/profileHistoryOrder.interface';
 
 @Component({
@@ -7,7 +7,11 @@ import { ProfileHistoryOrder } from '../../../../types/profileHistoryOrder.inter
   styleUrl: './profile-history-order.component.scss'
 })
 export class ProfileHistoryOrderComponent {
-
   @Input('order') order: ProfileHistoryOrder;
+  @Output('repeatOrder') repeatOrderEvent = new EventEmitter<ProfileHistoryOrder>()
 
-}
+
+  onRepeat() {
+    this.repeatOrderEvent.emit(this.order);
+  };
+};

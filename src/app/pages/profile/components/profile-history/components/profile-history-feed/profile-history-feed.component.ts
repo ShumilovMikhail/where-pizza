@@ -24,6 +24,10 @@ export class ProfileHistoryFeedComponent implements OnInit, OnDestroy {
     this.initializeListeners();
   };
 
+  onRepeatOrder(order: ProfileHistoryOrder) {
+    this.profileHistoryFeedService.repeatOrder(order);
+  };
+
   private initializeListeners(): void {
     this.routeSubscription = this.route.params.subscribe((params: Params) => {
       this.ordersOnPage = this.profileHistoryFeedService.getOrdersOnPage(+params['page']);

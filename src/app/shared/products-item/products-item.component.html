@@ -6,12 +6,14 @@
   <div class="content">
     <div class="content-inner">
       <p class="subtitle-secondary">{{customProduct.product.name}}</p>
-      <p class="mini-text" *ngIf="customProduct.removeIngredients.length !== 0">Убрать:
+      <p class="mini-text" *ngIf="customProduct.removeIngredients &&customProduct.removeIngredients.length !== 0">
+        Убрать:
         {{customProduct.removeIngredients
         | ingredients}}</p>
-      <p class="mini-text" *ngIf="customProduct.toppings.length !== 0">Добавить: {{customProduct.toppings
+      <p class="mini-text" *ngIf="customProduct.toppings &&customProduct.toppings.length !== 0">Добавить:
+        {{customProduct.toppings
         | ingredients}}</p>
-      <p class="mini-text" *ngIf="customProduct.settings.length !== 0">{{customProduct.settings
+      <p class="mini-text" *ngIf="customProduct.settings &&customProduct.settings.length !== 0">{{customProduct.settings
         | settings}}</p>
     </div>
     <div class="content-bottom">

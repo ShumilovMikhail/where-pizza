@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { tap } from "rxjs";
-import { resetCartAction } from "../actions/sync.action";
+import { resetCartAction, setProductsAction } from "../actions/sync.action";
 import { DataStorageService } from "../../../services/data-storage.service";
 import { DataStorageTypes } from "../../../types/dataStorageTypes";
 
@@ -12,6 +12,13 @@ export class SyncEffect {
     ofType(resetCartAction),
     tap(() => {
       this.dataStorage.removeItem(DataStorageTypes.CART_PRODUCTS);
+    })
+  ), { dispatch: false });
+
+  setResetCart = createEffect(() => this.actions$.pipe(
+    ofType(setProductsAction),
+    tap(({ cartProducts }) => {
+      this.dataStorage.setItem(DataStorageTypes.CART_PRODUCTS, cartProducts);
     })
   ), { dispatch: false });
 

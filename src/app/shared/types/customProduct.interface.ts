@@ -6,7 +6,7 @@ import { Topping } from "./topping.interface";
 export class CustomProduct {
   product: Product
   totalPrice: number
-  toppings: Topping[]
-  removeIngredients: Ingredient[]
-  settings: CustomProductSetting[]
+  toppings?: Topping[]
+  removeIngredients?: Ingredient[]
+  settings?: CustomProductSetting[]
 }
